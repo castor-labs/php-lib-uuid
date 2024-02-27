@@ -1,0 +1,60 @@
+{
+  "name": "castor/uuid",
+  "description": "Universally Unique Identifiers made simple for PHP",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matias Navarro Carter",
+      "email": "mnavarrocarter@gmail.com",
+      "role": "Lead Maintainer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Castor\\": "src"
+    },
+    "files": ["include/functions.php"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Castor\\": "tests"
+    }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../*",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "ext-bcmath": "*",
+    "castor/io": "@dev",
+    "castor/random": "@dev",
+    "castor/bytes": "@dev",
+    "castor/functions": "@dev",
+    "brick/date-time": "^0.5",
+    "brick/math": "^0.10"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "friendsofphp/php-cs-fixer": "^3.49",
+    "vimeo/psalm": "^5.22"
+  },
+  "scripts": {
+    "pr": ["@fmt", "@psalm", "@test"],
+    "ci": ["@fmt:check", "@psalm:gh", "@test"],
+    "fmt": "php-cs-fixer fix --diff --ansi",
+    "fmt:check": "php-cs-fixer fix --dry-run --diff --ansi",
+    "test": ["phpunit --colors"],
+    "test:unit": "phpunit --colors --exclude-group=integration --exclude-group=e2e",
+    "test:e2e": "phpunit --colors --group=e2e",
+    "test:integration": "phpunit --colors --group=integration",
+    "psalm": "psalm --no-cache --threads=5",
+    "psalm:gh": "psalm --no--cache --threads=5 --long-progress --output-format=github"
+  }
+}

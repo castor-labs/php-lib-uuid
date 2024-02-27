@@ -1,0 +1,10 @@
+/.idea export-ignore
+/vendor export-ignore
+/tests export-ignore
+/.dev export-ignore
+/.php-cs-fixer.php export-ignore
+/compose.yml export-ignore
+/composer.lock export-ignore
+/phpunit.xml export-ignore
+/psalm.xml export-ignore
+/README.md export-ignore
