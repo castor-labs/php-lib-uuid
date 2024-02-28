@@ -1,7 +1,7 @@
 Castor UUID
 ===========
 
-Simple and modern UUID library for PHP.
+An RFC-4122 compliant Universally Unique Identifiers value object implementation
 
 ## Install
 

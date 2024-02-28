@@ -1,6 +1,8 @@
 {
   "name": "castor/uuid",
-  "description": "Universally Unique Identifiers made simple for PHP",
+  "description": "An RFC-4122 compliant Universally Unique Identifiers value object implementation",
+  "keywords": ["castor", "stdlib", "php", "php82", "uuid", "rfc4122"],
+  "homepage": "https://castor-labs.github.io/php-lib-std/packages/uuid",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
