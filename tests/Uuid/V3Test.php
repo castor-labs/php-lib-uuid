@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,26 +16,28 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversFunction;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- *
- * @covers \Castor\Uuid\V3
- */
+#[CoversClass(V3::class)]
+#[CoversClass(Any::class)]
+#[CoversFunction('Castor\Uuid\Ns\url')]
 class V3Test extends TestCase
 {
-    public function testCreate(): void
+    #[Test]
+    public function it_creates(): void
     {
-        $v4 = V4::parse('7628f4de-01bd-494b-a84b-d7f900521218');
-        $v3 = V3::create($v4, 'test');
-        $this->assertSame('a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309', $v3->toString());
+        $ns = Ns\url();
+        $v3 = V3::create($ns, 'test');
+        $this->assertSame('1cf93550-8eb4-3c32-a229-826cf8c1be59', $v3->toString());
     }
 
-    /**
-     * @dataProvider getParseErrorData
-     */
-    public function testParseError(string $in, string $message): void
+    #[Test]
+    #[DataProvider('getParseErrorData')]
+    public function it_parses_with_error(string $in, string $message): void
     {
         try {
             V3::parse($in);
@@ -54,10 +56,8 @@ class V3Test extends TestCase
         ];
     }
 
-    /**
-     * @throws \JsonException
-     */
-    public function testSerialization(): void
+    #[Test]
+    public function it_serializes(): void
     {
         $v3 = V3::parse('a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309');
 

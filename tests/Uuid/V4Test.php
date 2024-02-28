@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,16 +17,17 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- *
- * @covers \Castor\Uuid\V4
- */
+#[CoversClass(V4::class)]
+#[CoversClass(Any::class)]
 class V4Test extends TestCase
 {
-    public function testGenerate(): void
+    #[Test]
+    public function it_generates(): void
     {
         $rand = Bytes::fromUint8(250, 121, 156, 79, 226, 155, 163, 224, 208, 141, 170, 226, 238, 50, 229, 73);
         $uuid = V4::generate($rand);
@@ -34,19 +35,17 @@ class V4Test extends TestCase
         $this->assertSame('fa799c4f-e29b-43e0-908d-aae2ee32e549', $uuid->toString());
     }
 
-    /**
-     * @dataProvider getParseData
-     */
-    public function testParse(string $v4): void
+    #[Test]
+    #[DataProvider('getParseData')]
+    public function it_parses(string $v4): void
     {
         $this->expectNotToPerformAssertions();
         V4::parse($v4);
     }
 
-    /**
-     * @dataProvider getParseErrorData
-     */
-    public function testParseError(string $in, string $message): void
+    #[Test]
+    #[DataProvider('getParseErrorData')]
+    public function it_parses_with_error(string $in, string $message): void
     {
         try {
             V4::parse($in);
@@ -65,7 +64,8 @@ class V4Test extends TestCase
         ];
     }
 
-    public function testGenerateUniqueV4(): void
+    #[Test]
+    public function it_generates_unique_v4(): void
     {
         $a = V4::generate()->toString();
         $b = V4::generate()->toString();
@@ -73,10 +73,8 @@ class V4Test extends TestCase
         $this->assertNotSame($a, $b);
     }
 
-    /**
-     * @throws \JsonException
-     */
-    public function testSerialization(): void
+    #[Test]
+    public function it_serializes(): void
     {
         $v4 = V4::parse('fa06067f-602d-404a-a34c-45c6a7744011');
 
@@ -89,7 +87,7 @@ class V4Test extends TestCase
         $this->assertSame('fa06067f-602d-404a-a34c-45c6a7744011', (string) $v4);
     }
 
-    public function getParseData(): array
+    public static function getParseData(): array
     {
         return [
             ['fa06067f-602d-404a-a34c-45c6a7744011'],

@@ -27,4 +27,8 @@
             <html outputDirectory=".dev/coverage"/>
         </report>
     </coverage>
+
+    <extensions>
+        <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>
+    </extensions>
 </phpunit>

@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -52,10 +52,11 @@ function isValid(string $uuid): bool
 }
 
 /**
- * Returns the maximum UUID possible (all F)
+ * Returns the maximum UUID possible (all F).
  */
 function max(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(
@@ -82,10 +83,11 @@ function max(): Uuid
 }
 
 /**
- * Returns the nil UUID (all zeroes)
+ * Returns the nil UUID (all zeroes).
  */
 function nil(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(
@@ -122,6 +124,7 @@ use Castor\Uuid\Any;
  */
 function dns(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(
@@ -152,6 +155,7 @@ function dns(): Uuid
  */
 function oid(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(
@@ -182,6 +186,7 @@ function oid(): Uuid
  */
 function url(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(
@@ -212,6 +217,7 @@ function url(): Uuid
  */
 function x500(): Uuid
 {
+    /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
         $uuid = Any::fromBytes(Bytes::fromUint8(

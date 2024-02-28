@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,25 +16,24 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversFunction;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- *
- * @covers \Castor\Uuid\V5
- */
+#[CoversClass(V5::class)]
+#[CoversClass(Any::class)]
+#[CoversFunction('Castor\Uuid\Ns\url')]
 class V5Test extends TestCase
 {
     public function testCreate(): void
     {
-        $v4 = V4::parse('7628f4de-01bd-494b-a84b-d7f900521218');
-        $v5 = V5::create($v4, 'test');
-        $this->assertSame('5fe80e27-269a-5cce-98c3-989ddd181b71', $v5->toString());
+        $ns = Ns\url();
+        $v5 = V5::create($ns, 'test');
+        $this->assertSame('da5b8893-d6ca-5c1c-9a9c-91f40a2a3649', $v5->toString());
     }
 
-    /**
-     * @dataProvider getParseErrorData
-     */
+    #[DataProvider('getParseErrorData')]
     public function testParseError(string $in, string $message): void
     {
         try {

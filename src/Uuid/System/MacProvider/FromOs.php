@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,8 +39,7 @@ final class FromOs implements MacProvider
     public function __construct(
         private readonly MacProvider $next,
         private ?array $cached = null,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Bytes[]
@@ -163,7 +162,12 @@ final class FromOs implements MacProvider
 
         $ifconfig = (string) \ob_get_clean();
 
-        if (\preg_match_all(self::IFCONFIG_PATTERN, $ifconfig, $matches, PREG_PATTERN_ORDER)) {
+        $n = \preg_match_all(self::IFCONFIG_PATTERN, $ifconfig, $matches, PREG_PATTERN_ORDER);
+        if (!\is_int($n)) {
+            throw new \LogicException('Invalid regular expression');
+        }
+
+        if ($n > 0) {
             foreach ($matches[1] as $iface) {
                 if ('00:00:00:00:00:00' !== $iface && '00-00-00-00-00-00' !== $iface) {
                     try {

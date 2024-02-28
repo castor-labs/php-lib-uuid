@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -47,19 +47,24 @@ class Any implements Uuid, \Stringable, \JsonSerializable
 
     protected function __construct(
         private readonly Bytes $bytes,
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {
         return $this->toString();
     }
 
+    /**
+     * @return array{0: string}
+     */
     public function __serialize(): array
     {
         return [$this->toString()];
     }
 
+    /**
+     * @param array{0: string} $data
+     */
     public function __unserialize(array $data): void
     {
         $this->bytes = static::parse($data[0])->getBytes();
@@ -120,7 +125,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             0x30 => new V3($bytes), // 0011 0000
             0x40 => new V4($bytes), // 0100 0000
             0x50 => new V5($bytes), // 0101 0000
-            default => new Any(new Bytes($bytes))
+            default => new Any($bytes)
         };
     }
 

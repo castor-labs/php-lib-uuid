@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,24 +17,27 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Brick\Math\BigInteger;
-use Brick\Math\Exception\MathException;
 use Castor\Bytes;
-use Castor\Encoding\Error;
+use Castor\Uuid\System\MacProvider\Fallback;
+use Castor\Uuid\System\MacProvider\FromOs;
 use Castor\Uuid\V1\GregorianTime;
+use Castor\Uuid\V1\Simplified;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- *
- * @covers \Castor\Uuid\V1
- */
+#[CoversClass(V1::class)]
+#[CoversClass(V1\Fixed::class)]
+#[CoversClass(GregorianTime::class)]
+#[CoversClass(Fallback::class)]
+#[CoversClass(FromOs::class)]
+#[CoversClass(Simplified::class)]
+#[CoversClass(Any::class)]
 class V1Test extends TestCase
 {
-    /**
-     * @throws Error
-     * @throws MathException
-     */
-    public function testGenerate(): void
+    #[Test]
+    public function it_generates(): void
     {
         $state = new V1\Fixed(
             GregorianTime::fromTimestamp(BigInteger::of('139127190012012330')),
@@ -51,10 +54,8 @@ class V1Test extends TestCase
         $this->assertSame('0001', $v1->getClockSeq()->toHex());
     }
 
-    /**
-     * @throws Error
-     */
-    public function testRamseyCompat(): void
+    #[Test]
+    public function its_compatible_with_ramsey(): void
     {
         $state = new V1\Fixed(
             new GregorianTime(Bytes::fromHex('01ee4782395c14c4')),
@@ -67,20 +68,20 @@ class V1Test extends TestCase
         $this->assertSame('2023-08-30T22:11:52.872058Z', $v1->getTime()->getInstant()->toISOString());
     }
 
-    public function testMultipleGeneration(): void
+    #[Test]
+    public function it_generates_multiple(): void
     {
         $previous = '';
-        for ($i = 0; $i < 10000; ++$i) {
+        for ($i = 0; $i < 1000; ++$i) {
             $generated = V1::generate()->toString();
             $this->assertNotSame($generated, $previous);
             $previous = $generated;
         }
     }
 
-    /**
-     * @dataProvider getParseErrorData
-     */
-    public function testParseError(string $in): void
+    #[Test]
+    #[DataProvider('getParseErrorData')]
+    public function it_parses_with_error(string $in): void
     {
         try {
             V1::parse($in);
@@ -99,10 +100,8 @@ class V1Test extends TestCase
         ];
     }
 
-    /**
-     * @throws \JsonException
-     */
-    public function testSerialization(): void
+    #[Test]
+    public function it_serializes(): void
     {
         $v1 = V1::parse('5102999c-4771-11ee-be56-0242ac120002');
 

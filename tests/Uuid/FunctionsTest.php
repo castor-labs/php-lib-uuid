@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,11 +16,14 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
+use Castor\Uuid;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(Any::class)]
 #[CoversFunction('Castor\Uuid\parse')]
 #[CoversFunction('Castor\Uuid\max')]
 #[CoversFunction('Castor\Uuid\nil')]
@@ -31,22 +34,21 @@ use PHPUnit\Framework\TestCase;
 class FunctionsTest extends TestCase
 {
     #[Test]
-    public function it_creates_well_known_uris(): void
+    public function it_creates_well_known_uuids(): void
     {
         $this->assertSame('6ba7b810-9dad-11d1-80b4-00c04fd430c8', Ns\dns()->toString());
         $this->assertSame('6ba7b811-9dad-11d1-80b4-00c04fd430c8', Ns\url()->toString());
         $this->assertSame('6ba7b812-9dad-11d1-80b4-00c04fd430c8', Ns\oid()->toString());
         $this->assertSame('6ba7b814-9dad-11d1-80b4-00c04fd430c8', Ns\x500()->toString());
-        $this->assertSame('ffffffff-ffff-ffff-ffff-ffffffffffff', max()->toString());
-        $this->assertSame('00000000-0000-0000-0000-000000000000', nil()->toString());
+        $this->assertSame('ffffffff-ffff-ffff-ffff-ffffffffffff', Uuid\max()->toString());
+        $this->assertSame('00000000-0000-0000-0000-000000000000', Uuid\nil()->toString());
     }
-
 
     #[Test]
     #[DataProvider('getParseData')]
     public function it_parses(string $uuid, string $type): void
     {
-        $parsed = parse($uuid);
+        $parsed = Uuid\parse($uuid);
         $this->assertInstanceOf($type, $parsed);
     }
 

@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * @project The Castor Standard Library
- * @link https://github.com/castor-labs/stdlib
- * @package castor/stdlib
+ * @project Castor UUID
+ * @link https://github.com/castor-labs/php-lib-uuid
+ * @package castor/uuid
  * @author Matias Navarro-Carter mnavarrocarter@gmail.com
  * @license MIT
- * @copyright 2022 CastorLabs Ltd
+ * @copyright 2024 CastorLabs Ltd
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,15 +17,16 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Any::class)]
 class AnyTest extends TestCase
 {
-    /**
-     * @dataProvider getParseData
-     */
-    public function testParse(string $in, string $type): void
+    #[Test]
+    #[DataProvider('getParseData')]
+    public function it_parses(string $in, string $type): void
     {
         $uuid = Any::parse($in);
         $this->assertInstanceOf($type, $uuid);
@@ -46,10 +47,8 @@ class AnyTest extends TestCase
         ];
     }
 
-    /**
-     * @throws \JsonException
-     */
-    public function testSerialization(): void
+    #[Test]
+    public function it_serializes(): void
     {
         $unknown = Any::parse('99cf973d-3fe7-7ee4-88bd-a0991a048794');
 
