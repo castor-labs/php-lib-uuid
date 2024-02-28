@@ -21,15 +21,10 @@
       "Castor\\": "tests"
     }
   },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../*",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://castor-labs.github.io/php-packages"
+  }],
   "require": {
     "php": ">=8.2",
     "ext-bcmath": "*",

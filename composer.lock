@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19411f4b3d0bde5ab4ae8fb80454600a",
+    "content-hash": "93d0853eee53a4a0ce6b0d121d6fa1c0",
     "packages": [
         {
             "name": "brick/date-time",
@@ -120,10 +120,16 @@
         {
             "name": "castor/bytes",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:castor-labs/php-lib-bytes.git",
+                "reference": "4419090b6007ce2e6c4bc337c0ec7c50536355fa"
+            },
             "dist": {
-                "type": "path",
-                "url": "../bytes",
-                "reference": "ce1991e017cfa20bebdd76a8a2cfbe09c24ace0f"
+                "type": "zip",
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-4419090b6007ce2e6c4bc337c0ec7c50536355fa-zip-311aa2.zip",
+                "reference": "4419090b6007ce2e6c4bc337c0ec7c50536355fa",
+                "shasum": "308ca6b393feab14cb84942514bcce7c14dfcd33"
             },
             "require": {
                 "castor/functions": "@dev",
@@ -135,6 +141,7 @@
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -199,18 +206,25 @@
                 }
             ],
             "description": "A useful value object to work with bytes as a slice of unsigned 8-bit integers",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/castor-labs/php-lib-bytes/tree/main",
+                "issues": "https://github.com/castor-labs/php-lib-bytes/issues"
+            },
+            "time": "2024-02-28T10:48:53+00:00"
         },
         {
             "name": "castor/functions",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:castor-labs/php-lib-functions.git",
+                "reference": "f6463139f218396dd27fbee543113679c4278d66"
+            },
             "dist": {
-                "type": "path",
-                "url": "../functions",
-                "reference": "dbd31bb8fd450e50228c11a2cbc7b740434b976d"
+                "type": "zip",
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-f6463139f218396dd27fbee543113679c4278d66-zip-8dd252.zip",
+                "reference": "f6463139f218396dd27fbee543113679c4278d66",
+                "shasum": "46b394858506dc7ae106321a0fc4355a97129345"
             },
             "require": {
                 "php": ">=8.2"
@@ -220,6 +234,7 @@
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -287,18 +302,25 @@
                 }
             ],
             "description": "PHP functions, wrapped and renamed so they are safer and more consistent",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/castor-labs/php-lib-functions/tree/main",
+                "issues": "https://github.com/castor-labs/php-lib-functions/issues"
+            },
+            "time": "2024-02-28T10:54:25+00:00"
         },
         {
             "name": "castor/io",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:castor-labs/php-lib-io.git",
+                "reference": "3e532bd5830e4d15334b93f4668720abf976c712"
+            },
             "dist": {
-                "type": "path",
-                "url": "../io",
-                "reference": "bc2d920b822770374e269b39cd60f6acafd91870"
+                "type": "zip",
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-3e532bd5830e4d15334b93f4668720abf976c712-zip-13588a.zip",
+                "reference": "3e532bd5830e4d15334b93f4668720abf976c712",
+                "shasum": "f904239023ea847a1097d96cd074c9ef10e45fdb"
             },
             "require": {
                 "php": ">=8.2"
@@ -308,6 +330,7 @@
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -369,18 +392,25 @@
                 }
             ],
             "description": "Input and output abstractions for PHP applications",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/castor-labs/php-lib-io/tree/main",
+                "issues": "https://github.com/castor-labs/php-lib-io/issues"
+            },
+            "time": "2024-02-27T20:56:54+00:00"
         },
         {
             "name": "castor/random",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:castor-labs/php-lib-random.git",
+                "reference": "6b7b8034e77db6058a75164a5280ec2b47742501"
+            },
             "dist": {
-                "type": "path",
-                "url": "../random",
-                "reference": "2195ff7897cc88111d9534555ee2c108f88730aa"
+                "type": "zip",
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/random/castor-random-6b7b8034e77db6058a75164a5280ec2b47742501-zip-0d973a.zip",
+                "reference": "6b7b8034e77db6058a75164a5280ec2b47742501",
+                "shasum": "f9ad2719a19f4736ab522957a127b0d88d31dd81"
             },
             "require": {
                 "castor/functions": "@dev",
@@ -392,6 +422,7 @@
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -456,10 +487,11 @@
                 }
             ],
             "description": "Random abstraction over PHP Random capabilities",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/castor-labs/php-lib-random/tree/main",
+                "issues": "https://github.com/castor-labs/php-lib-random/issues"
+            },
+            "time": "2024-02-28T10:48:53+00:00"
         }
     ],
     "packages-dev": [
@@ -3299,16 +3331,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.0.3",
+            "version": "v7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "c5010d50f1ee4b25cfa0201d9915cf1b14071456"
+                "reference": "6b099f3306f7c9c2d2786ed736d0026b2903205f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/c5010d50f1ee4b25cfa0201d9915cf1b14071456",
-                "reference": "c5010d50f1ee4b25cfa0201d9915cf1b14071456",
+                "url": "https://api.github.com/repos/symfony/console/zipball/6b099f3306f7c9c2d2786ed736d0026b2903205f",
+                "reference": "6b099f3306f7c9c2d2786ed736d0026b2903205f",
                 "shasum": ""
             },
             "require": {
@@ -3372,7 +3404,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.0.3"
+                "source": "https://github.com/symfony/console/tree/v7.0.4"
             },
             "funding": [
                 {
@@ -3388,7 +3420,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-02-22T20:27:20+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4283,16 +4315,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v7.0.3",
+            "version": "v7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "937a195147e0c27b2759ade834169ed006d0bc74"
+                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/937a195147e0c27b2759ade834169ed006d0bc74",
-                "reference": "937a195147e0c27b2759ade834169ed006d0bc74",
+                "url": "https://api.github.com/repos/symfony/process/zipball/0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
+                "reference": "0e7727191c3b71ebec6d529fa0e50a01ca5679e9",
                 "shasum": ""
             },
             "require": {
@@ -4324,7 +4356,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v7.0.3"
+                "source": "https://github.com/symfony/process/tree/v7.0.4"
             },
             "funding": [
                 {
@@ -4340,7 +4372,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-02-22T20:27:20+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -4488,16 +4520,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v7.0.3",
+            "version": "v7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "524aac4a280b90a4420d8d6a040718d0586505ac"
+                "reference": "f5832521b998b0bec40bee688ad5de98d4cf111b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/524aac4a280b90a4420d8d6a040718d0586505ac",
-                "reference": "524aac4a280b90a4420d8d6a040718d0586505ac",
+                "url": "https://api.github.com/repos/symfony/string/zipball/f5832521b998b0bec40bee688ad5de98d4cf111b",
+                "reference": "f5832521b998b0bec40bee688ad5de98d4cf111b",
                 "shasum": ""
             },
             "require": {
@@ -4554,7 +4586,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v7.0.3"
+                "source": "https://github.com/symfony/string/tree/v7.0.4"
             },
             "funding": [
                 {
@@ -4570,7 +4602,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-29T15:41:16+00:00"
+            "time": "2024-02-01T13:17:36+00:00"
         },
         {
             "name": "theseer/tokenizer",
