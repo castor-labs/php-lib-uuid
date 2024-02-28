@@ -56,6 +56,6 @@
     "test:e2e": "phpunit --colors --group=e2e",
     "test:integration": "phpunit --colors --group=integration",
     "psalm": "psalm --no-cache --threads=5",
-    "psalm:gh": "psalm --no--cache --threads=5 --long-progress --output-format=github"
+    "psalm:gh": "psalm --no-cache --threads=5 --long-progress --output-format=github"
   }
 }

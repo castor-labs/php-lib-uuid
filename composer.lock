@@ -179,7 +179,7 @@
                     "psalm --no-cache --threads=5 --use-baseline"
                 ],
                 "psalm:gh": [
-                    "psalm --no--cache --threads=5 --long-progress --output-format=github --use-baseline"
+                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
                 ],
                 "psalm:fix": [
                     "psalm --update-baseline"
@@ -267,7 +267,7 @@
                     "psalm --no-cache --threads=5 --use-baseline"
                 ],
                 "psalm:gh": [
-                    "psalm --no--cache --threads=5 --long-progress --output-format=github --use-baseline"
+                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
                 ],
                 "psalm:fix": [
                     "psalm --update-baseline"
@@ -436,7 +436,7 @@
                     "psalm --no-cache --threads=5 --use-baseline"
                 ],
                 "psalm:gh": [
-                    "psalm --no--cache --threads=5 --long-progress --output-format=github --use-baseline"
+                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
                 ],
                 "psalm:fix": [
                     "psalm --update-baseline"
