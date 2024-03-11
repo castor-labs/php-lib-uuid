@@ -18,11 +18,23 @@ namespace Castor\Uuid\V1;
 
 use Castor\Bytes;
 
+/**
+ * State represents the needed state to construct a V1 UUID.
+ */
 interface State
 {
+    /**
+     * Returns the Clock Sequence as Bytes.
+     */
     public function getClockSequence(): Bytes;
 
-    public function getTime(): GregorianTime;
+    /**
+     * Returns the time for an UUID v1.
+     */
+    public function getTime(): Time;
 
+    /**
+     * Returns the Node.
+     */
     public function getNode(): Bytes;
 }

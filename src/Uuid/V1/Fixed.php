@@ -21,7 +21,7 @@ use Castor\Bytes;
 final readonly class Fixed implements State
 {
     public function __construct(
-        private GregorianTime $time,
+        private Time $time,
         private Bytes $clockSeq,
         private Bytes $node,
     ) {}
@@ -31,7 +31,7 @@ final readonly class Fixed implements State
         return $this->clockSeq;
     }
 
-    public function getTime(): GregorianTime
+    public function getTime(): Time
     {
         return $this->time;
     }

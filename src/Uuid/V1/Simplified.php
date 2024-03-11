@@ -64,9 +64,9 @@ final class Simplified implements State
         return $this->clockSequence;
     }
 
-    public function getTime(): GregorianTime
+    public function getTime(): Time
     {
-        $gregorianTime = GregorianTime::now($this->clock);
+        $gregorianTime = Time::now($this->clock);
 
         if ($gregorianTime->bytes->equals($this->lastTimestamp)) {
             $this->clockSequence = $this->generateClockSequence();

@@ -24,7 +24,10 @@ use Castor\Bytes;
 
 use function Castor\Err\must;
 
-class GregorianTime
+/**
+ * Represents the time in a V1 UUID.
+ */
+class Time
 {
     /**
      * The number of 100-nanosecond intervals from the Gregorian calendar epoch
@@ -41,7 +44,7 @@ class GregorianTime
         public readonly Bytes $bytes,
     ) {}
 
-    public static function fromTimestamp(BigInteger $timestamp): GregorianTime
+    public static function fromTimestamp(BigInteger $timestamp): Time
     {
         return must(static function () use ($timestamp) {
             $hex = \str_pad($timestamp->toBase(16), 16, '0', STR_PAD_LEFT);
@@ -50,7 +53,7 @@ class GregorianTime
         });
     }
 
-    public static function fromInstant(Instant $instant): GregorianTime
+    public static function fromInstant(Instant $instant): Time
     {
         return must(function () use ($instant) {
             $epochSeconds = BigInteger::of($instant->getEpochSecond());
@@ -64,7 +67,7 @@ class GregorianTime
         });
     }
 
-    public static function now(Clock $clock): GregorianTime
+    public static function now(Clock $clock): Time
     {
         return self::fromInstant($clock->getTime());
     }

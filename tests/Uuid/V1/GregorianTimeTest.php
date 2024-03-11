@@ -24,19 +24,19 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  *
- * @covers \Castor\Uuid\V1\GregorianTime
+ * @covers \Castor\Uuid\V1\Time
  */
 class GregorianTimeTest extends TestCase
 {
     public function testGregorianTime(): void
     {
-        $time = GregorianTime::now(new FixedClock(Instant::of(1693426201, 201233)));
+        $time = Time::now(new FixedClock(Instant::of(1693426201, 201233)));
         $this->assertSame('139127190010002012', (string) $time->getTimestamp());
     }
 
     public function testGregorianDatetime(): void
     {
-        $instant = GregorianTime::fromTimestamp(BigInteger::of('139127190010002012'))->getInstant();
+        $instant = Time::fromTimestamp(BigInteger::of('139127190010002012'))->getInstant();
         $this->assertSame(1693426201, $instant->getEpochSecond());
         $this->assertSame(201200, $instant->getNano()); // Nano precision is lost because of 100 nano intervals
     }

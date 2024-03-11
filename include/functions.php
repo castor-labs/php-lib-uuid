@@ -22,11 +22,11 @@ use Castor\Uuid;
 /**
  * Parses a UUI from a string.
  *
- * @throws ParsingError
+ * @throws ParsingError if the UUID is not valid
  */
-function parse(string $uuid): Uuid
+function parse(string $uuid, bool $lazy = true): Uuid
 {
-    return Any::parse($uuid);
+    return Any::parse($uuid, $lazy);
 }
 
 /**

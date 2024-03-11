@@ -17,9 +17,9 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
-use Castor\Uuid\V1\GregorianTime;
 use Castor\Uuid\V1\Simplified;
 use Castor\Uuid\V1\State;
+use Castor\Uuid\V1\Time;
 
 /**
  * V1 represents a version 1 UUID.
@@ -35,9 +35,9 @@ final class V1 extends Any
      *
      * @throws ParsingError
      */
-    public static function parse(string $uuid): self
+    public static function parse(string $uuid, bool $lazy = true): self
     {
-        $v1 = parent::parse($uuid);
+        $v1 = parent::parse($uuid, $lazy);
         if (!$v1 instanceof self) {
             throw new ParsingError('Not a valid version 1 UUID.');
         }
@@ -88,16 +88,16 @@ final class V1 extends Any
     }
 
     /**
-     * Returns the Gregorian Time of this UUID.
+     * Returns the Time of this UUID.
      */
-    public function getTime(): GregorianTime
+    public function getTime(): Time
     {
         $bytes = $this->getBytes();
         $bytes[6] = $bytes[6] & 0x0F; // Unset the version bits
         $b = $bytes->asString();
         $bytes = new Bytes($b[6].$b[7].$b[4].$b[5].$b[0].$b[1].$b[2].$b[3]);
 
-        return new GregorianTime($bytes);
+        return new Time($bytes);
     }
 
     /**

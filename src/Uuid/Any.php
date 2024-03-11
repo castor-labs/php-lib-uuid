@@ -18,6 +18,7 @@ namespace Castor\Uuid;
 
 use Castor\Bytes;
 use Castor\Encoding\Error;
+use Castor\RegExp;
 use Castor\Str;
 use Castor\Uuid;
 
@@ -34,6 +35,9 @@ use Castor\Uuid;
  */
 class Any implements Uuid, \Stringable, \JsonSerializable
 {
+    protected const PATTERN = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/';
+    protected const STR_VERSION_OFFSET = 14;
+
     protected const URN_NS = 'urn:uuid:';
 
     /** @var int Length of bytes of an UUID */
@@ -46,7 +50,8 @@ class Any implements Uuid, \Stringable, \JsonSerializable
     protected const VAB = 8;
 
     protected function __construct(
-        private readonly Bytes $bytes,
+        private Bytes $bytes,
+        private string $string = '',
     ) {}
 
     public function __toString(): string
@@ -67,22 +72,31 @@ class Any implements Uuid, \Stringable, \JsonSerializable
      */
     public function __unserialize(array $data): void
     {
-        $this->bytes = static::parse($data[0])->getBytes();
+        $this->bytes = new Bytes('');
+        $this->string = $data[0];
     }
 
     public function toString(): string
     {
-        return \sprintf('%s%s-%s-%s-%s-%s%s%s', ...\str_split($this->bytes->toHex(), 4));
+        if ($this->string === '') {
+            $this->string = \sprintf('%s%s-%s-%s-%s-%s%s%s', ...\str_split($this->bytes->toHex(), 4));
+        }
+
+        return $this->string;
     }
 
     public function getBytes(): Bytes
     {
+        if ($this->bytes->len() === 0) {
+            $this->bytes = self::parse($this->string, false)->getBytes();
+        }
+
         return clone $this->bytes;
     }
 
     public function equals(Uuid $uuid): bool
     {
-        return $this->bytes->equals($uuid->getBytes());
+        return $this->toString() === $uuid->toString();
     }
 
     /**
@@ -137,8 +151,12 @@ class Any implements Uuid, \Stringable, \JsonSerializable
      * If you want to conditionally act upon the version parsed, you can use the "instanceof" keyword to figure out the
      * version you are working with.
      */
-    public static function parse(string $uuid): Uuid
+    public static function parse(string $uuid, bool $lazy = true): Uuid
     {
+        if ($lazy) {
+            return self::lazy($uuid);
+        }
+
         $uuid = Str\toLower(Str\replace($uuid, '-', ''));
 
         try {
@@ -148,5 +166,28 @@ class Any implements Uuid, \Stringable, \JsonSerializable
         }
 
         return self::fromBytes($bytes);
+    }
+
+    /**
+     * Creates a lazy UUID.
+     *
+     * This is a UUID only in string form, with bytes initialized to an empty string.
+     *
+     * Bytes are only parsed and computed when needed.
+     */
+    protected static function lazy(string $uuid): Uuid
+    {
+        $matches = RegExp\matches(self::PATTERN, $uuid);
+        if ($matches === []) {
+            throw new ParsingError('Invalid UUID string.');
+        }
+
+        return match ($uuid[self::STR_VERSION_OFFSET]) {
+            '1' => new V1(new Bytes(''), $uuid),
+            '3' => new V3(new Bytes(''), $uuid),
+            '4' => new V4(new Bytes(''), $uuid),
+            '5' => new V5(new Bytes(''), $uuid),
+            default => new Any(new Bytes(''), $uuid)
+        };
     }
 }

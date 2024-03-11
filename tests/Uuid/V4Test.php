@@ -45,22 +45,22 @@ class V4Test extends TestCase
 
     #[Test]
     #[DataProvider('getParseErrorData')]
-    public function it_parses_with_error(string $in, string $message): void
+    public function it_parses_with_error(string $in, bool $lazy, string $expectedError): void
     {
-        try {
-            V4::parse($in);
-        } catch (ParsingError $e) {
-            $this->assertSame($message, $e->getMessage());
-        }
+        $this->expectException(ParsingError::class);
+        $this->expectExceptionMessage($expectedError);
+        V4::parse($in, $lazy);
     }
 
     public static function getParseErrorData(): array
     {
         return [
-            'less chars' => ['00010f-0405-4607-8809-0a0b0c0d0e0f', 'UUID must have 16 bytes.'],
-            'more chars' => ['00010203-0405-4607-8809-0a0b0c0d0e0fdf', 'UUID must have 16 bytes.'],
-            'wrong version' => ['5bbf8060-4a64-1f50-9e10-882cb74461f7', 'Not a valid version 4 UUID.'],
-            'invalid hex' => ['ZZlf8060-4a64-4f50-9e10-882cb74461f7', 'Invalid hexadecimal in UUID.'],
+            'less chars' => ['00010f-0405-4607-8809-0a0b0c0d0e0f', false, 'UUID must have 16 bytes.'],
+            'more chars' => ['00010203-0405-4607-8809-0a0b0c0d0e0fdf', false, 'UUID must have 16 bytes.'],
+            'wrong version' => ['5bbf8060-4a64-1f50-9e10-882cb74461f7', false, 'Not a valid version 4 UUID.'],
+            'wrong version lazy' => ['5bbf8060-4a64-1f50-9e10-882cb74461f7', true, 'Not a valid version 4 UUID.'],
+            'invalid hex' => ['ZZlf8060-4a64-4f50-9e10-882cb74461f7', false, 'Invalid hexadecimal in UUID.'],
+            'invalid hex lazy' => ['ZZlf8060-4a64-4f50-9e10-882cb74461f7', true, 'Invalid UUID string.'],
         ];
     }
 

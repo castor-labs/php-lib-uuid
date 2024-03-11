@@ -35,9 +35,9 @@ final class V3 extends Any
      *
      * @throws ParsingError
      */
-    public static function parse(string $uuid): self
+    public static function parse(string $uuid, bool $lazy = true): self
     {
-        $v3 = parent::parse($uuid);
+        $v3 = parent::parse($uuid, $lazy);
         if (!$v3 instanceof self) {
             throw new ParsingError('Not a valid version 3 UUID.');
         }
