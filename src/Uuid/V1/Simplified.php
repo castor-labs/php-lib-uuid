@@ -89,6 +89,8 @@ final class Simplified implements State
 
     private function generateClockSequence(): Bytes
     {
-        return new Bytes(\pack('n*', $this->random->read(2)));
+        $this->random->read(2, $buff);
+
+        return new Bytes(\pack('n*', $buff ?? ''));
     }
 }

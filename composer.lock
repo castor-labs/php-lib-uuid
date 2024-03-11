@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93d0853eee53a4a0ce6b0d121d6fa1c0",
+    "content-hash": "c4eff4b712f61d1ef5008e1d48a9bf2c",
     "packages": [
         {
             "name": "brick/date-time",
@@ -123,17 +123,17 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-bytes.git",
-                "reference": "4419090b6007ce2e6c4bc337c0ec7c50536355fa"
+                "reference": "0b623e6cdfca00811c82543b2a97a9cae6a6f5f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-4419090b6007ce2e6c4bc337c0ec7c50536355fa-zip-311aa2.zip",
-                "reference": "4419090b6007ce2e6c4bc337c0ec7c50536355fa",
-                "shasum": "308ca6b393feab14cb84942514bcce7c14dfcd33"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-0b623e6cdfca00811c82543b2a97a9cae6a6f5f9-zip-4ab34b.zip",
+                "reference": "0b623e6cdfca00811c82543b2a97a9cae6a6f5f9",
+                "shasum": "eec175dc257b6b31bb65a0c9574d31415500be64"
             },
             "require": {
-                "castor/functions": "@dev",
-                "castor/io": "@dev",
+                "castor/functions": "dev-main",
+                "castor/io": "dev-main",
                 "php": ">=8.2"
             },
             "require-dev": {
@@ -206,11 +206,20 @@
                 }
             ],
             "description": "A useful value object to work with bytes as a slice of unsigned 8-bit integers",
+            "homepage": "https://castor-labs.github.io/php-lib-std/packages/bytes",
+            "keywords": [
+                "bytes",
+                "castor",
+                "php",
+                "php82",
+                "stdlib",
+                "uint8"
+            ],
             "support": {
                 "source": "https://github.com/castor-labs/php-lib-bytes/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-bytes/issues"
             },
-            "time": "2024-02-28T10:48:53+00:00"
+            "time": "2024-03-11T23:37:59+00:00"
         },
         {
             "name": "castor/functions",
@@ -218,15 +227,16 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-functions.git",
-                "reference": "f6463139f218396dd27fbee543113679c4278d66"
+                "reference": "aa225f8aaa3fefc02a3872113683b0cbd027c285"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-f6463139f218396dd27fbee543113679c4278d66-zip-8dd252.zip",
-                "reference": "f6463139f218396dd27fbee543113679c4278d66",
-                "shasum": "46b394858506dc7ae106321a0fc4355a97129345"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-aa225f8aaa3fefc02a3872113683b0cbd027c285-zip-a8329c.zip",
+                "reference": "aa225f8aaa3fefc02a3872113683b0cbd027c285",
+                "shasum": "be60e0775b3200947ae6ee7157cc669b9a24b459"
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=8.2"
             },
             "require-dev": {
@@ -301,12 +311,21 @@
                     "role": "Lead Maintainer"
                 }
             ],
-            "description": "PHP functions, wrapped and renamed so they are safer and more consistent",
+            "description": "Your PHP functions, wrapped and renamed so they are safer, consistent and fully typed",
+            "homepage": "https://castor-labs.github.io/php-lib-std/packages/functions",
+            "keywords": [
+                "castor",
+                "functions",
+                "php",
+                "php82",
+                "safe",
+                "stdlib"
+            ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-functions/tree/main",
+                "source": "https://github.com/castor-labs/php-lib-functions/tree/v0.1.4",
                 "issues": "https://github.com/castor-labs/php-lib-functions/issues"
             },
-            "time": "2024-02-28T10:54:25+00:00"
+            "time": "2024-03-06T11:48:24+00:00"
         },
         {
             "name": "castor/io",
@@ -314,13 +333,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-io.git",
-                "reference": "3e532bd5830e4d15334b93f4668720abf976c712"
+                "reference": "a1d3583dfd02c20bf2327627c63ab321eda78095"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-3e532bd5830e4d15334b93f4668720abf976c712-zip-13588a.zip",
-                "reference": "3e532bd5830e4d15334b93f4668720abf976c712",
-                "shasum": "f904239023ea847a1097d96cd074c9ef10e45fdb"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-a1d3583dfd02c20bf2327627c63ab321eda78095-zip-380138.zip",
+                "reference": "a1d3583dfd02c20bf2327627c63ab321eda78095",
+                "shasum": "560a2aa75186aa303bc96b3b29c6674d6f44fc15"
             },
             "require": {
                 "php": ">=8.2"
@@ -392,11 +411,22 @@
                 }
             ],
             "description": "Input and output abstractions for PHP applications",
+            "homepage": "https://castor-labs.github.io/php-lib-std/packages/io",
+            "keywords": [
+                "castor",
+                "input",
+                "io",
+                "output",
+                "php",
+                "php82",
+                "stdlib",
+                "streams"
+            ],
             "support": {
                 "source": "https://github.com/castor-labs/php-lib-io/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-io/issues"
             },
-            "time": "2024-02-27T20:56:54+00:00"
+            "time": "2024-03-07T12:52:40+00:00"
         },
         {
             "name": "castor/random",
@@ -404,17 +434,17 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-random.git",
-                "reference": "6b7b8034e77db6058a75164a5280ec2b47742501"
+                "reference": "1685dffde055959280600748784822a059e3ddfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/random/castor-random-6b7b8034e77db6058a75164a5280ec2b47742501-zip-0d973a.zip",
-                "reference": "6b7b8034e77db6058a75164a5280ec2b47742501",
-                "shasum": "f9ad2719a19f4736ab522957a127b0d88d31dd81"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/random/castor-random-1685dffde055959280600748784822a059e3ddfd-zip-ba85f5.zip",
+                "reference": "1685dffde055959280600748784822a059e3ddfd",
+                "shasum": "e5d9363e7bf415b1e37545a8f5293da16813905d"
             },
             "require": {
-                "castor/functions": "@dev",
-                "castor/io": "@dev",
+                "castor/functions": "dev-main",
+                "castor/io": "dev-main",
                 "php": ">=8.2"
             },
             "require-dev": {
@@ -486,12 +516,20 @@
                     "role": "Lead Maintainer"
                 }
             ],
-            "description": "Random abstraction over PHP Random capabilities",
+            "description": "Random abstraction over PHP Randomizer",
+            "homepage": "https://castor-labs.github.io/php-lib-std/packages/random",
+            "keywords": [
+                "castor",
+                "php",
+                "php82",
+                "random",
+                "stdlib"
+            ],
             "support": {
                 "source": "https://github.com/castor-labs/php-lib-random/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-random/issues"
             },
-            "time": "2024-02-28T10:48:53+00:00"
+            "time": "2024-03-11T23:18:00+00:00"
         }
     ],
     "packages-dev": [
@@ -663,16 +701,16 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9"
+                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/00104306927c7a0919b4ced2aaa6782c1e61a3c9",
-                "reference": "00104306927c7a0919b4ced2aaa6782c1e61a3c9",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/4775f35b2d70865807c89d32c8e7385b86eb0ace",
+                "reference": "4775f35b2d70865807c89d32c8e7385b86eb0ace",
                 "shasum": ""
             },
             "require": {
@@ -714,7 +752,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.1.1"
+                "source": "https://github.com/composer/pcre/tree/3.1.2"
             },
             "funding": [
                 {
@@ -730,7 +768,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-11T07:11:09+00:00"
+            "time": "2024-03-07T15:38:35+00:00"
         },
         {
             "name": "composer/semver",
@@ -1194,16 +1232,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.50.0",
+            "version": "v3.51.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "dbea11dcb6d9a1f6c8d51c0e580ab4a8876f524c"
+                "reference": "127fa74f010da99053e3f5b62672615b72dd6efd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/dbea11dcb6d9a1f6c8d51c0e580ab4a8876f524c",
-                "reference": "dbea11dcb6d9a1f6c8d51c0e580ab4a8876f524c",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/127fa74f010da99053e3f5b62672615b72dd6efd",
+                "reference": "127fa74f010da99053e3f5b62672615b72dd6efd",
                 "shasum": ""
             },
             "require": {
@@ -1274,7 +1312,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.50.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.51.0"
             },
             "funding": [
                 {
@@ -1282,7 +1320,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-02-23T23:17:45+00:00"
+            "time": "2024-02-28T19:50:06+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1452,20 +1490,21 @@
         },
         {
             "name": "phar-io/manifest",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/manifest.git",
-                "reference": "97803eca37d319dfa7826cc2437fc020857acb53"
+                "reference": "54750ef60c58e43759730615a392c31c80e23176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/manifest/zipball/97803eca37d319dfa7826cc2437fc020857acb53",
-                "reference": "97803eca37d319dfa7826cc2437fc020857acb53",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/54750ef60c58e43759730615a392c31c80e23176",
+                "reference": "54750ef60c58e43759730615a392c31c80e23176",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
+                "ext-libxml": "*",
                 "ext-phar": "*",
                 "ext-xmlwriter": "*",
                 "phar-io/version": "^3.0.1",
@@ -1506,9 +1545,15 @@
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
             "support": {
                 "issues": "https://github.com/phar-io/manifest/issues",
-                "source": "https://github.com/phar-io/manifest/tree/2.0.3"
+                "source": "https://github.com/phar-io/manifest/tree/2.0.4"
             },
-            "time": "2021-07-20T11:28:43+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/theseer",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-03T12:33:53+00:00"
         },
         {
             "name": "phar-io/version",
@@ -1778,16 +1823,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.11",
+            "version": "10.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "78c3b7625965c2513ee96569a4dbb62601784145"
+                "reference": "d51c3aec14896d5e80b354fad58e998d1980f8f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/78c3b7625965c2513ee96569a4dbb62601784145",
-                "reference": "78c3b7625965c2513ee96569a4dbb62601784145",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d51c3aec14896d5e80b354fad58e998d1980f8f8",
+                "reference": "d51c3aec14896d5e80b354fad58e998d1980f8f8",
                 "shasum": ""
             },
             "require": {
@@ -1844,7 +1889,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.11"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.13"
             },
             "funding": [
                 {
@@ -1852,7 +1897,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-21T15:38:30+00:00"
+            "time": "2024-03-09T16:54:15+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2099,16 +2144,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.11",
+            "version": "10.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4"
+                "reference": "41a9886b85ac7bf3929853baf96b95361cd69d2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
-                "reference": "0d968f6323deb3dbfeba5bfd4929b9415eb7a9a4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/41a9886b85ac7bf3929853baf96b95361cd69d2b",
+                "reference": "41a9886b85ac7bf3929853baf96b95361cd69d2b",
                 "shasum": ""
             },
             "require": {
@@ -2180,7 +2225,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.11"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.12"
             },
             "funding": [
                 {
@@ -2196,7 +2241,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-25T14:05:00+00:00"
+            "time": "2024-03-09T12:04:07+00:00"
         },
         {
             "name": "psr/container",
@@ -2353,16 +2398,16 @@
         },
         {
             "name": "sebastian/cli-parser",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/cli-parser.git",
-                "reference": "efdc130dbbbb8ef0b545a994fd811725c5282cae"
+                "reference": "c34583b87e7b7a8055bf6c450c2c77ce32a24084"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/efdc130dbbbb8ef0b545a994fd811725c5282cae",
-                "reference": "efdc130dbbbb8ef0b545a994fd811725c5282cae",
+                "url": "https://api.github.com/repos/sebastianbergmann/cli-parser/zipball/c34583b87e7b7a8055bf6c450c2c77ce32a24084",
+                "reference": "c34583b87e7b7a8055bf6c450c2c77ce32a24084",
                 "shasum": ""
             },
             "require": {
@@ -2397,7 +2442,8 @@
             "homepage": "https://github.com/sebastianbergmann/cli-parser",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/cli-parser/issues",
-                "source": "https://github.com/sebastianbergmann/cli-parser/tree/2.0.0"
+                "security": "https://github.com/sebastianbergmann/cli-parser/security/policy",
+                "source": "https://github.com/sebastianbergmann/cli-parser/tree/2.0.1"
             },
             "funding": [
                 {
@@ -2405,7 +2451,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T06:58:15+00:00"
+            "time": "2024-03-02T07:12:49+00:00"
         },
         {
             "name": "sebastian/code-unit",
@@ -2655,16 +2701,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "5.1.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "fbf413a49e54f6b9b17e12d900ac7f6101591b7f"
+                "reference": "c41e007b4b62af48218231d6c2275e4c9b975b2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/fbf413a49e54f6b9b17e12d900ac7f6101591b7f",
-                "reference": "fbf413a49e54f6b9b17e12d900ac7f6101591b7f",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/c41e007b4b62af48218231d6c2275e4c9b975b2e",
+                "reference": "c41e007b4b62af48218231d6c2275e4c9b975b2e",
                 "shasum": ""
             },
             "require": {
@@ -2672,7 +2718,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^10.0",
-                "symfony/process": "^4.2 || ^5"
+                "symfony/process": "^6.4"
             },
             "type": "library",
             "extra": {
@@ -2710,7 +2756,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
                 "security": "https://github.com/sebastianbergmann/diff/security/policy",
-                "source": "https://github.com/sebastianbergmann/diff/tree/5.1.0"
+                "source": "https://github.com/sebastianbergmann/diff/tree/5.1.1"
             },
             "funding": [
                 {
@@ -2718,7 +2764,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-22T10:55:06+00:00"
+            "time": "2024-03-02T07:15:17+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -2786,16 +2832,16 @@
         },
         {
             "name": "sebastian/exporter",
-            "version": "5.1.1",
+            "version": "5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/exporter.git",
-                "reference": "64f51654862e0f5e318db7e9dcc2292c63cdbddc"
+                "reference": "955288482d97c19a372d3f31006ab3f37da47adf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/64f51654862e0f5e318db7e9dcc2292c63cdbddc",
-                "reference": "64f51654862e0f5e318db7e9dcc2292c63cdbddc",
+                "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/955288482d97c19a372d3f31006ab3f37da47adf",
+                "reference": "955288482d97c19a372d3f31006ab3f37da47adf",
                 "shasum": ""
             },
             "require": {
@@ -2852,7 +2898,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/exporter/issues",
                 "security": "https://github.com/sebastianbergmann/exporter/security/policy",
-                "source": "https://github.com/sebastianbergmann/exporter/tree/5.1.1"
+                "source": "https://github.com/sebastianbergmann/exporter/tree/5.1.2"
             },
             "funding": [
                 {
@@ -2860,20 +2906,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-24T13:22:09+00:00"
+            "time": "2024-03-02T07:17:12+00:00"
         },
         {
             "name": "sebastian/global-state",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4"
+                "reference": "987bafff24ecc4c9ac418cab1145b96dd6e9cbd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/7ea9ead78f6d380d2a667864c132c2f7b83055e4",
-                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/987bafff24ecc4c9ac418cab1145b96dd6e9cbd9",
+                "reference": "987bafff24ecc4c9ac418cab1145b96dd6e9cbd9",
                 "shasum": ""
             },
             "require": {
@@ -2907,14 +2953,14 @@
                 }
             ],
             "description": "Snapshotting of global state",
-            "homepage": "http://www.github.com/sebastianbergmann/global-state",
+            "homepage": "https://www.github.com/sebastianbergmann/global-state",
             "keywords": [
                 "global state"
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
                 "security": "https://github.com/sebastianbergmann/global-state/security/policy",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.1"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.2"
             },
             "funding": [
                 {
@@ -2922,7 +2968,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-19T07:19:23+00:00"
+            "time": "2024-03-02T07:19:19+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -4606,16 +4652,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "b2ad5003ca10d4ee50a12da31de12a5774ba6b96"
+                "reference": "737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/b2ad5003ca10d4ee50a12da31de12a5774ba6b96",
-                "reference": "b2ad5003ca10d4ee50a12da31de12a5774ba6b96",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2",
+                "reference": "737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2",
                 "shasum": ""
             },
             "require": {
@@ -4644,7 +4690,7 @@
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "support": {
                 "issues": "https://github.com/theseer/tokenizer/issues",
-                "source": "https://github.com/theseer/tokenizer/tree/1.2.2"
+                "source": "https://github.com/theseer/tokenizer/tree/1.2.3"
             },
             "funding": [
                 {
@@ -4652,20 +4698,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-20T00:12:19+00:00"
+            "time": "2024-03-03T12:36:25+00:00"
         },
         {
             "name": "vimeo/psalm",
-            "version": "5.22.2",
+            "version": "5.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "d768d914152dbbf3486c36398802f74e80cfde48"
+                "reference": "8471a896ccea3526b26d082f4461eeea467f10a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/d768d914152dbbf3486c36398802f74e80cfde48",
-                "reference": "d768d914152dbbf3486c36398802f74e80cfde48",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/8471a896ccea3526b26d082f4461eeea467f10a4",
+                "reference": "8471a896ccea3526b26d082f4461eeea467f10a4",
                 "shasum": ""
             },
             "require": {
@@ -4762,7 +4808,7 @@
                 "issues": "https://github.com/vimeo/psalm/issues",
                 "source": "https://github.com/vimeo/psalm"
             },
-            "time": "2024-02-22T23:39:07+00:00"
+            "time": "2024-03-11T20:33:46+00:00"
         },
         {
             "name": "webmozart/assert",

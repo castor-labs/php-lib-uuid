@@ -30,10 +30,10 @@
   "require": {
     "php": ">=8.2",
     "ext-bcmath": "*",
-    "castor/io": "@dev",
-    "castor/random": "@dev",
-    "castor/bytes": "@dev",
-    "castor/functions": "@dev",
+    "castor/io": "dev-main",
+    "castor/random": "dev-main",
+    "castor/bytes": "dev-main",
+    "castor/functions": "dev-main",
     "brick/date-time": "^0.5",
     "brick/math": "^0.10"
   },
