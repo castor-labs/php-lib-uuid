@@ -61,6 +61,7 @@ class FunctionsTest extends TestCase
             'v_5' => ['5fe80e27-269a-5cce-98c3-989ddd181b71', V5::class],
             'max' => ['ffffffff-ffff-ffff-ffff-ffffffffffff', Any::class],
             'any' => ['99cf973d-3fe7-7ee4-88bd-a0991a048794', Any::class],
+            'upper' => ['A0F6AAD0-CDF5-3DDC-A2AC-0BDDB3249309', V3::class],
         ];
     }
 }
