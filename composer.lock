@@ -123,13 +123,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-bytes.git",
-                "reference": "0b623e6cdfca00811c82543b2a97a9cae6a6f5f9"
+                "reference": "3fd58e156043d270e4dc5b0ca709b5d3c9e81795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-0b623e6cdfca00811c82543b2a97a9cae6a6f5f9-zip-4ab34b.zip",
-                "reference": "0b623e6cdfca00811c82543b2a97a9cae6a6f5f9",
-                "shasum": "eec175dc257b6b31bb65a0c9574d31415500be64"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-3fd58e156043d270e4dc5b0ca709b5d3c9e81795-zip-5085f1.zip",
+                "reference": "3fd58e156043d270e4dc5b0ca709b5d3c9e81795",
+                "shasum": "636b91757d92dbe7bf4343b6e5aa97bb95a37c7f"
             },
             "require": {
                 "castor/functions": "dev-main",
@@ -219,7 +219,7 @@
                 "source": "https://github.com/castor-labs/php-lib-bytes/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-bytes/issues"
             },
-            "time": "2024-03-11T23:37:59+00:00"
+            "time": "2024-03-18T16:58:44+00:00"
         },
         {
             "name": "castor/functions",
@@ -227,13 +227,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-functions.git",
-                "reference": "aa225f8aaa3fefc02a3872113683b0cbd027c285"
+                "reference": "d55201965cfd2f9a2a69aa179468ae94ca099f5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-aa225f8aaa3fefc02a3872113683b0cbd027c285-zip-a8329c.zip",
-                "reference": "aa225f8aaa3fefc02a3872113683b0cbd027c285",
-                "shasum": "be60e0775b3200947ae6ee7157cc669b9a24b459"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-d55201965cfd2f9a2a69aa179468ae94ca099f5c-zip-396b7e.zip",
+                "reference": "d55201965cfd2f9a2a69aa179468ae94ca099f5c",
+                "shasum": "ecce07bce3b359bfa663192e7fa9e8adebc538ca"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -322,10 +322,10 @@
                 "stdlib"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-functions/tree/v0.1.4",
+                "source": "https://github.com/castor-labs/php-lib-functions/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-functions/issues"
             },
-            "time": "2024-03-06T11:48:24+00:00"
+            "time": "2024-03-18T16:43:43+00:00"
         },
         {
             "name": "castor/io",
@@ -333,13 +333,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-io.git",
-                "reference": "a1d3583dfd02c20bf2327627c63ab321eda78095"
+                "reference": "d3fab482126fc6da2d203726d810bb39a2b75781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-a1d3583dfd02c20bf2327627c63ab321eda78095-zip-380138.zip",
-                "reference": "a1d3583dfd02c20bf2327627c63ab321eda78095",
-                "shasum": "560a2aa75186aa303bc96b3b29c6674d6f44fc15"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-d3fab482126fc6da2d203726d810bb39a2b75781-zip-f4b160.zip",
+                "reference": "d3fab482126fc6da2d203726d810bb39a2b75781",
+                "shasum": "d6bb34ea5f4a5bc770310a2a2ef8648d126f3349"
             },
             "require": {
                 "php": ">=8.2"
@@ -394,10 +394,16 @@
                     "phpunit --colors --group=integration"
                 ],
                 "psalm": [
-                    "psalm --no-cache --threads=5"
+                    "psalm --no-cache --threads=5 --use-baseline"
                 ],
                 "psalm:gh": [
-                    "psalm --no-cache --threads=5 --long-progress --output-format=github"
+                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
+                ],
+                "psalm:fix": [
+                    "psalm --update-baseline"
+                ],
+                "psalm:allow": [
+                    "psalm --set-baseline=psalm-baseline.xml"
                 ]
             },
             "license": [
@@ -426,7 +432,7 @@
                 "source": "https://github.com/castor-labs/php-lib-io/tree/main",
                 "issues": "https://github.com/castor-labs/php-lib-io/issues"
             },
-            "time": "2024-03-07T12:52:40+00:00"
+            "time": "2024-03-18T14:56:59+00:00"
         },
         {
             "name": "castor/random",

@@ -112,7 +112,7 @@ final class FromOs implements MacProvider
         }
 
         // Map any macs we have
-        return Arr\values(Arr\map($macs, fn (string $mac) => Bytes::fromHex($this->cleanMac($mac))));
+        return [...Arr\map($macs, fn (string $mac): Bytes => Bytes::fromHex($this->cleanMac($mac)))];
     }
 
     /**
@@ -128,7 +128,9 @@ final class FromOs implements MacProvider
      */
     private function getFromConsoleCommand(): array
     {
+        /** @var Bytes[] $macs */
         $macs = [];
+
         $disabledFunctions = \strtolower((string) \ini_get('disable_functions'));
 
         if (\str_contains($disabledFunctions, 'passthru')) {
@@ -179,7 +181,7 @@ final class FromOs implements MacProvider
             }
         }
 
-        return Arr\values($macs);
+        return [...$macs];
     }
 
     private function cleanMac(string $mac): string
