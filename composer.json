@@ -34,7 +34,7 @@
     "castor/random": "dev-main",
     "castor/bytes": "dev-main",
     "castor/functions": "dev-main",
-    "brick/date-time": "^0.5",
+    "brick/date-time": "^0.6",
     "brick/math": "^0.10"
   },
   "require-dev": {
