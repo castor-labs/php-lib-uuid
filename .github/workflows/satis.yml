@@ -1,23 +1,19 @@
-name: "Sync Info with Satis"
+name: "Satis"
 
 on:
   push:
     branches: ["main"]
-    paths:
-      - '**.php'
-      - 'composer.json'
-
   release:
     types: ["published"]
 
   workflow_dispatch:
 
 jobs:
-  sync-info:
-    name: 'Sync Info'
+  release-package:
+    name: Release Package
     runs-on: ubuntu-latest
     steps:
-      - name: Call Updater
+      - name: Start Workflow
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.ORG_GITHUB_TOKEN }}
