@@ -17,18 +17,18 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
-use Castor\Io\Reader;
-use Castor\Random;
+use Random\Engine\Secure;
+use Random\Randomizer;
 
 /**
- * V4 represents a version 4 UUID.
+ * Version4 represents a version 4 UUID.
  *
  * Version 4 UUIDs are made of 128 random bits. However, 6 bits are used to indicate the version and the variant.
  * Thus, the actual randomness is 122 bits. The possibilities of collisions are one in 5.3 undecillions.
  *
  * Version 4 UUIDs have their most significant bits on the 7th octet set to 0100 (x40)
  */
-final class V4 extends Any
+final class Version4 extends Any
 {
     /**
      * @throws ParsingError
@@ -53,11 +53,11 @@ final class V4 extends Any
         return $uuid;
     }
 
-    public static function generate(Reader $random = null): self
+    public static function generate(Randomizer $randomizer = null): self
     {
-        $random = $random ?? Random\Source::secure();
+        $randomizer = $randomizer ?? new Randomizer(new Secure());
 
-        $bytes = Bytes::consume($random, self::LEN);
+        $bytes = new Bytes($randomizer->getBytes(self::LEN));
 
         // We set the 7th octet to 0100 XXXX (version 4)
         $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x40; // AND 0000 1111 OR 0100 0000

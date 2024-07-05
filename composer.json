@@ -28,12 +28,11 @@
     "url": "https://castor-labs.github.io/php-packages"
   }],
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.3",
     "ext-bcmath": "*",
-    "castor/io": "dev-main",
-    "castor/random": "dev-main",
-    "castor/bytes": "dev-main",
-    "castor/functions": "dev-main",
+    "castor/io": "^0.3.0",
+    "castor/bytes": "^0.2.0",
+    "castor/functions": "^0.2.0",
     "brick/date-time": "^0.6",
     "brick/math": "^0.10"
   },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "033374d864280bc99f76637a85e688fe",
+    "content-hash": "0cdaa9db9f12373ff51afae46ea08b00",
     "packages": [
         {
             "name": "brick/date-time",
@@ -118,29 +118,28 @@
         },
         {
             "name": "castor/bytes",
-            "version": "dev-main",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-bytes.git",
-                "reference": "3fd58e156043d270e4dc5b0ca709b5d3c9e81795"
+                "reference": "510a569a62a4a0ea65a47921d86777e33024e54a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-3fd58e156043d270e4dc5b0ca709b5d3c9e81795-zip-5085f1.zip",
-                "reference": "3fd58e156043d270e4dc5b0ca709b5d3c9e81795",
-                "shasum": "636b91757d92dbe7bf4343b6e5aa97bb95a37c7f"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-510a569a62a4a0ea65a47921d86777e33024e54a-zip-8cb644.zip",
+                "reference": "510a569a62a4a0ea65a47921d86777e33024e54a",
+                "shasum": "239e492cfd5d5c7dd37870b49301c1cb13d26c6d"
             },
             "require": {
-                "castor/functions": "dev-main",
-                "castor/io": "dev-main",
-                "php": ">=8.2"
+                "castor/functions": "^0.2.0",
+                "castor/io": "^0.3.0",
+                "php": ">=8.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.49",
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -215,35 +214,34 @@
                 "uint8"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-bytes/tree/main",
+                "source": "https://github.com/castor-labs/php-lib-bytes/tree/0.2.0",
                 "issues": "https://github.com/castor-labs/php-lib-bytes/issues"
             },
-            "time": "2024-03-18T16:58:44+00:00"
+            "time": "2024-07-05T20:12:43+00:00"
         },
         {
             "name": "castor/functions",
-            "version": "dev-main",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-functions.git",
-                "reference": "d55201965cfd2f9a2a69aa179468ae94ca099f5c"
+                "reference": "ee64f957cacbae447f6ac0fd090a704b7a91e671"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-d55201965cfd2f9a2a69aa179468ae94ca099f5c-zip-396b7e.zip",
-                "reference": "d55201965cfd2f9a2a69aa179468ae94ca099f5c",
-                "shasum": "ecce07bce3b359bfa663192e7fa9e8adebc538ca"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-ee64f957cacbae447f6ac0fd090a704b7a91e671-zip-03f9f1.zip",
+                "reference": "ee64f957cacbae447f6ac0fd090a704b7a91e671",
+                "shasum": "2a3be2f791a15386f65764505dc03415ac9fc936"
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">=8.2"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.49",
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -321,34 +319,33 @@
                 "stdlib"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-functions/tree/main",
+                "source": "https://github.com/castor-labs/php-lib-functions/tree/0.2.0",
                 "issues": "https://github.com/castor-labs/php-lib-functions/issues"
             },
-            "time": "2024-03-18T16:43:43+00:00"
+            "time": "2024-07-05T17:02:58+00:00"
         },
         {
             "name": "castor/io",
-            "version": "dev-main",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-io.git",
-                "reference": "d3fab482126fc6da2d203726d810bb39a2b75781"
+                "reference": "e669d4107862ae257cbcf414dbe7603219274f74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-d3fab482126fc6da2d203726d810bb39a2b75781-zip-f4b160.zip",
-                "reference": "d3fab482126fc6da2d203726d810bb39a2b75781",
-                "shasum": "d6bb34ea5f4a5bc770310a2a2ef8648d126f3349"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-e669d4107862ae257cbcf414dbe7603219274f74-zip-f49fef.zip",
+                "reference": "e669d4107862ae257cbcf414dbe7603219274f74",
+                "shasum": "6b766037300732d4e0ccc4e43c9378908e7dd638"
             },
             "require": {
-                "php": ">=8.2"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.49",
                 "phpunit/phpunit": "^10.5",
                 "vimeo/psalm": "^5.22"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -428,113 +425,10 @@
                 "streams"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-io/tree/main",
+                "source": "https://github.com/castor-labs/php-lib-io/tree/0.3.0",
                 "issues": "https://github.com/castor-labs/php-lib-io/issues"
             },
-            "time": "2024-03-18T14:56:59+00:00"
-        },
-        {
-            "name": "castor/random",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:castor-labs/php-lib-random.git",
-                "reference": "1685dffde055959280600748784822a059e3ddfd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/random/castor-random-1685dffde055959280600748784822a059e3ddfd-zip-ba85f5.zip",
-                "reference": "1685dffde055959280600748784822a059e3ddfd",
-                "shasum": "e5d9363e7bf415b1e37545a8f5293da16813905d"
-            },
-            "require": {
-                "castor/functions": "dev-main",
-                "castor/io": "dev-main",
-                "php": ">=8.2"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.49",
-                "phpunit/phpunit": "^10.5",
-                "vimeo/psalm": "^5.22"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Castor\\Random\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Castor\\Random\\": "tests"
-                }
-            },
-            "scripts": {
-                "pr": [
-                    "@fmt",
-                    "@psalm",
-                    "@test"
-                ],
-                "ci": [
-                    "@fmt:check",
-                    "@psalm:gh",
-                    "@test"
-                ],
-                "fmt": [
-                    "php-cs-fixer fix --diff --ansi"
-                ],
-                "fmt:check": [
-                    "php-cs-fixer fix --dry-run --diff --ansi"
-                ],
-                "test": [
-                    "phpunit --colors"
-                ],
-                "test:unit": [
-                    "phpunit --colors --exclude-group=integration --exclude-group=e2e"
-                ],
-                "test:e2e": [
-                    "phpunit --colors --group=e2e"
-                ],
-                "test:integration": [
-                    "phpunit --colors --group=integration"
-                ],
-                "psalm": [
-                    "psalm --no-cache --threads=5 --use-baseline"
-                ],
-                "psalm:gh": [
-                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
-                ],
-                "psalm:fix": [
-                    "psalm --update-baseline"
-                ],
-                "psalm:allow": [
-                    "psalm --set-baseline=psalm-baseline.xml"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matias Navarro Carter",
-                    "email": "mnavarrocarter@gmail.com",
-                    "role": "Lead Maintainer"
-                }
-            ],
-            "description": "Random abstraction over PHP Randomizer",
-            "homepage": "https://castor-labs.github.io/php-lib-std/packages/random",
-            "keywords": [
-                "castor",
-                "php",
-                "php82",
-                "random",
-                "stdlib"
-            ],
-            "support": {
-                "source": "https://github.com/castor-labs/php-lib-random/tree/main",
-                "issues": "https://github.com/castor-labs/php-lib-random/issues"
-            },
-            "time": "2024-03-11T23:18:00+00:00"
+            "time": "2024-07-05T19:09:24+00:00"
         }
     ],
     "packages-dev": [
@@ -4876,16 +4770,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "castor/io": 20,
-        "castor/random": 20,
-        "castor/bytes": 20,
-        "castor/functions": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.2",
+        "php": ">=8.3",
         "ext-bcmath": "*"
     },
     "platform-dev": [],

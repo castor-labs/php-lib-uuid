@@ -14,7 +14,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\V1;
+namespace Castor\Uuid\Version1;
 
 use Brick\DateTime\Clock\FixedClock;
 use Brick\DateTime\Instant;
@@ -24,7 +24,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  *
- * @covers \Castor\Uuid\V1\Time
+ * @covers \Castor\Uuid\Version1\Time
  */
 class GregorianTimeTest extends TestCase
 {

@@ -17,8 +17,8 @@ declare(strict_types=1);
 namespace Castor\Uuid\System\MacProvider;
 
 use Castor\Bytes;
-use Castor\Io\Reader;
 use Castor\Uuid\System\MacProvider;
+use Random\Randomizer;
 
 /**
  * This is a fallback MacProvider implemented following RFC 4122, Section 4.5.
@@ -30,7 +30,7 @@ use Castor\Uuid\System\MacProvider;
 final readonly class Fallback implements MacProvider
 {
     public function __construct(
-        private Reader $random
+        private Randomizer $random
     ) {}
 
     /**
@@ -38,7 +38,7 @@ final readonly class Fallback implements MacProvider
      */
     public function getMacAddresses(): array
     {
-        $b = Bytes::consume($this->random, 6);
+        $b = new Bytes($this->random->getBytes(6));
         $b[0] = $b[0] & 0xFE | 0x01;
 
         return [$b];

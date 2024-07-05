@@ -14,15 +14,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\V1;
+namespace Castor\Uuid\Version1;
 
 use Brick\DateTime\Clock;
 use Castor\Bytes;
-use Castor\Io\Reader;
-use Castor\Random;
 use Castor\Uuid\System\MacProvider;
 use Castor\Uuid\System\MacProvider\Fallback;
 use Castor\Uuid\System\MacProvider\FromOs;
+use Random\Engine\Secure;
+use Random\Randomizer;
 
 final class Simplified implements State
 {
@@ -34,7 +34,7 @@ final class Simplified implements State
 
     public function __construct(
         private readonly Clock $clock,
-        private readonly Reader $random,
+        private readonly Randomizer $random,
         private readonly MacProvider $macProvider,
     ) {
         $this->macAddress = new Bytes('');
@@ -45,10 +45,11 @@ final class Simplified implements State
     public static function global(): Simplified
     {
         if (null === self::$global) {
+            $randomizer = new Randomizer(new Secure());
             self::$global = new Simplified(
                 new Clock\SystemClock(),
-                Random\Source::secure(),
-                new FromOs(new Fallback(Random\Source::secure())),
+                $randomizer,
+                new FromOs(new Fallback($randomizer)),
             );
         }
 
@@ -89,8 +90,6 @@ final class Simplified implements State
 
     private function generateClockSequence(): Bytes
     {
-        $this->random->read(2, $buff);
-
-        return new Bytes(\pack('n*', $buff ?? ''));
+        return new Bytes(\pack('n*', $this->random->getBytes(2)));
     }
 }

@@ -16,21 +16,21 @@ composer require castor/uuid
 
 use Castor\Uuid;
 
-$uuid = Uuid\V4::generate();
+$uuid = Uuid\Version4::generate();
 echo $uuid->toString(); // Prints: d2e365c8-b525-428d-979f-64b70e76a217
 echo $uuid->toUrn(); // Prints: urn:uuid:d2e365c8-b525-428d-979f-64b70e76a217
 echo $uuid->getBytes()->toHex(); // Prints: d2e365c8b525428d979f64b70e76a217
 
 $parsed = Uuid\parse($uuid->toString());
-echo $parsed instanceof Uuid\V1; // Prints: false
-echo $parsed instanceof Uuid\V4; // Prints: true
-echo $parsed instanceof Uuid\V3; // Prints: false
-echo $parsed instanceof Uuid\V5; // Prints: false
+echo $parsed instanceof Uuid\Version1; // Prints: false
+echo $parsed instanceof Uuid\Version4; // Prints: true
+echo $parsed instanceof Uuid\Version3; // Prints: false
+echo $parsed instanceof Uuid\Version5; // Prints: false
 echo $parsed->equals($uuid); // Prints: true
 ```
 
-The same API is available for `Uuid\V3` and `Uuid\V5`.
+The same API is available for `Uuid\Version3` and `Uuid\Version5`.
 
-`Uuid\V1` provides an extended API that can return the different components that form it.
+`Uuid\Version1` provides an extended API that can return the different components that form it.
 
-`Uuid\V2` will not be implemented.
+`Uuid\Version2` will not be implemented.
