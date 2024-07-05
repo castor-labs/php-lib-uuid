@@ -16,10 +16,11 @@ declare(strict_types=1);
 
 namespace Castor\Uuid\System\MacProvider;
 
-use Castor\Random;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Random\Engine\Mt19937;
+use Random\Randomizer;
 
 #[CoversClass(FromOs::class)]
 #[CoversClass(Fallback::class)]
@@ -28,7 +29,7 @@ class FallbackTest extends TestCase
     #[Test]
     public function it_generates_random(): void
     {
-        $macProvider = new Fallback(Random\Source::seeded(100));
+        $macProvider = new Fallback(new Randomizer(new Mt19937(100)));
         $addresses = $macProvider->getMacAddresses();
         $this->assertCount(1, $addresses);
         $address = $addresses[0];

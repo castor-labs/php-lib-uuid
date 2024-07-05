@@ -31,23 +31,23 @@ use Castor\Uuid;
  * However, if you require a particular UUID version, it's better to use the parse methods of the particular
  * version class, as they will ensure you have a correct version.
  *
- * The stability of this API is not guaranteed for extension. You are discouraged to extend this class.
+ * The stability of this API is not guaranteed for subclasses. You are discouraged to extend this class.
  */
 class Any implements Uuid, \Stringable, \JsonSerializable
 {
-    protected const PATTERN = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/';
-    protected const STR_VERSION_OFFSET = 14;
+    protected const string PATTERN = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/';
+    protected const int STR_VERSION_OFFSET = 14;
 
-    protected const URN_NS = 'urn:uuid:';
+    protected const string URN_NS = 'urn:uuid:';
 
     /** @var int Length of bytes of an UUID */
-    protected const LEN = 16;
+    protected const int LEN = 16;
 
     /** @var int The version byte */
-    protected const VEB = 6;
+    protected const int VEB = 6;
 
     /** @var int The variant byte */
-    protected const VAB = 8;
+    protected const int VAB = 8;
 
     protected function __construct(
         private Bytes $bytes,
@@ -135,10 +135,10 @@ class Any implements Uuid, \Stringable, \JsonSerializable
         $v = $bytes[self::VEB] & 0xF0; // 1111 0000
 
         return match ($v) {
-            0x10 => new V1($bytes), // 0001 0000
-            0x30 => new V3($bytes), // 0011 0000
-            0x40 => new V4($bytes), // 0100 0000
-            0x50 => new V5($bytes), // 0101 0000
+            0x10 => new Version1($bytes), // 0001 0000
+            0x30 => new Version3($bytes), // 0011 0000
+            0x40 => new Version4($bytes), // 0100 0000
+            0x50 => new Version5($bytes), // 0101 0000
             default => new Any($bytes)
         };
     }
@@ -183,10 +183,10 @@ class Any implements Uuid, \Stringable, \JsonSerializable
         }
 
         return match ($uuid[self::STR_VERSION_OFFSET]) {
-            '1' => new V1(new Bytes(''), $uuid),
-            '3' => new V3(new Bytes(''), $uuid),
-            '4' => new V4(new Bytes(''), $uuid),
-            '5' => new V5(new Bytes(''), $uuid),
+            '1' => new Version1(new Bytes(''), $uuid),
+            '3' => new Version3(new Bytes(''), $uuid),
+            '4' => new Version4(new Bytes(''), $uuid),
+            '5' => new Version5(new Bytes(''), $uuid),
             default => new Any(new Bytes(''), $uuid)
         };
     }

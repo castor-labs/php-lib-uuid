@@ -20,34 +20,39 @@ use Castor\Bytes;
 use Castor\Uuid;
 
 /**
- * V5 represents a version 4 UUID.
+ * Version3 represents a version 3 UUID.
  *
- * Version 5 UUIDS are the first 16 bytes of the sha1 hash of another UUID (namespace) plus any string.
+ * Version 3 UUIDS are the md5 hash of another UUID (namespace) plus any string
  *
- * Version 5 UUIDs have their most significant bits on the 7th octet set to 0101 (x50)
+ * Version 3 UUIDs have their most significant bits on the 7th octet set to 0011 (x30)
  */
-final class V5 extends Any
+final class Version3 extends Any
 {
-    private const HASHING_ALGO = 'sha1';
+    private const string HASHING_ALGO = 'md5';
 
     /**
+     * Parses a UUID Version 3 from the string representation.
+     *
      * @throws ParsingError
      */
     public static function parse(string $uuid, bool $lazy = true): self
     {
-        $v5 = parent::parse($uuid, $lazy);
-        if (!$v5 instanceof self) {
-            throw new ParsingError('Not a valid version 5 UUID.');
+        $v3 = parent::parse($uuid, $lazy);
+        if (!$v3 instanceof self) {
+            throw new ParsingError('Not a valid version 3 UUID.');
         }
 
-        return $v5;
+        return $v3;
     }
 
+    /**
+     * Creates a UUID Version 3 from the raw bytes.
+     */
     public static function fromBytes(Bytes|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
-            throw new ParsingError('Not a valid version 5 UUID.');
+            throw new ParsingError('Not a valid version 3 UUID.');
         }
 
         return $uuid;
@@ -55,11 +60,10 @@ final class V5 extends Any
 
     public static function create(Uuid $namespace, string $name): self
     {
-        $bytes = @\hash(self::HASHING_ALGO, $namespace->getBytes()->asString().$name, true);
-        $bytes = new Bytes(\substr($bytes, 0, self::LEN));
+        $bytes = new Bytes(@\hash(self::HASHING_ALGO, $namespace->getBytes()->asString().$name, true));
 
-        // We set the 7th octet to 0101 XXXX (version 5)
-        $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x50; // // AND 0000 1111 OR 0101 0000
+        // We set the 7th octet to 0011 XXXX (version 3)
+        $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x30; // AND 0000 1111 OR 0011 0000
 
         // Set buts 6-7 to 10
         $bytes[self::VAB] = $bytes[self::VAB] & 0x3F | 0x80;

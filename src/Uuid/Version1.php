@@ -17,18 +17,18 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
-use Castor\Uuid\V1\Simplified;
-use Castor\Uuid\V1\State;
-use Castor\Uuid\V1\Time;
+use Castor\Uuid\Version1\Simplified;
+use Castor\Uuid\Version1\State;
+use Castor\Uuid\Version1\Time;
 
 /**
- * V1 represents a version 1 UUID.
+ * Version1 represents a version 1 UUID.
  *
  * Version 1 UUIDS are made of a Gregorian Timestamp, a Clock Sequence and one the MAC addresses of the host.
  *
  * Version 1 UUIDs have their most significant bits on the 7th octet set to 0001 (x10)
  */
-final class V1 extends Any
+final class Version1 extends Any
 {
     /**
      * Parses a UUID Version 3 from the string representation.

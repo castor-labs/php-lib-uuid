@@ -14,7 +14,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\V1;
+namespace Castor\Uuid\Version1;
 
 use Brick\DateTime\Clock;
 use Brick\DateTime\Instant;
@@ -25,7 +25,7 @@ use Castor\Bytes;
 use function Castor\Err\must;
 
 /**
- * Represents the time in a V1 UUID.
+ * Represents the time in a Version1 UUID.
  */
 class Time
 {

@@ -39,9 +39,9 @@ class AnyTest extends TestCase
     {
         return [
             'nil' => ['00000000-0000-0000-0000-000000000000', Any::class],
-            'v_3' => ['a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309', V3::class],
-            'v_4' => ['fa06067f-602d-404a-a34c-45c6a7744011', V4::class],
-            'v_5' => ['5fe80e27-269a-5cce-98c3-989ddd181b71', V5::class],
+            'v_3' => ['a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309', Version3::class],
+            'v_4' => ['fa06067f-602d-404a-a34c-45c6a7744011', Version4::class],
+            'v_5' => ['5fe80e27-269a-5cce-98c3-989ddd181b71', Version5::class],
             'max' => ['ffffffff-ffff-ffff-ffff-ffffffffffff', Any::class],
             'any' => ['99cf973d-3fe7-7ee4-88bd-a0991a048794', Any::class],
         ];

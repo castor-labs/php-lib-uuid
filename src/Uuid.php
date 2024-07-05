@@ -21,7 +21,7 @@ namespace Castor;
  *
  * This contract is purposefully simple and it only limits itself to the operations that are common to all UUIDs
  *
- * If you need to act upon a particular implementation (for instance, extract the time of a V1 UUID), you MUST
+ * If you need to act upon a particular implementation (for instance, extract the time of a Version1 UUID), you MUST
  * type hint to that particular version or use the "instanceof" operator on types implementing this interface.
  */
 interface Uuid
