@@ -1,7 +1,14 @@
 {
   "name": "castor/uuid",
   "description": "An RFC-4122 compliant Universally Unique Identifiers value object implementation",
-  "keywords": ["castor", "stdlib", "php", "php82", "uuid", "rfc4122"],
+  "keywords": [
+    "castor",
+    "stdlib",
+    "php",
+    "php82",
+    "uuid",
+    "rfc4122"
+  ],
   "homepage": "https://castor-labs.github.io/php-lib-std/packages/uuid",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -16,17 +23,21 @@
     "psr-4": {
       "Castor\\": "src"
     },
-    "files": ["include/functions.php"]
+    "files": [
+      "include/functions.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
       "Castor\\": "tests"
     }
   },
-  "repositories": [{
-    "type": "composer",
-    "url": "https://castor-labs.github.io/php-packages"
-  }],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://castor-labs.github.io/php-packages"
+    }
+  ],
   "require": {
     "php": ">=8.3",
     "ext-bcmath": "*",
@@ -43,11 +54,21 @@
     "ergebnis/phpunit-slow-test-detector": "^2.10"
   },
   "scripts": {
-    "pr": ["@fmt", "@psalm", "@test"],
-    "ci": ["@fmt:check", "@psalm:gh", "@test"],
+    "pr": [
+      "@fmt",
+      "@psalm",
+      "@test"
+    ],
+    "ci": [
+      "@fmt:check",
+      "@psalm:gh",
+      "@test"
+    ],
     "fmt": "php-cs-fixer fix --diff --ansi",
     "fmt:check": "php-cs-fixer fix --dry-run --diff --ansi",
-    "test": ["phpunit --colors"],
+    "test": [
+      "phpunit --colors"
+    ],
     "test:unit": "phpunit --colors --exclude-group=integration --exclude-group=e2e",
     "test:e2e": "phpunit --colors --group=e2e",
     "test:integration": "phpunit --colors --group=integration",
