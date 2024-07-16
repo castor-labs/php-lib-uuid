@@ -36,6 +36,7 @@ use Castor\Uuid;
 class Any implements Uuid, \Stringable, \JsonSerializable
 {
     protected const string PATTERN = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/';
+
     protected const int STR_VERSION_OFFSET = 14;
 
     protected const string URN_NS = 'urn:uuid:';
@@ -139,6 +140,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             0x30 => new Version3($bytes), // 0011 0000
             0x40 => new Version4($bytes), // 0100 0000
             0x50 => new Version5($bytes), // 0101 0000
+            0x60 => new Version6($bytes), // 0110 0000
             default => new Any($bytes)
         };
     }
@@ -187,6 +189,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             '3' => new Version3(new Bytes(''), $uuid),
             '4' => new Version4(new Bytes(''), $uuid),
             '5' => new Version5(new Bytes(''), $uuid),
+            '6' => new Version6(new Bytes(''), $uuid),
             default => new Any(new Bytes(''), $uuid)
         };
     }

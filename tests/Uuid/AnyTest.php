@@ -16,12 +16,10 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Any::class)]
 class AnyTest extends TestCase
 {
     #[Test]

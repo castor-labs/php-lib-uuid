@@ -17,20 +17,10 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Uuid;
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Any::class)]
-#[CoversFunction('Castor\Uuid\parse')]
-#[CoversFunction('Castor\Uuid\max')]
-#[CoversFunction('Castor\Uuid\nil')]
-#[CoversFunction('Castor\Uuid\Ns\dns')]
-#[CoversFunction('Castor\Uuid\Ns\url')]
-#[CoversFunction('Castor\Uuid\Ns\oid')]
-#[CoversFunction('Castor\Uuid\Ns\x500')]
 class FunctionsTest extends TestCase
 {
     #[Test]

@@ -24,7 +24,7 @@ use Castor\Uuid;
  *
  * Version 3 UUIDS are the md5 hash of another UUID (namespace) plus any string
  *
- * Version 3 UUIDs have their most significant bits on the 7th octet set to 0011 (x30)
+ * Version 3 UUIDs always have their most significant bits on the 7th octet set to 0011 (x30)
  */
 final class Version3 extends Any
 {
