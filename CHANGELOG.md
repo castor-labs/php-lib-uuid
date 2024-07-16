@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/castor-labs/php-lib-uuid/compare/0.2.0...1.0.0) (2024-07-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* As part of the implementation, some internal classes were moved to a different namespace
+
+### Features
+
+* Implement UUID version 6 ([#4](https://github.com/castor-labs/php-lib-uuid/issues/4)) ([e721754](https://github.com/castor-labs/php-lib-uuid/commit/e72175441381cb6ba3c1d80309bad60afbacb33d))
+
 ## [0.2.0](https://github.com/castor-labs/php-lib-uuid/compare/v0.1.0...0.2.0) (2024-07-05)
 
 
