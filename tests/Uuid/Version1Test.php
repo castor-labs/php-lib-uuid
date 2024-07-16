@@ -18,28 +18,17 @@ namespace Castor\Uuid;
 
 use Brick\Math\BigInteger;
 use Castor\Bytes;
-use Castor\Uuid\System\MacProvider\Fallback;
-use Castor\Uuid\System\MacProvider\FromOs;
-use Castor\Uuid\Version1\Simplified;
-use Castor\Uuid\Version1\Time;
-use PHPUnit\Framework\Attributes\CoversClass;
+use Castor\Uuid\System\Time;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Version1::class)]
-#[CoversClass(Version1\Fixed::class)]
-#[CoversClass(Time::class)]
-#[CoversClass(Fallback::class)]
-#[CoversClass(FromOs::class)]
-#[CoversClass(Simplified::class)]
-#[CoversClass(Any::class)]
 class Version1Test extends TestCase
 {
     #[Test]
     public function it_generates(): void
     {
-        $state = new Version1\Fixed(
+        $state = new System\State\Fixed(
             Time::fromTimestamp(BigInteger::of('139127190012012330')),
             Bytes::fromHex('0001'),
             Bytes::fromHex('00b0d063c226')
@@ -50,6 +39,7 @@ class Version1Test extends TestCase
 
         $this->assertSame('139127190012012330', (string) $v1->getTime()->getTimestamp());
         $this->assertSame('2023-08-30T20:10:01.201233Z', $v1->getTime()->getInstant()->toISOString());
+        $this->assertSame($v1->getTime()->bytes->toHex(), $state->getTime()->bytes->toHex());
         $this->assertSame('00b0d063c226', $v1->getNode()->toHex());
         $this->assertSame('0001', $v1->getClockSeq()->toHex());
     }
@@ -57,7 +47,7 @@ class Version1Test extends TestCase
     #[Test]
     public function its_compatible_with_ramsey(): void
     {
-        $state = new Version1\Fixed(
+        $state = new System\State\Fixed(
             new Time(Bytes::fromHex('01ee4782395c14c4')),
             Bytes::fromHex('17ae'),
             Bytes::fromHex('0242ac1b0004')

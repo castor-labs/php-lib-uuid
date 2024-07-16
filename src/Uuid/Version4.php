@@ -24,9 +24,9 @@ use Random\Randomizer;
  * Version4 represents a version 4 UUID.
  *
  * Version 4 UUIDs are made of 128 random bits. However, 6 bits are used to indicate the version and the variant.
- * Thus, the actual randomness is 122 bits. The possibilities of collisions are one in 5.3 undecillions.
+ * Thus, the actual entropy is 122 bits. The possibilities of collisions are one in 5.3 undecillions.
  *
- * Version 4 UUIDs have their most significant bits on the 7th octet set to 0100 (x40)
+ * Version 4 UUIDs always have their most significant bits on the 7th octet set to 0100 (x40)
  */
 final class Version4 extends Any
 {

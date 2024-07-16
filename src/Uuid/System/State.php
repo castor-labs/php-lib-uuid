@@ -14,27 +14,27 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\Version1;
+namespace Castor\Uuid\System;
 
 use Castor\Bytes;
 
 /**
- * State represents the needed state to construct a Version1 UUID.
+ * State represents the system state needed to construct some UUIDs.
  */
 interface State
 {
     /**
-     * Returns the Clock Sequence as Bytes.
+     * Returns the system's clock sequence as bytes.
      */
     public function getClockSequence(): Bytes;
 
     /**
-     * Returns the time for an UUID v1.
+     * Returns the system time.
      */
     public function getTime(): Time;
 
     /**
-     * Returns the Node.
+     * Returns the system's node.
      */
     public function getNode(): Bytes;
 }

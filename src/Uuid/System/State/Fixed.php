@@ -14,9 +14,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\Version1;
+namespace Castor\Uuid\System\State;
 
 use Castor\Bytes;
+use Castor\Uuid\System\State;
+use Castor\Uuid\System\Time;
 
 final readonly class Fixed implements State
 {

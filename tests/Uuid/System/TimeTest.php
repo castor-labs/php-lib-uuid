@@ -14,19 +14,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\Version1;
+namespace Castor\Uuid\System;
 
 use Brick\DateTime\Clock\FixedClock;
 use Brick\DateTime\Instant;
 use Brick\Math\BigInteger;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- *
- * @covers \Castor\Uuid\Version1\Time
- */
-class GregorianTimeTest extends TestCase
+class TimeTest extends TestCase
 {
     public function testGregorianTime(): void
     {

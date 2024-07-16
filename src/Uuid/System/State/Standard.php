@@ -14,19 +14,21 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\Version1;
+namespace Castor\Uuid\System\State;
 
 use Brick\DateTime\Clock;
 use Castor\Bytes;
 use Castor\Uuid\System\MacProvider;
 use Castor\Uuid\System\MacProvider\Fallback;
 use Castor\Uuid\System\MacProvider\FromOs;
+use Castor\Uuid\System\State;
+use Castor\Uuid\System\Time;
 use Random\Engine\Secure;
 use Random\Randomizer;
 
-final class Simplified implements State
+final class Standard implements State
 {
-    private static ?Simplified $global = null;
+    private static ?Standard $global = null;
 
     private Bytes $lastTimestamp;
     private Bytes $clockSequence;
@@ -42,11 +44,11 @@ final class Simplified implements State
         $this->lastTimestamp = new Bytes('');
     }
 
-    public static function global(): Simplified
+    public static function global(): Standard
     {
         if (null === self::$global) {
             $randomizer = new Randomizer(new Secure());
-            self::$global = new Simplified(
+            self::$global = new Standard(
                 new Clock\SystemClock(),
                 $randomizer,
                 new FromOs(new Fallback($randomizer)),

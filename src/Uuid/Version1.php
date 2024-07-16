@@ -17,21 +17,21 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
-use Castor\Uuid\Version1\Simplified;
-use Castor\Uuid\Version1\State;
-use Castor\Uuid\Version1\Time;
+use Castor\Uuid\System\State;
+use Castor\Uuid\System\State\Standard;
+use Castor\Uuid\System\Time;
 
 /**
  * Version1 represents a version 1 UUID.
  *
  * Version 1 UUIDS are made of a Gregorian Timestamp, a Clock Sequence and one the MAC addresses of the host.
  *
- * Version 1 UUIDs have their most significant bits on the 7th octet set to 0001 (x10)
+ * Version 1 UUIDs always have their most significant bits on the 7th octet set to 0001 (x10)
  */
 final class Version1 extends Any
 {
     /**
-     * Parses a UUID Version 3 from the string representation.
+     * Parses a UUID Version 1 from the string representation.
      *
      * @throws ParsingError
      */
@@ -46,7 +46,7 @@ final class Version1 extends Any
     }
 
     /**
-     * Creates a UUID Version 3 from the raw bytes.
+     * Creates a UUID Version 1 from the raw bytes.
      */
     public static function fromBytes(Bytes|string $bytes): self
     {
@@ -60,7 +60,7 @@ final class Version1 extends Any
 
     public static function generate(State $state = null): self
     {
-        $state = $state ?? Simplified::global();
+        $state = $state ?? Standard::global();
         $ts = $state->getTime()->bytes->asString();
         $node = $state->getNode()->asString();
         $seq = $state->getClockSequence()->asString();

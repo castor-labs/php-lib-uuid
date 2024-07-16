@@ -24,7 +24,7 @@ use Castor\Uuid;
  *
  * Version 5 UUIDS are the first 16 bytes of the sha1 hash of another UUID (namespace) plus any string.
  *
- * Version 5 UUIDs have their most significant bits on the 7th octet set to 0101 (x50)
+ * Version 5 UUIDs always have their most significant bits on the 7th octet set to 0101 (x50)
  */
 final class Version5 extends Any
 {

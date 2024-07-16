@@ -14,7 +14,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\Version1;
+namespace Castor\Uuid\System;
 
 use Brick\DateTime\Clock;
 use Brick\DateTime\Instant;
@@ -25,7 +25,7 @@ use Castor\Bytes;
 use function Castor\Err\must;
 
 /**
- * Represents the time in a Version1 UUID.
+ * Represents the time as the number of 100-nanosecond intervals since the gregorian epoch.
  */
 class Time
 {
@@ -33,12 +33,12 @@ class Time
      * The number of 100-nanosecond intervals from the Gregorian calendar epoch
      * to the Unix epoch.
      */
-    private const GREGORIAN_TO_UNIX_OFFSET = '122192928000000000';
+    private const string GREGORIAN_TO_UNIX_OFFSET = '122192928000000000';
 
     /**
      * The number of 100-nanosecond intervals in one second.
      */
-    private const SECOND_INTERVALS = '10000000';
+    private const string SECOND_INTERVALS = '10000000';
 
     public function __construct(
         public readonly Bytes $bytes,
@@ -89,8 +89,6 @@ class Time
      */
     public function getTimestamp(): BigInteger
     {
-        return must(function () {
-            return BigInteger::fromBase($this->bytes->toHex(), 16);
-        });
+        return must(fn () => BigInteger::fromBase($this->bytes->toHex(), 16));
     }
 }

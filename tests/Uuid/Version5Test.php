@@ -16,15 +16,10 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Version5::class)]
-#[CoversClass(Any::class)]
-#[CoversFunction('Castor\Uuid\Ns\url')]
 class Version5Test extends TestCase
 {
     #[Test]

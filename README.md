@@ -26,11 +26,12 @@ echo $parsed instanceof Uuid\Version1; // Prints: false
 echo $parsed instanceof Uuid\Version4; // Prints: true
 echo $parsed instanceof Uuid\Version3; // Prints: false
 echo $parsed instanceof Uuid\Version5; // Prints: false
+echo $parsed instanceof Uuid\Version6; // Prints: false
 echo $parsed->equals($uuid); // Prints: true
 ```
 
 The same API is available for `Uuid\Version3` and `Uuid\Version5`.
 
-`Uuid\Version1` provides an extended API that can return the different components that form it.
+`Uuid\Version1` and `Uuid\Version6` provides an extended API that can return the different components that form it.
 
 `Uuid\Version2` will not be implemented.
