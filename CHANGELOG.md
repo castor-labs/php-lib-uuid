@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/castor-labs/php-lib-uuid/compare/1.0.0...2.0.0) (2024-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* `Castor\Uuid\Version6::getTime` now returns `Castor\Uuid\System\Gregorian`
+
+### Features
+
+* Implemented version 7 UUID ([#6](https://github.com/castor-labs/php-lib-uuid/issues/6)) ([48779cc](https://github.com/castor-labs/php-lib-uuid/commit/48779cc185009d12a49dbfaf0cee708b2abe6a7d))
+
 ## [1.0.0](https://github.com/castor-labs/php-lib-uuid/compare/0.2.0...1.0.0) (2024-07-16)
 
 
