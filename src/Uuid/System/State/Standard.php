@@ -22,7 +22,7 @@ use Castor\Uuid\System\MacProvider;
 use Castor\Uuid\System\MacProvider\Fallback;
 use Castor\Uuid\System\MacProvider\FromOs;
 use Castor\Uuid\System\State;
-use Castor\Uuid\System\Time;
+use Castor\Uuid\System\Time\Gregorian;
 use Random\Engine\Secure;
 use Random\Randomizer;
 
@@ -67,9 +67,9 @@ final class Standard implements State
         return $this->clockSequence;
     }
 
-    public function getTime(): Time
+    public function getTime(): Gregorian
     {
-        $gregorianTime = Time::now($this->clock);
+        $gregorianTime = Gregorian::now($this->clock);
 
         if ($gregorianTime->bytes->equals($this->lastTimestamp)) {
             $this->clockSequence = $this->generateClockSequence();

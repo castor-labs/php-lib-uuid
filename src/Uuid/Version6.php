@@ -19,7 +19,7 @@ namespace Castor\Uuid;
 use Castor\Bytes;
 use Castor\Uuid\System\State;
 use Castor\Uuid\System\State\Standard;
-use Castor\Uuid\System\Time;
+use Castor\Uuid\System\Time\Gregorian;
 
 /**
  * Version6 represents a version 6 UUID.
@@ -28,7 +28,7 @@ use Castor\Uuid\System\Time;
  *
  * Version 6 UUIDs always have their most significant bits on the 7th octet set to 0110 (x60)
  */
-final class Version6 extends Any
+final class Version6 extends Any implements TimeBased
 {
     /**
      * Parses a UUID Version 6 from the string representation.
@@ -63,7 +63,7 @@ final class Version6 extends Any
      *
      * If the state is null, then the global state instance is used
      */
-    public static function generate(State $state = null): self
+    public static function generate(?State $state = null): self
     {
         $state = $state ?? Standard::global();
         $time = $state->getTime()->bytes;
@@ -90,9 +90,9 @@ final class Version6 extends Any
     }
 
     /**
-     * Returns the Time of this UUID.
+     * Returns the Gregorian of this UUID.
      */
-    public function getTime(): Time
+    public function getTime(): Gregorian
     {
         $bytes = $this->getBytes()->slice(0, 8);
 
@@ -107,7 +107,7 @@ final class Version6 extends Any
         $bytes[1] = ($bytes[1] >> 4) | (($bytes[0] & 0x0F) << 4);
         $bytes[0] >>= 4;
 
-        return new Time($bytes);
+        return new Gregorian($bytes);
     }
 
     /**

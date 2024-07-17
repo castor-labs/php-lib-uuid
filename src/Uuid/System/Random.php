@@ -16,18 +16,19 @@ declare(strict_types=1);
 
 namespace Castor\Uuid\System;
 
-use Brick\DateTime\Instant;
-use Brick\Math\BigInteger;
+use Random\Engine\Secure;
+use Random\Randomizer;
 
-interface Time
+final class Random
 {
-    /**
-     * Returns the instant from this time.
-     */
-    public function getInstant(): Instant;
+    private static ?Randomizer $global = null;
 
-    /**
-     * Returns the timestamp as an integer from this time.
-     */
-    public function getTimestamp(): BigInteger;
+    public static function global(): Randomizer
+    {
+        if (self::$global === null) {
+            self::$global = new Randomizer(new Secure());
+        }
+
+        return self::$global;
+    }
 }
