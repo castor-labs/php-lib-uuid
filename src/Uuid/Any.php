@@ -141,6 +141,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             0x40 => new Version4($bytes), // 0100 0000
             0x50 => new Version5($bytes), // 0101 0000
             0x60 => new Version6($bytes), // 0110 0000
+            0x70 => new Version7($bytes), // 0111 0000
             default => new Any($bytes)
         };
     }
@@ -190,6 +191,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             '4' => new Version4(new Bytes(''), $uuid),
             '5' => new Version5(new Bytes(''), $uuid),
             '6' => new Version6(new Bytes(''), $uuid),
+            '7' => new Version7(new Bytes(''), $uuid),
             default => new Any(new Bytes(''), $uuid)
         };
     }

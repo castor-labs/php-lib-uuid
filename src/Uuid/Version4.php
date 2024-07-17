@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace Castor\Uuid;
 
 use Castor\Bytes;
-use Random\Engine\Secure;
+use Castor\Uuid\System\Random;
 use Random\Randomizer;
 
 /**
@@ -53,9 +53,9 @@ final class Version4 extends Any
         return $uuid;
     }
 
-    public static function generate(Randomizer $randomizer = null): self
+    public static function generate(?Randomizer $randomizer = null): self
     {
-        $randomizer = $randomizer ?? new Randomizer(new Secure());
+        $randomizer = $randomizer ?? Random::global();
 
         $bytes = new Bytes($randomizer->getBytes(self::LEN));
 

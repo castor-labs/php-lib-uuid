@@ -16,46 +16,37 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
 class AnyTest extends TestCase
 {
     #[Test]
-    #[DataProvider('getParseData')]
+    #[TestWith(['00000000-0000-0000-0000-000000000000', Any::class])]
+    #[TestWith(['3343a72a-4771-11ee-8001-00b0d063c226', Version1::class])]
+    #[TestWith(['a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309', Version3::class])]
+    #[TestWith(['fa06067f-602d-404a-a34c-45c6a7744011', Version4::class])]
+    #[TestWith(['1ee47713-343a-672a-8001-00b0d063c226', Version6::class])]
+    #[TestWith(['99cf973d-3fe7-7ee4-88bd-a0991a048794', Version7::class])]
+    #[TestWith(['ffffffff-ffff-ffff-ffff-ffffffffffff', Any::class])]
     public function it_parses(string $in, string $type): void
     {
         $uuid = Any::parse($in);
         $this->assertInstanceOf($type, $uuid);
     }
 
-    /**
-     * @return array[]
-     */
-    public static function getParseData(): array
-    {
-        return [
-            'nil' => ['00000000-0000-0000-0000-000000000000', Any::class],
-            'v_3' => ['a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309', Version3::class],
-            'v_4' => ['fa06067f-602d-404a-a34c-45c6a7744011', Version4::class],
-            'v_5' => ['5fe80e27-269a-5cce-98c3-989ddd181b71', Version5::class],
-            'max' => ['ffffffff-ffff-ffff-ffff-ffffffffffff', Any::class],
-            'any' => ['99cf973d-3fe7-7ee4-88bd-a0991a048794', Any::class],
-        ];
-    }
-
     #[Test]
     public function it_serializes(): void
     {
-        $unknown = Any::parse('99cf973d-3fe7-7ee4-88bd-a0991a048794');
+        $unknown = Any::parse('99cf973d-3fe7-8ee4-88bd-a0991a048794');
 
         $serialized = \serialize($unknown);
         $json = \json_encode(['uuid' => $unknown], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:15:"Castor\Uuid\Any":1:{i:0;s:36:"99cf973d-3fe7-7ee4-88bd-a0991a048794";}', $serialized);
+        $this->assertSame('O:15:"Castor\Uuid\Any":1:{i:0;s:36:"99cf973d-3fe7-8ee4-88bd-a0991a048794";}', $serialized);
         $this->assertTrue($unknown->equals(\unserialize($serialized)));
-        $this->assertSame('{"uuid":"99cf973d-3fe7-7ee4-88bd-a0991a048794"}', $json);
-        $this->assertSame('99cf973d-3fe7-7ee4-88bd-a0991a048794', (string) $unknown);
+        $this->assertSame('{"uuid":"99cf973d-3fe7-8ee4-88bd-a0991a048794"}', $json);
+        $this->assertSame('99cf973d-3fe7-8ee4-88bd-a0991a048794', (string) $unknown);
     }
 }

@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Castor\Uuid\System;
 
 use Castor\Bytes;
+use Castor\Uuid\System\Time\Gregorian;
 
 /**
  * State represents the system state needed to construct some UUIDs.
@@ -31,7 +32,7 @@ interface State
     /**
      * Returns the system time.
      */
-    public function getTime(): Time;
+    public function getTime(): Gregorian;
 
     /**
      * Returns the system's node.

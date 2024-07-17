@@ -18,7 +18,7 @@ namespace Castor\Uuid;
 
 use Brick\Math\BigInteger;
 use Castor\Bytes;
-use Castor\Uuid\System\Time;
+use Castor\Uuid\System\Time\Gregorian;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
@@ -29,7 +29,7 @@ class Version6Test extends TestCase
     public function it_generates(): void
     {
         $state = new System\State\Fixed(
-            Time::fromTimestamp(BigInteger::of('139127190012012330')),
+            Gregorian::fromTimestamp(BigInteger::of('139127190012012330')),
             Bytes::fromHex('0001'),
             Bytes::fromHex('00b0d063c226')
         );

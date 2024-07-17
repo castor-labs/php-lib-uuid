@@ -14,20 +14,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\System;
+namespace Castor\Uuid;
 
-use Brick\DateTime\Instant;
-use Brick\Math\BigInteger;
+use Castor\Uuid\System\Time;
 
-interface Time
+interface TimeBased
 {
     /**
-     * Returns the instant from this time.
+     * Returns the time encoded inside this UUID.
      */
-    public function getInstant(): Instant;
-
-    /**
-     * Returns the timestamp as an integer from this time.
-     */
-    public function getTimestamp(): BigInteger;
+    public function getTime(): Time;
 }

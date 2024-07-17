@@ -14,24 +14,27 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\System;
+namespace Castor\Uuid\System\Time;
 
 use Brick\DateTime\Clock\FixedClock;
 use Brick\DateTime\Instant;
 use Brick\Math\BigInteger;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-class TimeTest extends TestCase
+class GregorianTest extends TestCase
 {
-    public function testGregorianTime(): void
+    #[Test]
+    public function it_creates_gregorian_time(): void
     {
-        $time = Time::now(new FixedClock(Instant::of(1693426201, 201233)));
+        $time = Gregorian::now(new FixedClock(Instant::of(1693426201, 201233)));
         $this->assertSame('139127190010002012', (string) $time->getTimestamp());
     }
 
-    public function testGregorianDatetime(): void
+    #[Test]
+    public function it_creates_from_timestamp(): void
     {
-        $instant = Time::fromTimestamp(BigInteger::of('139127190010002012'))->getInstant();
+        $instant = Gregorian::fromTimestamp(BigInteger::of('139127190010002012'))->getInstant();
         $this->assertSame(1693426201, $instant->getEpochSecond());
         $this->assertSame(201200, $instant->getNano()); // Nano precision is lost because of 100 nano intervals
     }
