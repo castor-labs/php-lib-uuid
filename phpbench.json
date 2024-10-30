@@ -1,0 +1,5 @@
+{
+    "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
+    "runner.bootstrap": "vendor/autoload.php",
+    "xdebug.command_handler_output_dir": ".dev/debug"
+}

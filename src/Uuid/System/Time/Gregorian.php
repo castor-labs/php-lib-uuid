@@ -21,9 +21,8 @@ use Brick\DateTime\Instant;
 use Brick\Math\BigInteger;
 use Brick\Math\RoundingMode;
 use Castor\Bytes;
+use Castor\Encoding\Error;
 use Castor\Uuid\System\Time;
-
-use function Castor\Err\must;
 
 /**
  * Represents the time as the number of 100-nanosecond intervals since the gregorian epoch.
@@ -51,25 +50,25 @@ readonly class Gregorian implements Time
 
     public static function fromTimestamp(BigInteger $timestamp): self
     {
-        return must(static function () use ($timestamp) {
-            $hex = \str_pad($timestamp->toBase(16), 16, '0', STR_PAD_LEFT);
+        $hex = \str_pad($timestamp->toBase(16), 16, '0', STR_PAD_LEFT);
 
+        try {
             return new self(Bytes::fromHex($hex));
-        });
+        } catch (Error $e) {
+            throw new \RuntimeException('Impossible error', previous: $e);
+        }
     }
 
     public static function fromInstant(Instant $instant): self
     {
-        return must(function () use ($instant) {
-            $epochSeconds = BigInteger::of($instant->getEpochSecond());
-            $nanoSeconds = BigInteger::of($instant->getNano());
+        $epochSeconds = BigInteger::of($instant->getEpochSecond());
+        $nanoSeconds = BigInteger::of($instant->getNano());
 
-            $secondsTicks = $epochSeconds->multipliedBy(self::SECOND_INTERVALS);
-            $nanoTicks = $nanoSeconds->dividedBy(100, RoundingMode::DOWN);
-            $ticksSinceEpoch = $secondsTicks->plus($nanoTicks);
+        $secondsTicks = $epochSeconds->multipliedBy(self::SECOND_INTERVALS);
+        $nanoTicks = $nanoSeconds->dividedBy(100, RoundingMode::DOWN);
+        $ticksSinceEpoch = $secondsTicks->plus($nanoTicks);
 
-            return self::fromTimestamp($ticksSinceEpoch->plus(self::GREGORIAN_TO_UNIX_OFFSET));
-        });
+        return self::fromTimestamp($ticksSinceEpoch->plus(self::GREGORIAN_TO_UNIX_OFFSET));
     }
 
     public static function now(Clock $clock): self
@@ -79,14 +78,12 @@ readonly class Gregorian implements Time
 
     public function getInstant(): Instant
     {
-        return must(function () {
-            $ticksSinceEpoch = $this->getTimestamp()->minus(self::GREGORIAN_TO_UNIX_OFFSET); // Subtract gregorian offset
+        $ticksSinceEpoch = $this->getTimestamp()->minus(self::GREGORIAN_TO_UNIX_OFFSET); // Subtract gregorian offset
 
-            $epochSeconds = $ticksSinceEpoch->dividedBy(self::SECOND_INTERVALS, RoundingMode::DOWN);
-            $nanoSeconds = $ticksSinceEpoch->remainder(self::SECOND_INTERVALS)->multipliedBy(100);
+        $epochSeconds = $ticksSinceEpoch->dividedBy(self::SECOND_INTERVALS, RoundingMode::DOWN);
+        $nanoSeconds = $ticksSinceEpoch->remainder(self::SECOND_INTERVALS)->multipliedBy(100);
 
-            return Instant::of($epochSeconds->toInt(), $nanoSeconds->toInt());
-        });
+        return Instant::of($epochSeconds->toInt(), $nanoSeconds->toInt());
     }
 
     /**
@@ -94,6 +91,6 @@ readonly class Gregorian implements Time
      */
     public function getTimestamp(): BigInteger
     {
-        return must(fn () => BigInteger::fromBase($this->bytes->toHex(), 16));
+        return BigInteger::fromBase($this->bytes->toHex(), 16);
     }
 }

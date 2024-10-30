@@ -10,3 +10,4 @@
 /psalm-baseline.xml export-ignore
 /.gitignore export-ignore
 /README.md export-ignore
+/phpbench.json export-ignore
