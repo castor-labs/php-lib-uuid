@@ -52,7 +52,8 @@
     "friendsofphp/php-cs-fixer": "^3.49",
     "vimeo/psalm": "^5.22",
     "ergebnis/phpunit-slow-test-detector": "^2.10",
-    "ramsey/uuid": "^4.7"
+    "ramsey/uuid": "^4.7",
+    "phpbench/phpbench": "^1.3"
   },
   "scripts": {
     "pr": [
@@ -73,6 +74,8 @@
     "test:unit": "phpunit --colors --exclude-group=integration --exclude-group=e2e",
     "test:e2e": "phpunit --colors --group=e2e",
     "test:integration": "phpunit --colors --group=integration",
+    "bench": "phpbench run tests/Benchmark --report=default",
+    "profile": "phpbench xdebug:profile tests/Benchmark --progress=none",
     "psalm": "psalm --no-cache --threads=5",
     "psalm:gh": "psalm --no-cache --threads=5 --long-progress --output-format=github"
   }

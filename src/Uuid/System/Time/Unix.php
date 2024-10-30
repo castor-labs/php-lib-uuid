@@ -21,9 +21,8 @@ use Brick\DateTime\Instant;
 use Brick\Math\BigInteger;
 use Brick\Math\RoundingMode;
 use Castor\Bytes;
+use Castor\Encoding\Error;
 use Castor\Uuid\System\Time;
-
-use function Castor\Err\must;
 
 readonly class Unix implements Time
 {
@@ -37,21 +36,21 @@ readonly class Unix implements Time
 
     public static function fromInstant(Instant $instant): self
     {
-        return must(function () use ($instant) {
-            $secondsInMilliseconds = BigInteger::of($instant->getEpochSecond())->multipliedBy(1000);
-            $nanosInMilliseconds = BigInteger::of($instant->getNano())->dividedBy(1e+6, RoundingMode::DOWN);
+        $secondsInMilliseconds = BigInteger::of($instant->getEpochSecond())->multipliedBy(1000);
+        $nanosInMilliseconds = BigInteger::of($instant->getNano())->dividedBy(1e+6, RoundingMode::DOWN);
 
-            return self::fromTimestamp($secondsInMilliseconds->plus($nanosInMilliseconds));
-        });
+        return self::fromTimestamp($secondsInMilliseconds->plus($nanosInMilliseconds));
     }
 
     public static function fromTimestamp(BigInteger $timestamp): self
     {
-        return must(static function () use ($timestamp) {
-            $hex = \str_pad($timestamp->toBase(16), 12, '0', STR_PAD_LEFT);
+        $hex = \str_pad($timestamp->toBase(16), 12, '0', STR_PAD_LEFT);
 
+        try {
             return new self(Bytes::fromHex($hex));
-        });
+        } catch (Error $e) {
+            throw new \RuntimeException('Impossible error', previous: $e);
+        }
     }
 
     public static function now(Clock $clock): self
@@ -61,12 +60,10 @@ readonly class Unix implements Time
 
     public function getInstant(): Instant
     {
-        return must(function () {
-            $timestamp = $this->getTimestamp();
-            $nanoSeconds = $timestamp->multipliedBy(1e+6);
+        $timestamp = $this->getTimestamp();
+        $nanoSeconds = $timestamp->multipliedBy(1e+6);
 
-            return Instant::of(0, $nanoSeconds->toInt());
-        });
+        return Instant::of(0, $nanoSeconds->toInt());
     }
 
     /**
@@ -74,6 +71,6 @@ readonly class Unix implements Time
      */
     public function getTimestamp(): BigInteger
     {
-        return must(fn () => BigInteger::fromBase($this->bytes->toHex(), 16));
+        return BigInteger::fromBase($this->bytes->toHex(), 16);
     }
 }
