@@ -1,5 +1,29 @@
 {
     "$schema":"./vendor/phpbench/phpbench/phpbench.schema.json",
     "runner.bootstrap": "vendor/autoload.php",
-    "xdebug.command_handler_output_dir": ".dev/debug"
+    "runner.output_mode": "time",
+    "runner.retry_threshold": 5,
+    "runner.php_config": {
+        "opcache.enable": true,
+        "opcache.enable_cli": true,
+        "opcache.jit": 1235,
+        "apc.enable": true,
+        "apc.enable_cli": true
+    },
+    "xdebug.command_handler_output_dir": ".dev/debug",
+    "report.generators": {
+        "default": {
+            "extends": "expression",
+            "title": "Castor UUID Benchmarks",
+            "break": [ "benchmark" ],
+            "cols": [ "benchmark", "subject", "set", "mem_peak", "mode", "best", "mean", "worst", "stdev", "rstdev" ]
+        }
+    },
+    "report.outputs": {
+        "html": {
+            "renderer": "html",
+            "path": ".dev/bench.html",
+            "title": "Castor UUID Benchmarks"
+        }
+    }
 }

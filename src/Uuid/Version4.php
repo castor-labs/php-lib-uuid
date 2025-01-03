@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use Castor\Bytes;
 use Castor\Uuid\System\Random;
 use Random\Randomizer;
 
@@ -43,7 +42,7 @@ final class Version4 extends Any
         return $v4;
     }
 
-    public static function fromBytes(Bytes|string $bytes): self
+    public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
@@ -57,7 +56,7 @@ final class Version4 extends Any
     {
         $randomizer = $randomizer ?? Random::global();
 
-        $bytes = new Bytes($randomizer->getBytes(self::LEN));
+        $bytes = ByteArray::fromRaw($randomizer->getBytes(self::LEN));
 
         // We set the 7th octet to 0100 XXXX (version 4)
         $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x40; // AND 0000 1111 OR 0100 0000

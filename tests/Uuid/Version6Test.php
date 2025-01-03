@@ -16,8 +16,6 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use Brick\Math\BigInteger;
-use Castor\Bytes;
 use Castor\Uuid\System\Time\Gregorian;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -29,9 +27,9 @@ class Version6Test extends TestCase
     public function it_generates(): void
     {
         $state = new System\State\Fixed(
-            Gregorian::fromTimestamp(BigInteger::of('139127190012012330')),
-            Bytes::fromHex('0001'),
-            Bytes::fromHex('00b0d063c226')
+            Gregorian::fromTimestamp('139127190012012330'),
+            ByteArray::fromHex('0001'),
+            ByteArray::fromHex('00b0d063c226')
         );
 
         $v6 = Version6::generate($state);
@@ -72,12 +70,18 @@ class Version6Test extends TestCase
     #[Test]
     public function it_serializes(): void
     {
-        $v6 = Version6::parse('1ee47713-343a-672a-8001-00b0d063c226');
+        $v6 = Version6::parse('1ee47713-343a-672a-8001-00b0d063c226', false);
 
         $serialized = \serialize($v6);
         $json = \json_encode(['uuid' => $v6], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:20:"Castor\Uuid\Version6":1:{i:0;s:36:"1ee47713-343a-672a-8001-00b0d063c226";}', $serialized);
+        $hash = \md5($serialized);
+
+        $this->assertSame(
+            '077ffc6a8dc1d17a78309ce9d3c8473c',
+            $hash,
+            'Does not match hash of serialized data: '.$serialized
+        );
         $this->assertTrue($v6->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"1ee47713-343a-672a-8001-00b0d063c226"}', $json);
         $this->assertSame('1ee47713-343a-672a-8001-00b0d063c226', (string) $v6);

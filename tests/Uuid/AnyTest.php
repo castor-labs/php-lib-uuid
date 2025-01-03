@@ -39,12 +39,18 @@ class AnyTest extends TestCase
     #[Test]
     public function it_serializes(): void
     {
-        $unknown = Any::parse('99cf973d-3fe7-8ee4-88bd-a0991a048794');
+        $unknown = Any::parse('99cf973d-3fe7-8ee4-88bd-a0991a048794', false);
 
         $serialized = \serialize($unknown);
         $json = \json_encode(['uuid' => $unknown], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:15:"Castor\Uuid\Any":1:{i:0;s:36:"99cf973d-3fe7-8ee4-88bd-a0991a048794";}', $serialized);
+        $hash = \md5($serialized);
+
+        $this->assertSame(
+            'e0d569ae9961295361a930432d035100',
+            $hash,
+            'Does not match hash of serialized data: '.$serialized
+        );
         $this->assertTrue($unknown->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"99cf973d-3fe7-8ee4-88bd-a0991a048794"}', $json);
         $this->assertSame('99cf973d-3fe7-8ee4-88bd-a0991a048794', (string) $unknown);

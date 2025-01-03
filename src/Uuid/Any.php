@@ -16,8 +16,7 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use Castor\Bytes;
-use Castor\Encoding\Error;
+use Castor\Encoding\Failure;
 use Castor\RegExp;
 use Castor\Str;
 use Castor\Uuid;
@@ -35,7 +34,7 @@ use Castor\Uuid;
  */
 class Any implements Uuid, \Stringable, \JsonSerializable
 {
-    protected const string PATTERN = '/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/';
+    protected const string PATTERN = '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/';
 
     protected const int STR_VERSION_OFFSET = 14;
 
@@ -51,7 +50,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
     protected const int VAB = 8;
 
     protected function __construct(
-        private Bytes $bytes,
+        private ByteArray $bytes,
         private string $string = '',
     ) {}
 
@@ -61,20 +60,20 @@ class Any implements Uuid, \Stringable, \JsonSerializable
     }
 
     /**
-     * @return array{0: string}
+     * @return array{0: array<0,255>, 1: string}
      */
     public function __serialize(): array
     {
-        return [$this->toString()];
+        return [$this->bytes->toArray(), $this->toString()];
     }
 
     /**
-     * @param array{0: string} $data
+     * @param array{0: array<0,255>, 1: string} $data
      */
     public function __unserialize(array $data): void
     {
-        $this->bytes = new Bytes('');
-        $this->string = $data[0];
+        $this->bytes = ByteArray::create($data[0]);
+        $this->string = $data[1];
     }
 
     public function toString(): string
@@ -86,10 +85,14 @@ class Any implements Uuid, \Stringable, \JsonSerializable
         return $this->string;
     }
 
-    public function getBytes(): Bytes
+    public function getBytes(): ByteArray
     {
-        if ($this->bytes->len() === 0) {
-            $this->bytes = self::parse($this->string, false)->getBytes();
+        if ($this->bytes->count() === 0) {
+            try {
+                $this->bytes = ByteArray::fromHex(Str\replace($this->string, '-', ''));
+            } catch (Failure $e) {
+                throw new \LogicException('Impossible error', previous : $e);
+            }
         }
 
         return clone $this->bytes;
@@ -123,13 +126,13 @@ class Any implements Uuid, \Stringable, \JsonSerializable
      *
      * @throws ParsingError if the bytes are invalid
      */
-    public static function fromBytes(Bytes|string $bytes): Uuid
+    public static function fromBytes(ByteArray|string $bytes): Uuid
     {
         if (\is_string($bytes)) {
-            $bytes = new Bytes($bytes);
+            $bytes = ByteArray::fromRaw($bytes);
         }
 
-        if (self::LEN !== $bytes->len()) {
+        if (self::LEN !== $bytes->count()) {
             throw new ParsingError('UUID must have 16 bytes.');
         }
 
@@ -156,15 +159,17 @@ class Any implements Uuid, \Stringable, \JsonSerializable
      */
     public static function parse(string $uuid, bool $lazy = true): Uuid
     {
+        $uuid = Str\toLower($uuid);
+
         if ($lazy) {
             return self::lazy($uuid);
         }
 
-        $uuid = Str\toLower(Str\replace($uuid, '-', ''));
+        $uuid = Str\replace($uuid, '-', '');
 
         try {
-            $bytes = Bytes::fromHex($uuid);
-        } catch (Error $e) {
+            $bytes = ByteArray::fromHex($uuid);
+        } catch (Failure $e) {
             throw new ParsingError('Invalid hexadecimal in UUID.', previous: $e);
         }
 
@@ -186,13 +191,13 @@ class Any implements Uuid, \Stringable, \JsonSerializable
         }
 
         return match ($uuid[self::STR_VERSION_OFFSET]) {
-            '1' => new Version1(new Bytes(''), $uuid),
-            '3' => new Version3(new Bytes(''), $uuid),
-            '4' => new Version4(new Bytes(''), $uuid),
-            '5' => new Version5(new Bytes(''), $uuid),
-            '6' => new Version6(new Bytes(''), $uuid),
-            '7' => new Version7(new Bytes(''), $uuid),
-            default => new Any(new Bytes(''), $uuid)
+            '1' => new Version1(new ByteArray(0), $uuid),
+            '3' => new Version3(new ByteArray(0), $uuid),
+            '4' => new Version4(new ByteArray(0), $uuid),
+            '5' => new Version5(new ByteArray(0), $uuid),
+            '6' => new Version6(new ByteArray(0), $uuid),
+            '7' => new Version7(new ByteArray(0), $uuid),
+            default => new Any(new ByteArray(0), $uuid)
         };
     }
 }

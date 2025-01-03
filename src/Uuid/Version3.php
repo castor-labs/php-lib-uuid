@@ -48,7 +48,7 @@ final class Version3 extends Any
     /**
      * Creates a UUID Version 3 from the raw bytes.
      */
-    public static function fromBytes(Bytes|string $bytes): self
+    public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
@@ -60,7 +60,7 @@ final class Version3 extends Any
 
     public static function create(Uuid $namespace, string $name): self
     {
-        $bytes = new Bytes(@\hash(self::HASHING_ALGO, $namespace->getBytes()->asString().$name, true));
+        $bytes = ByteArray::fromRaw(@\hash(self::HASHING_ALGO, $namespace->getBytes()->toRaw().$name, true));
 
         // We set the 7th octet to 0011 XXXX (version 3)
         $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x30; // AND 0000 1111 OR 0011 0000

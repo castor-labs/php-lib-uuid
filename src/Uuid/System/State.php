@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Castor\Uuid\System;
 
 use Castor\Bytes;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\Time\Gregorian;
 
 /**
@@ -27,7 +28,7 @@ interface State
     /**
      * Returns the system's clock sequence as bytes.
      */
-    public function getClockSequence(): Bytes;
+    public function getClockSequence(): ByteArray;
 
     /**
      * Returns the system time.
@@ -37,5 +38,5 @@ interface State
     /**
      * Returns the system's node.
      */
-    public function getNode(): Bytes;
+    public function getNode(): ByteArray;
 }

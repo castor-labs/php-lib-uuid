@@ -16,6 +16,8 @@ declare(strict_types=1);
 
 namespace Castor;
 
+use Castor\Uuid\ByteArray;
+
 /**
  * This is the base contract for a UUID.
  *
@@ -31,7 +33,7 @@ interface Uuid
      *
      * Implementors MUST NOT return the original reference stored inside the UUID.
      */
-    public function getBytes(): Bytes;
+    public function getBytes(): ByteArray;
 
     /**
      * Returns the standard segmented hexadecimal representation of the UUID.

@@ -67,12 +67,18 @@ class Version7Test extends TestCase
     #[Test]
     public function it_serializes(): void
     {
-        $v7 = Version7::parse('0190bddb-5bb6-7896-9c8b-18dbd0ab4337');
+        $v7 = Version7::parse('0190bddb-5bb6-7896-9c8b-18dbd0ab4337', false);
 
         $serialized = \serialize($v7);
         $json = \json_encode(['uuid' => $v7], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:20:"Castor\Uuid\Version7":1:{i:0;s:36:"0190bddb-5bb6-7896-9c8b-18dbd0ab4337";}', $serialized);
+        $hash = \md5($serialized);
+
+        $this->assertSame(
+            '7c63c60f49f177088cffdf53000b9b68',
+            $hash,
+            'Does not match hash of serialized data: '.$serialized
+        );
         $this->assertTrue($v7->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"0190bddb-5bb6-7896-9c8b-18dbd0ab4337"}', $json);
         $this->assertSame('0190bddb-5bb6-7896-9c8b-18dbd0ab4337', (string) $v7);

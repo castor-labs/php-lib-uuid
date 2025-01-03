@@ -32,7 +32,7 @@ function parse(string $uuid, bool $lazy = true): Uuid
 /**
  * Creates a UUID from the raw bytes.
  */
-function fromBytes(Bytes|string $bytes): Uuid
+function fromBytes(ByteArray|string $bytes): Uuid
 {
     return Any::fromBytes($bytes);
 }
@@ -59,7 +59,7 @@ function max(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0xFF,
             0xFF,
             0xFF,
@@ -76,7 +76,7 @@ function max(): Uuid
             0xFF,
             0xFF,
             0xFF,
-        ));
+        ]));
     }
 
     return $uuid;
@@ -90,7 +90,7 @@ function nil(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0x00,
             0x00,
             0x00,
@@ -107,7 +107,7 @@ function nil(): Uuid
             0x00,
             0x00,
             0x00,
-        ));
+        ]));
     }
 
     return $uuid;
@@ -115,9 +115,9 @@ function nil(): Uuid
 
 namespace Castor\Uuid\Ns;
 
-use Castor\Bytes;
 use Castor\Uuid;
 use Castor\Uuid\Any;
+use Castor\Uuid\ByteArray;
 
 /**
  * Returns the UUID namespace for Domain Name System (DNS).
@@ -127,7 +127,7 @@ function dns(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0x6B,
             0xA7,
             0xB8,
@@ -144,7 +144,7 @@ function dns(): Uuid
             0xD4,
             0x30,
             0xC8,
-        ));
+        ]));
     }
 
     return $uuid;
@@ -158,7 +158,7 @@ function oid(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0x6B,
             0xA7,
             0xB8,
@@ -175,7 +175,7 @@ function oid(): Uuid
             0xD4,
             0x30,
             0xC8,
-        ));
+        ]));
     }
 
     return $uuid;
@@ -189,7 +189,7 @@ function url(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0x6B,
             0xA7,
             0xB8,
@@ -206,7 +206,7 @@ function url(): Uuid
             0xD4,
             0x30,
             0xC8,
-        ));
+        ]));
     }
 
     return $uuid;
@@ -220,7 +220,7 @@ function x500(): Uuid
     /** @var null|Uuid $uuid */
     static $uuid = null;
     if (null === $uuid) {
-        $uuid = Any::fromBytes(Bytes::fromUint8(
+        $uuid = Any::fromBytes(ByteArray::create([
             0x6B,
             0xA7,
             0xB8,
@@ -237,7 +237,7 @@ function x500(): Uuid
             0xD4,
             0x30,
             0xC8,
-        ));
+        ]));
     }
 
     return $uuid;

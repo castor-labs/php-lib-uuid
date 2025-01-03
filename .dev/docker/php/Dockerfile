@@ -22,7 +22,7 @@ RUN install-php-extensions bcmath
 
 FROM base AS dev
 
-RUN install-php-extensions xdebug pcntl posix
+RUN install-php-extensions xdebug pcntl posix opcache
 
 # Install and Configure XDebug
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/60_xdebug.ini

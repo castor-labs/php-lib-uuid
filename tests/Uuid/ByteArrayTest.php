@@ -14,21 +14,19 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Castor\Uuid\System;
+namespace Castor\Uuid;
 
-use Brick\DateTime\Instant;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
-interface Time
+class ByteArrayTest extends TestCase
 {
-    /**
-     * Returns the instant from this time.
-     */
-    public function getInstant(): Instant;
+    #[Test]
+    public function it_determines_equality_based_on_content(): void
+    {
+        $a = ByteArray::fromHex('ee25446ee6bf');
+        $b = ByteArray::fromHex('ee25446ee6bf');
 
-    /**
-     * Returns the timestamp as a numeric integer from this time.
-     *
-     * @return numeric-string
-     */
-    public function getTimestamp(): string;
+        $this->assertTrue($a->equals($b));
+    }
 }

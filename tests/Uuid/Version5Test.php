@@ -50,12 +50,18 @@ class Version5Test extends TestCase
     #[Test]
     public function it_serializes(): void
     {
-        $v5 = Version5::parse('5fe80e27-269a-5cce-98c3-989ddd181b71');
+        $v5 = Version5::parse('5fe80e27-269a-5cce-98c3-989ddd181b71', false);
 
         $serialized = \serialize($v5);
         $json = \json_encode(['uuid' => $v5], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:20:"Castor\Uuid\Version5":1:{i:0;s:36:"5fe80e27-269a-5cce-98c3-989ddd181b71";}', $serialized);
+        $hash = \md5($serialized);
+
+        $this->assertSame(
+            '47c422afb014e163834dc042a101dc2c',
+            $hash,
+            'Does not match hash of serialized data: '.$serialized
+        );
         $this->assertTrue($v5->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"5fe80e27-269a-5cce-98c3-989ddd181b71"}', $json);
         $this->assertSame('5fe80e27-269a-5cce-98c3-989ddd181b71', (string) $v5);
