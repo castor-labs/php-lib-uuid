@@ -18,37 +18,39 @@ namespace Castor\Uuid\System\Time;
 
 use Brick\DateTime\Clock;
 use Brick\DateTime\Instant;
-use Brick\Math\BigInteger;
-use Brick\Math\RoundingMode;
-use Castor\Bytes;
-use Castor\Encoding\Error;
+use Castor\Encoding\Failure;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\Time;
 
 readonly class Unix implements Time
 {
     public function __construct(
-        public Bytes $bytes
+        public ByteArray $bytes
     ) {
-        if ($this->bytes->len() !== 6) {
+        if ($this->bytes->count() !== 6) {
             throw new \InvalidArgumentException('Unix time must be 48 bits long');
         }
     }
 
     public static function fromInstant(Instant $instant): self
     {
-        $secondsInMilliseconds = BigInteger::of($instant->getEpochSecond())->multipliedBy(1000);
-        $nanosInMilliseconds = BigInteger::of($instant->getNano())->dividedBy(1e+6, RoundingMode::DOWN);
+        $secondsInMilliseconds = \bcmul((string) $instant->getEpochSecond(), '1000');
+        $nanosInMilliseconds = \bcdiv((string) $instant->getNano(), (string) 1e+6);
 
-        return self::fromTimestamp($secondsInMilliseconds->plus($nanosInMilliseconds));
+        return self::fromTimestamp(\bcadd($secondsInMilliseconds, $nanosInMilliseconds, 0));
     }
 
-    public static function fromTimestamp(BigInteger $timestamp): self
+    public static function fromTimestamp(string $timestamp): self
     {
-        $hex = \str_pad($timestamp->toBase(16), 12, '0', STR_PAD_LEFT);
+        if (!\is_numeric($timestamp)) {
+            throw new \InvalidArgumentException('Timestamp must be a valid numeric string');
+        }
+
+        $hex = \str_pad(\base_convert($timestamp, 10, 16), 12, '0', STR_PAD_LEFT);
 
         try {
-            return new self(Bytes::fromHex($hex));
-        } catch (Error $e) {
+            return new self(ByteArray::fromHex($hex));
+        } catch (Failure $e) {
             throw new \RuntimeException('Impossible error', previous: $e);
         }
     }
@@ -61,16 +63,16 @@ readonly class Unix implements Time
     public function getInstant(): Instant
     {
         $timestamp = $this->getTimestamp();
-        $nanoSeconds = $timestamp->multipliedBy(1e+6);
+        $nanoSeconds = \bcmul($timestamp, (string) 1e+6);
 
-        return Instant::of(0, $nanoSeconds->toInt());
+        return Instant::of(0, (int) $nanoSeconds);
     }
 
     /**
      * Returns the number of millisecond elapsed since 1970-01-01 00:00:00 UTC.
      */
-    public function getTimestamp(): BigInteger
+    public function getTimestamp(): string
     {
-        return BigInteger::fromBase($this->bytes->toHex(), 16);
+        return \base_convert($this->bytes->toHex(), 16, 10);
     }
 }

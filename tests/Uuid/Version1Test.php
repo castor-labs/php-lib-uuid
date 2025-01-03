@@ -16,8 +16,6 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use Brick\Math\BigInteger;
-use Castor\Bytes;
 use Castor\Uuid\System\Time\Gregorian;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -29,9 +27,9 @@ class Version1Test extends TestCase
     public function it_generates(): void
     {
         $state = new System\State\Fixed(
-            Gregorian::fromTimestamp(BigInteger::of('139127190012012330')),
-            Bytes::fromHex('0001'),
-            Bytes::fromHex('00b0d063c226')
+            Gregorian::fromTimestamp('139127190012012330'),
+            ByteArray::fromHex('0001'),
+            ByteArray::fromHex('00b0d063c226')
         );
 
         $v1 = Version1::generate($state);
@@ -48,9 +46,9 @@ class Version1Test extends TestCase
     public function its_compatible_with_ramsey(): void
     {
         $state = new System\State\Fixed(
-            new Gregorian(Bytes::fromHex('01ee4782395c14c4')),
-            Bytes::fromHex('17ae'),
-            Bytes::fromHex('0242ac1b0004')
+            new Gregorian(ByteArray::fromHex('01ee4782395c14c4')),
+            ByteArray::fromHex('17ae'),
+            ByteArray::fromHex('0242ac1b0004')
         );
 
         $v1 = Version1::generate($state);
@@ -86,12 +84,18 @@ class Version1Test extends TestCase
     #[Test]
     public function it_serializes(): void
     {
-        $v1 = Version1::parse('5102999c-4771-11ee-be56-0242ac120002');
+        $v1 = Version1::parse('5102999c-4771-11ee-be56-0242ac120002', false);
 
         $serialized = \serialize($v1);
         $json = \json_encode(['uuid' => $v1], JSON_THROW_ON_ERROR);
 
-        $this->assertSame('O:20:"Castor\Uuid\Version1":1:{i:0;s:36:"5102999c-4771-11ee-be56-0242ac120002";}', $serialized);
+        $hash = \md5($serialized);
+
+        $this->assertSame(
+            'caba92f9403e49b428d6d7eec655bfbf',
+            $hash,
+            'Does not match hash of serialized data: '.$serialized
+        );
         $this->assertTrue($v1->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"5102999c-4771-11ee-be56-0242ac120002"}', $json);
         $this->assertSame('5102999c-4771-11ee-be56-0242ac120002', (string) $v1);

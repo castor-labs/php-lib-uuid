@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Castor\Uuid\System\State;
 
-use Castor\Bytes;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\State;
 use Castor\Uuid\System\Time\Gregorian;
 
@@ -24,11 +24,11 @@ final readonly class Fixed implements State
 {
     public function __construct(
         private Gregorian $time,
-        private Bytes $clockSeq,
-        private Bytes $node,
+        private ByteArray $clockSeq,
+        private ByteArray $node,
     ) {}
 
-    public function getClockSequence(): Bytes
+    public function getClockSequence(): ByteArray
     {
         return $this->clockSeq;
     }
@@ -38,7 +38,7 @@ final readonly class Fixed implements State
         return $this->time;
     }
 
-    public function getNode(): Bytes
+    public function getNode(): ByteArray
     {
         return $this->node;
     }

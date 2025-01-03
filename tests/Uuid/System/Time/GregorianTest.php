@@ -18,7 +18,6 @@ namespace Castor\Uuid\System\Time;
 
 use Brick\DateTime\Clock\FixedClock;
 use Brick\DateTime\Instant;
-use Brick\Math\BigInteger;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -34,7 +33,7 @@ class GregorianTest extends TestCase
     #[Test]
     public function it_creates_from_timestamp(): void
     {
-        $instant = Gregorian::fromTimestamp(BigInteger::of('139127190010002012'))->getInstant();
+        $instant = Gregorian::fromTimestamp('139127190010002012')->getInstant();
         $this->assertSame(1693426201, $instant->getEpochSecond());
         $this->assertSame(201200, $instant->getNano()); // Nano precision is lost because of 100 nano intervals
     }

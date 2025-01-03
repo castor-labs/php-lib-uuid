@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d09848fbd39c7f6f7807f5121329aab8",
+    "content-hash": "b9bd81608627bc7bde1681442ce7d079",
     "packages": [
         {
             "name": "brick/date-time",
-            "version": "0.6.5",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/date-time.git",
-                "reference": "db3b2508d7bb7c61deb7e7450a90bcc0439eb7e4"
+                "reference": "7b39737f630a0e5d2a2dc0834b0da77a065efaed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/date-time/zipball/db3b2508d7bb7c61deb7e7450a90bcc0439eb7e4",
-                "reference": "db3b2508d7bb7c61deb7e7450a90bcc0439eb7e4",
+                "url": "https://api.github.com/repos/brick/date-time/zipball/7b39737f630a0e5d2a2dc0834b0da77a065efaed",
+                "reference": "7b39737f630a0e5d2a2dc0834b0da77a065efaed",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,7 @@
                 "guzzlehttp/guzzle": "^7.0",
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpunit/phpunit": "^10.5",
-                "vimeo/psalm": "5.17.0"
+                "vimeo/psalm": "5.25.0"
             },
             "suggest": {
                 "ext-timezonedb": "This PECL extension provides up-to-date timezone information"
@@ -44,14 +44,32 @@
             ],
             "description": "Date and time library",
             "keywords": [
+                "DayOfWeek",
+                "LocalDateRange",
+                "LocalDateTime",
+                "LocalTime",
+                "Month",
+                "MonthDay",
+                "Year",
+                "YearMonth",
+                "YearMonthRange",
+                "YearWeek",
+                "ZonedDateTime",
                 "brick",
                 "date",
                 "datetime",
-                "time"
+                "duration",
+                "instant",
+                "interval",
+                "localdate",
+                "period",
+                "stopwatch",
+                "time",
+                "timezone"
             ],
             "support": {
                 "issues": "https://github.com/brick/date-time/issues",
-                "source": "https://github.com/brick/date-time/tree/0.6.5"
+                "source": "https://github.com/brick/date-time/tree/0.7.0"
             },
             "funding": [
                 {
@@ -59,180 +77,21 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-19T21:32:48+00:00"
-        },
-        {
-            "name": "brick/math",
-            "version": "0.10.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brick/math.git",
-                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/459f2781e1a08d52ee56b0b1444086e038561e3f",
-                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": "^7.4 || ^8.0"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^9.0",
-                "vimeo/psalm": "4.25.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Brick\\Math\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Arbitrary-precision arithmetic library",
-            "keywords": [
-                "Arbitrary-precision",
-                "BigInteger",
-                "BigRational",
-                "arithmetic",
-                "bigdecimal",
-                "bignum",
-                "brick",
-                "math"
-            ],
-            "support": {
-                "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.10.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/BenMorel",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-08-10T22:54:19+00:00"
-        },
-        {
-            "name": "castor/bytes",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:castor-labs/php-lib-bytes.git",
-                "reference": "510a569a62a4a0ea65a47921d86777e33024e54a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/bytes/castor-bytes-510a569a62a4a0ea65a47921d86777e33024e54a-zip-8cb644.zip",
-                "reference": "510a569a62a4a0ea65a47921d86777e33024e54a",
-                "shasum": "239e492cfd5d5c7dd37870b49301c1cb13d26c6d"
-            },
-            "require": {
-                "castor/functions": "^0.2.0",
-                "castor/io": "^0.3.0",
-                "php": ">=8.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.49",
-                "phpunit/phpunit": "^10.5",
-                "vimeo/psalm": "^5.22"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Castor\\": "src"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Castor\\": "tests"
-                }
-            },
-            "scripts": {
-                "pr": [
-                    "@fmt",
-                    "@psalm",
-                    "@test"
-                ],
-                "ci": [
-                    "@fmt:check",
-                    "@psalm:gh",
-                    "@test"
-                ],
-                "fmt": [
-                    "php-cs-fixer fix --diff --ansi"
-                ],
-                "fmt:check": [
-                    "php-cs-fixer fix --dry-run --diff --ansi"
-                ],
-                "test": [
-                    "phpunit --colors"
-                ],
-                "test:unit": [
-                    "phpunit --colors --exclude-group=integration --exclude-group=e2e"
-                ],
-                "test:e2e": [
-                    "phpunit --colors --group=e2e"
-                ],
-                "test:integration": [
-                    "phpunit --colors --group=integration"
-                ],
-                "psalm": [
-                    "psalm --no-cache --threads=5 --use-baseline"
-                ],
-                "psalm:gh": [
-                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
-                ],
-                "psalm:fix": [
-                    "psalm --update-baseline"
-                ],
-                "psalm:allow": [
-                    "psalm --set-baseline=psalm-baseline.xml"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matias Navarro Carter",
-                    "email": "mnavarrocarter@gmail.com",
-                    "role": "Lead Maintainer"
-                }
-            ],
-            "description": "A useful value object to work with bytes as a slice of unsigned 8-bit integers",
-            "homepage": "https://castor-labs.github.io/php-lib-std/packages/bytes",
-            "keywords": [
-                "bytes",
-                "castor",
-                "php",
-                "php82",
-                "stdlib",
-                "uint8"
-            ],
-            "support": {
-                "source": "https://github.com/castor-labs/php-lib-bytes/tree/0.2.0",
-                "issues": "https://github.com/castor-labs/php-lib-bytes/issues"
-            },
-            "time": "2024-07-05T20:12:43+00:00"
+            "time": "2024-06-23T14:32:17+00:00"
         },
         {
             "name": "castor/functions",
-            "version": "0.2.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-functions.git",
-                "reference": "ee64f957cacbae447f6ac0fd090a704b7a91e671"
+                "reference": "98f0e07500eaf452da603ec687cf2b8bc923601b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-ee64f957cacbae447f6ac0fd090a704b7a91e671-zip-03f9f1.zip",
-                "reference": "ee64f957cacbae447f6ac0fd090a704b7a91e671",
-                "shasum": "2a3be2f791a15386f65764505dc03415ac9fc936"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor/functions/castor-functions-98f0e07500eaf452da603ec687cf2b8bc923601b-zip-2443fb.zip",
+                "reference": "98f0e07500eaf452da603ec687cf2b8bc923601b",
+                "shasum": "7f4b2aca3d970b4cdf5d87cfa833f11d650afc59"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -320,116 +179,10 @@
                 "stdlib"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-functions/tree/0.2.0",
+                "source": "https://github.com/castor-labs/php-lib-functions/tree/1.0.0",
                 "issues": "https://github.com/castor-labs/php-lib-functions/issues"
             },
-            "time": "2024-07-05T17:02:58+00:00"
-        },
-        {
-            "name": "castor/io",
-            "version": "0.3.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:castor-labs/php-lib-io.git",
-                "reference": "e669d4107862ae257cbcf414dbe7603219274f74"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor/io/castor-io-e669d4107862ae257cbcf414dbe7603219274f74-zip-f49fef.zip",
-                "reference": "e669d4107862ae257cbcf414dbe7603219274f74",
-                "shasum": "6b766037300732d4e0ccc4e43c9378908e7dd638"
-            },
-            "require": {
-                "php": ">=8.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.49",
-                "phpunit/phpunit": "^10.5",
-                "vimeo/psalm": "^5.22"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Castor\\Io\\": "src"
-                },
-                "files": [
-                    "include/functions.php"
-                ]
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Castor\\Io\\": "tests"
-                }
-            },
-            "scripts": {
-                "pr": [
-                    "@fmt",
-                    "@psalm",
-                    "@test"
-                ],
-                "ci": [
-                    "@fmt:check",
-                    "@psalm:gh",
-                    "@test"
-                ],
-                "fmt": [
-                    "php-cs-fixer fix --diff --ansi"
-                ],
-                "fmt:check": [
-                    "php-cs-fixer fix --dry-run --diff --ansi"
-                ],
-                "test": [
-                    "phpunit --colors"
-                ],
-                "test:unit": [
-                    "phpunit --colors --exclude-group=integration --exclude-group=e2e"
-                ],
-                "test:e2e": [
-                    "phpunit --colors --group=e2e"
-                ],
-                "test:integration": [
-                    "phpunit --colors --group=integration"
-                ],
-                "psalm": [
-                    "psalm --no-cache --threads=5 --use-baseline"
-                ],
-                "psalm:gh": [
-                    "psalm --no-cache --threads=5 --long-progress --output-format=github --use-baseline"
-                ],
-                "psalm:fix": [
-                    "psalm --update-baseline"
-                ],
-                "psalm:allow": [
-                    "psalm --set-baseline=psalm-baseline.xml"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matias Navarro Carter",
-                    "email": "mnavarrocarter@gmail.com",
-                    "role": "Lead Maintainer"
-                }
-            ],
-            "description": "Input and output abstractions for PHP applications",
-            "homepage": "https://castor-labs.github.io/php-lib-std/packages/io",
-            "keywords": [
-                "castor",
-                "input",
-                "io",
-                "output",
-                "php",
-                "php82",
-                "stdlib",
-                "streams"
-            ],
-            "support": {
-                "source": "https://github.com/castor-labs/php-lib-io/tree/0.3.0",
-                "issues": "https://github.com/castor-labs/php-lib-io/issues"
-            },
-            "time": "2024-07-05T19:09:24+00:00"
+            "time": "2024-12-31T15:30:07+00:00"
         }
     ],
     "packages-dev": [
@@ -592,6 +345,66 @@
                 }
             ],
             "time": "2024-04-13T18:00:56+00:00"
+        },
+        {
+            "name": "brick/math",
+            "version": "0.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brick/math.git",
+                "reference": "f510c0a40911935b77b86859eb5223d58d660df1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brick/math/zipball/f510c0a40911935b77b86859eb5223d58d660df1",
+                "reference": "f510c0a40911935b77b86859eb5223d58d660df1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "5.16.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Brick\\Math\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Arbitrary-precision arithmetic library",
+            "keywords": [
+                "Arbitrary-precision",
+                "BigInteger",
+                "BigRational",
+                "arithmetic",
+                "bigdecimal",
+                "bignum",
+                "bignumber",
+                "brick",
+                "decimal",
+                "integer",
+                "math",
+                "mathematics",
+                "rational"
+            ],
+            "support": {
+                "issues": "https://github.com/brick/math/issues",
+                "source": "https://github.com/brick/math/tree/0.12.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/BenMorel",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-11-29T23:19:16+00:00"
         },
         {
             "name": "clue/ndjson-react",
@@ -6140,13 +5953,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.3",
         "ext-bcmath": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

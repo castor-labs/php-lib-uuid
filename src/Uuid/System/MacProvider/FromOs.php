@@ -17,8 +17,8 @@ declare(strict_types=1);
 namespace Castor\Uuid\System\MacProvider;
 
 use Castor\Arr;
-use Castor\Bytes;
-use Castor\Encoding\Error;
+use Castor\Encoding\Failure;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\MacProvider;
 
 final class FromOs implements MacProvider
@@ -26,15 +26,15 @@ final class FromOs implements MacProvider
     /**
      * Pattern to match nodes in ifconfig and ipconfig output.
      */
-    private const IFCONFIG_PATTERN = '/[^:]([0-9a-f]{2}([:-])[0-9a-f]{2}(\2[0-9a-f]{2}){4})[^:]/i';
+    private const string IFCONFIG_PATTERN = '/[^:]([0-9a-f]{2}([:-])[0-9a-f]{2}(\2[0-9a-f]{2}){4})[^:]/i';
 
     /**
      * Pattern to match nodes in sysfs stream output.
      */
-    private const SYSFS_PATTERN = '/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/i';
+    private const string SYSFS_PATTERN = '/^([0-9a-f]{2}:){5}[0-9a-f]{2}$/i';
 
     /**
-     * @param null|Bytes[] $cached
+     * @param null|ByteArray[] $cached
      */
     public function __construct(
         private readonly MacProvider $next,
@@ -42,7 +42,7 @@ final class FromOs implements MacProvider
     ) {}
 
     /**
-     * @return Bytes[]
+     * @return ByteArray[]
      */
     public function getMacAddresses(): array
     {
@@ -55,7 +55,7 @@ final class FromOs implements MacProvider
     }
 
     /**
-     * @return Bytes[]
+     * @return ByteArray[]
      *
      * TODO: Adjust to work within docker containers
      */
@@ -84,7 +84,7 @@ final class FromOs implements MacProvider
     /**
      * Returns MAC address from the first system interface via the sysfs interface.
      *
-     * @return Bytes[]
+     * @return ByteArray[]
      */
     private function getFromSysFile(): array
     {
@@ -112,7 +112,7 @@ final class FromOs implements MacProvider
         }
 
         // Map any macs we have
-        return [...Arr\map($macs, fn (string $mac): Bytes => Bytes::fromHex($this->cleanMac($mac)))];
+        return [...Arr\map($macs, fn (string $mac): ByteArray => ByteArray::fromHex($this->cleanMac($mac)))];
     }
 
     /**
@@ -124,11 +124,11 @@ final class FromOs implements MacProvider
      *
      * @codeCoverageIgnore
      *
-     * @return Bytes[]
+     * @return ByteArray[]
      */
     private function getFromConsoleCommand(): array
     {
-        /** @var Bytes[] $macs */
+        /** @var ByteArray[] $macs */
         $macs = [];
 
         $disabledFunctions = \strtolower((string) \ini_get('disable_functions'));
@@ -173,8 +173,8 @@ final class FromOs implements MacProvider
             foreach ($matches[1] as $iface) {
                 if ('00:00:00:00:00:00' !== $iface && '00-00-00-00-00-00' !== $iface) {
                     try {
-                        $macs[] = Bytes::fromHex($this->cleanMac($iface));
-                    } catch (Error) {
+                        $macs[] = ByteArray::fromHex($this->cleanMac($iface));
+                    } catch (Failure) {
                         continue; // Ignore invalid macs
                     }
                 }

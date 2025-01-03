@@ -52,7 +52,7 @@ final class Version7 extends Any implements TimeBased
     /**
      * Creates a UUID Version 7 from the raw bytes.
      */
-    public static function fromBytes(Bytes|string $bytes): self
+    public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
@@ -70,9 +70,10 @@ final class Version7 extends Any implements TimeBased
         $timestamp = $timestamp ?? Unix::fromInstant(Instant::now());
         $randomizer = $randomizer ?? Random::global();
 
-        $bytes = new Bytes(
-            $timestamp->bytes->asString().
-            $randomizer->getBytes(10),
+        $bytes = new ByteArray(16);
+        $bytes->allocate(
+            ...$timestamp->bytes,
+            ...Bytes\unpack($randomizer->getBytes(10)),
         );
 
         // We set the 7th octet to 0111 XXXX (version 7)

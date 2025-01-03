@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Castor\Uuid;
 
-use Castor\Bytes;
 use Castor\Uuid\System\State;
 use Castor\Uuid\System\State\Standard;
 use Castor\Uuid\System\Time\Gregorian;
@@ -48,7 +47,7 @@ final class Version6 extends Any implements TimeBased
     /**
      * Creates a UUID Version 6 from the raw bytes.
      */
-    public static function fromBytes(Bytes|string $bytes): self
+    public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
@@ -67,10 +66,12 @@ final class Version6 extends Any implements TimeBased
     {
         $state = $state ?? Standard::global();
         $time = $state->getTime()->bytes;
-        $node = $state->getNode()->asString();
-        $seq = $state->getClockSequence()->asString();
+        $seq = $state->getClockSequence();
+        $node = $state->getNode();
 
-        $bytes = new Bytes($time->asString().$seq.$node);
+        // $bytes = new Bytes($time->asString().$seq.$node);
+        $bytes = new ByteArray(self::LEN);
+        $bytes->allocate(...$time, ...$seq, ...$node);
 
         // We need to shift 4 bits to constraint this to a 60 bit number, discarding the first 4 bits
         $bytes[0] = (($bytes[0] & 0x0F) << 4) | ($bytes[1] >> 4);
@@ -113,7 +114,7 @@ final class Version6 extends Any implements TimeBased
     /**
      * Returns the node of this UUID.
      */
-    public function getNode(): Bytes
+    public function getNode(): ByteArray
     {
         return $this->getBytes()->slice(10);
     }
@@ -121,10 +122,10 @@ final class Version6 extends Any implements TimeBased
     /**
      * Returns the clock sequence of this UUID.
      */
-    public function getClockSeq(): Bytes
+    public function getClockSeq(): ByteArray
     {
         $bytes = $this->getBytes();
-        $bytes[8] = $bytes[8] & 0x3F; // Unset the variant bits
+        $bytes[8] &= 0x3F; // Unset the variant bits
 
         return $bytes->slice(8, 2);
     }

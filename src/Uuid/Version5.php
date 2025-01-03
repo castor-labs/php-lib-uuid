@@ -43,7 +43,7 @@ final class Version5 extends Any
         return $v5;
     }
 
-    public static function fromBytes(Bytes|string $bytes): self
+    public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
         if (!$uuid instanceof self) {
@@ -55,8 +55,8 @@ final class Version5 extends Any
 
     public static function create(Uuid $namespace, string $name): self
     {
-        $bytes = @\hash(self::HASHING_ALGO, $namespace->getBytes()->asString().$name, true);
-        $bytes = new Bytes(\substr($bytes, 0, self::LEN));
+        $bytes = @\hash(self::HASHING_ALGO, $namespace->getBytes()->toRaw().$name, true);
+        $bytes = ByteArray::fromRaw(\substr($bytes, 0, self::LEN));
 
         // We set the 7th octet to 0101 XXXX (version 5)
         $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x50; // // AND 0000 1111 OR 0101 0000

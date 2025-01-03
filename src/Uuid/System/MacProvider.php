@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Castor\Uuid\System;
 
-use Castor\Bytes;
+use Castor\Uuid\ByteArray;
 
 interface MacProvider
 {
@@ -28,7 +28,7 @@ interface MacProvider
      * In case is possible for the implementation not to be able to find any MAC, you must compose a
      * MacProvider\RandUniMultiCast as a fallback.
      *
-     * @return Bytes[]
+     * @return ByteArray[]
      */
     public function getMacAddresses(): array;
 }

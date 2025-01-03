@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace Castor\Uuid\System\State;
 
 use Brick\DateTime\Clock;
-use Castor\Bytes;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\MacProvider;
 use Castor\Uuid\System\MacProvider\Fallback;
 use Castor\Uuid\System\MacProvider\FromOs;
@@ -30,18 +30,18 @@ final class Standard implements State
 {
     private static ?Standard $global = null;
 
-    private Bytes $lastTimestamp;
-    private Bytes $clockSequence;
-    private Bytes $macAddress;
+    private ByteArray $lastTimestamp;
+    private ByteArray $clockSequence;
+    private ByteArray $macAddress;
 
     public function __construct(
         private readonly Clock $clock,
         private readonly Randomizer $random,
         private readonly MacProvider $macProvider,
     ) {
-        $this->macAddress = new Bytes('');
-        $this->clockSequence = new Bytes('');
-        $this->lastTimestamp = new Bytes('');
+        $this->macAddress = new ByteArray(0);
+        $this->clockSequence = new ByteArray(0);
+        $this->lastTimestamp = new ByteArray(0);
     }
 
     public static function global(): Standard
@@ -58,9 +58,9 @@ final class Standard implements State
         return self::$global;
     }
 
-    public function getClockSequence(): Bytes
+    public function getClockSequence(): ByteArray
     {
-        if (0 === $this->clockSequence->len()) {
+        if (0 === $this->clockSequence->count()) {
             $this->clockSequence = $this->generateClockSequence();
         }
 
@@ -80,9 +80,9 @@ final class Standard implements State
         return $gregorianTime;
     }
 
-    public function getNode(): Bytes
+    public function getNode(): ByteArray
     {
-        if (0 === $this->macAddress->len()) {
+        if (0 === $this->macAddress->count()) {
             $macs = $this->macProvider->getMacAddresses();
             $this->macAddress = $macs[0];
         }
@@ -90,8 +90,8 @@ final class Standard implements State
         return $this->macAddress;
     }
 
-    private function generateClockSequence(): Bytes
+    private function generateClockSequence(): ByteArray
     {
-        return new Bytes(\pack('n*', $this->random->getBytes(2)));
+        return ByteArray::fromRaw($this->random->getBytes(2));
     }
 }

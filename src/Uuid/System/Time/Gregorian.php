@@ -18,10 +18,8 @@ namespace Castor\Uuid\System\Time;
 
 use Brick\DateTime\Clock;
 use Brick\DateTime\Instant;
-use Brick\Math\BigInteger;
-use Brick\Math\RoundingMode;
-use Castor\Bytes;
-use Castor\Encoding\Error;
+use Castor\Encoding\Failure;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\Time;
 
 /**
@@ -41,34 +39,38 @@ readonly class Gregorian implements Time
     private const string SECOND_INTERVALS = '10000000';
 
     public function __construct(
-        public Bytes $bytes,
+        public ByteArray $bytes,
     ) {
-        if ($this->bytes->len() !== 8) {
+        if ($this->bytes->count() !== 8) {
             throw new \InvalidArgumentException('Gregorian time must be 64 bits long');
         }
     }
 
-    public static function fromTimestamp(BigInteger $timestamp): self
+    public static function fromTimestamp(string $timestamp): self
     {
-        $hex = \str_pad($timestamp->toBase(16), 16, '0', STR_PAD_LEFT);
+        if (!\is_numeric($timestamp)) {
+            throw new \InvalidArgumentException('Timestamp must be a valid numeric string');
+        }
+
+        $hex = \str_pad(\base_convert($timestamp, 10, 16), 16, '0', STR_PAD_LEFT);
 
         try {
-            return new self(Bytes::fromHex($hex));
-        } catch (Error $e) {
+            return new self(ByteArray::fromHex($hex));
+        } catch (Failure $e) {
             throw new \RuntimeException('Impossible error', previous: $e);
         }
     }
 
     public static function fromInstant(Instant $instant): self
     {
-        $epochSeconds = BigInteger::of($instant->getEpochSecond());
-        $nanoSeconds = BigInteger::of($instant->getNano());
+        $epochSeconds = (string) $instant->getEpochSecond();
+        $nanoSeconds = (string) $instant->getNano();
 
-        $secondsTicks = $epochSeconds->multipliedBy(self::SECOND_INTERVALS);
-        $nanoTicks = $nanoSeconds->dividedBy(100, RoundingMode::DOWN);
-        $ticksSinceEpoch = $secondsTicks->plus($nanoTicks);
+        $secondsTicks = \bcmul($epochSeconds, self::SECOND_INTERVALS);
+        $nanoTicks = \bcdiv($nanoSeconds, '100');
+        $ticksSinceEpoch = \bcadd($secondsTicks, $nanoTicks);
 
-        return self::fromTimestamp($ticksSinceEpoch->plus(self::GREGORIAN_TO_UNIX_OFFSET));
+        return self::fromTimestamp(\bcadd($ticksSinceEpoch, self::GREGORIAN_TO_UNIX_OFFSET, 0));
     }
 
     public static function now(Clock $clock): self
@@ -78,19 +80,19 @@ readonly class Gregorian implements Time
 
     public function getInstant(): Instant
     {
-        $ticksSinceEpoch = $this->getTimestamp()->minus(self::GREGORIAN_TO_UNIX_OFFSET); // Subtract gregorian offset
+        $ticksSinceEpoch = \bcsub($this->getTimestamp(), self::GREGORIAN_TO_UNIX_OFFSET); // Subtract gregorian offset
 
-        $epochSeconds = $ticksSinceEpoch->dividedBy(self::SECOND_INTERVALS, RoundingMode::DOWN);
-        $nanoSeconds = $ticksSinceEpoch->remainder(self::SECOND_INTERVALS)->multipliedBy(100);
+        $epochSeconds = \bcdiv($ticksSinceEpoch, self::SECOND_INTERVALS);
+        $nanoSeconds = \bcmul(\bcmod($ticksSinceEpoch, self::SECOND_INTERVALS), '100');
 
-        return Instant::of($epochSeconds->toInt(), $nanoSeconds->toInt());
+        return Instant::of((int) $epochSeconds, (int) $nanoSeconds);
     }
 
     /**
      * Returns the number of 100 nanosecond intervals since 1582-10-15 00:00:00 UTC as a numeric string.
      */
-    public function getTimestamp(): BigInteger
+    public function getTimestamp(): string
     {
-        return BigInteger::fromBase($this->bytes->toHex(), 16);
+        return \base_convert($this->bytes->toHex(), 16, 10);
     }
 }

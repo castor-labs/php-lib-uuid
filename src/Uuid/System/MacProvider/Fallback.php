@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Castor\Uuid\System\MacProvider;
 
 use Castor\Bytes;
+use Castor\Uuid\ByteArray;
 use Castor\Uuid\System\MacProvider;
 use Random\Randomizer;
 
@@ -34,11 +35,11 @@ final readonly class Fallback implements MacProvider
     ) {}
 
     /**
-     * @return Bytes[]
+     * @return ByteArray[]
      */
     public function getMacAddresses(): array
     {
-        $b = new Bytes($this->random->getBytes(6));
+        $b = ByteArray::fromRaw($this->random->getBytes(6));
         $b[0] = $b[0] & 0xFE | 0x01;
 
         return [$b];
