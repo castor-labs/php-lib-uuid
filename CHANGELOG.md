@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/castor-labs/php-lib-uuid/compare/2.0.0...3.0.0) (2025-01-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed Brick\Math\BigNumber from Time classes
+
+### Features
+
+* Performance improvements ([#55](https://github.com/castor-labs/php-lib-uuid/issues/55)) ([3273897](https://github.com/castor-labs/php-lib-uuid/commit/3273897ff4bbb2866836d9892ccbf899d03ae19c))
+
 ## [2.0.0](https://github.com/castor-labs/php-lib-uuid/compare/1.0.0...2.0.0) (2024-07-17)
 
 
