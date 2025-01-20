@@ -30,8 +30,9 @@ echo $parsed instanceof Uuid\Version6; // Prints: false
 echo $parsed->equals($uuid); // Prints: true
 ```
 
-The same API is available for `Uuid\Version3` and `Uuid\Version5`.
+The same API is available for `Uuid\Version3`, `Uuid\Version5`, `Uuid\Version6` and `Uuid\Version7`.
 
-`Uuid\Version1` and `Uuid\Version6` provides an extended API that can return the different components that form it.
+`Uuid\Version1`, `Uuid\Version6` and `Uuid\Version7` implement `Uuid\TimeBased` which provides an extended API that can
+return the time component that form it.
 
 `Uuid\Version2` will not be implemented.

@@ -8,8 +8,8 @@ on:
     branches: ["main"]
 
 jobs:
-  php-checks:
-    name: PHP Checks
+  checks:
+    name: Quality Checks
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Code"
@@ -21,19 +21,64 @@ jobs:
           php-version: "8.3"
           ini-values: memory_limit=-1
           tools: composer:v2
+      - name: "Determine Composer Cache Dir"
+        id: composer-cache
+        run: |
+          echo "dir=$(composer -q config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: "Cache Dependencies"
         uses: "actions/cache@v4"
         with:
-          path: |
-            ~/.composer/cache
-          key: "composer-cache"
-          restore-keys: "composer-cache"
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: "composer-8.3-lock"
+          restore-keys: "composer-8.3-lock"
       - name: "Install Dependencies"
-        run: "composer install --ansi --no-interaction --no-progress --no-suggest"
-      - name: "Run Continuous Integration"
-        run: composer ci
+        run: "composer install --ansi --no-interaction --no-progress"
+      - name: "Check code style"
+        run: composer fmt:check
+      - name: "Check Types"
+        run: composer psalm:gh
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: ["checks"]
+    strategy:
+      matrix:
+        php-version: ["8.3", "8.4"]
+        deps: ["lock", "highest", "lowest"]
+    steps:
+      - name: "Checkout Code"
+        uses: "actions/checkout@v4"
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          coverage: "xdebug"
+          php-version: ${{ matrix.php-version }}
+          ini-values: memory_limit=-1
+          tools: composer:v2
+      - name: "Determine Composer Cache Dir"
+        id: composer-cache
+        run: |
+          echo "dir=$(composer -q config cache-files-dir)" >> $GITHUB_OUTPUT
+      - name: "Cache Dependencies"
+        uses: "actions/cache@v4"
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: "composer-${{ matrix.php-version }}-${{ matrix.deps }}"
+          restore-keys: "composer-${{ matrix.php-version }}-${{ matrix.deps }}"
+      - name: "Install Dependencies"
+        if: ${{ matrix.deps == 'lock'}}
+        run: "composer install --ignore-platform-reqs --ansi --no-interaction --no-progress"
+      - name: "Install Highest Dependencies"
+        if: ${{ matrix.deps == 'highest'}}
+        run: "composer update --ignore-platform-reqs --ansi --no-interaction --no-progress"
+      - name: "Install Lowest Dependencies"
+        if: ${{ matrix.deps == 'lowest'}}
+        run: "composer update --ignore-platform-reqs --prefer-lowest --ansi --no-interaction --no-progress"
+      - name: "Run Test Suite"
+        run: composer test
       - name: "Upload Coverage Report"
         uses: actions/upload-artifact@v4
         with:
-          name: "coverage-report"
+          name: "coverage-report-${{ matrix.php-version }}-${{ matrix.deps }}"
           path: .dev/coverage

@@ -1,6 +1,7 @@
 <?php
 
 use PhpCsFixer\Fixer\FunctionNotation\NativeFunctionInvocationFixer;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 $header = <<<EOF
 @project Castor UUID
@@ -15,6 +16,7 @@ file that was distributed with this source code.
 EOF;
 
 return (new PhpCsFixer\Config())
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setCacheFile('/tmp/php-cs-fixer')
     ->setRiskyAllowed(true)
     ->setRules([
