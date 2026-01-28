@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout Code"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v6"
       - name: "Install PHP"
         uses: "shivammathur/setup-php@v2"
         with:
@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "dir=$(composer -q config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: "Cache Dependencies"
-        uses: "actions/cache@v4"
+        uses: "actions/cache@v5"
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: "composer-8.3-lock"
@@ -50,7 +50,7 @@ jobs:
         deps: ["lock", "highest", "lowest"]
     steps:
       - name: "Checkout Code"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v6"
       - name: "Install PHP"
         uses: "shivammathur/setup-php@v2"
         with:
@@ -63,7 +63,7 @@ jobs:
         run: |
           echo "dir=$(composer -q config cache-files-dir)" >> $GITHUB_OUTPUT
       - name: "Cache Dependencies"
-        uses: "actions/cache@v4"
+        uses: "actions/cache@v5"
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: "composer-${{ matrix.php-version }}-${{ matrix.deps }}"
@@ -80,7 +80,7 @@ jobs:
       - name: "Run Test Suite"
         run: composer test
       - name: "Upload Coverage Report"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: "coverage-report-${{ matrix.php-version }}-${{ matrix.deps }}"
           path: .dev/coverage
