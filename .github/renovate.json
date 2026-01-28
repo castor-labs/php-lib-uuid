@@ -11,6 +11,10 @@
     "automerge": true,
     "automergeStrategy": "squash",
     "automergeType": "pr",
+    "dependencyDashboardApproval": false,
+    "composer": {
+        "registryUrls": ["https://castor-labs.github.io/php-packages"]
+    },
     "lockFileMaintenance": {
         "enabled": true,
         "schedule": "before 11am every day"
@@ -48,6 +52,12 @@
             "enabled": true,
             "groupName": "Composer runtime dependencies",
             "groupSlug": "composer-runtime"
+        },
+        {
+            "matchManagers": ["composer"],
+            "matchPackagePatterns": ["^castor/"],
+            "rangeStrategy": "update-lockfile",
+            "dependencyDashboardApproval": true
         },
         {
             "matchManagers": ["composer"],

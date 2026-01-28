@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid;
 
 use Brick\DateTime\Instant;
@@ -31,7 +19,7 @@ class Version7Test extends TestCase
     {
         $v7 = Version7::generate(
             Unix::fromInstant(Instant::of(1721172188, 86590000)),
-            new Randomizer(new Mt19937(100))
+            new Randomizer(new Mt19937(100)),
         );
 
         $this->assertSame('0190bddb-5bb6-7896-9c8b-18dbd0ab4337', $v7->toString());
@@ -77,7 +65,7 @@ class Version7Test extends TestCase
         $this->assertSame(
             '7c63c60f49f177088cffdf53000b9b68',
             $hash,
-            'Does not match hash of serialized data: '.$serialized
+            'Does not match hash of serialized data: ' . $serialized,
         );
         $this->assertTrue($v7->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"0190bddb-5bb6-7896-9c8b-18dbd0ab4337"}', $json);

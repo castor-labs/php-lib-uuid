@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid;
 
 use Castor\Encoding\Failure;
@@ -91,7 +79,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             try {
                 $this->bytes = ByteArray::fromHex(Str\replace($this->string, '-', ''));
             } catch (Failure $e) {
-                throw new \LogicException('Impossible error', previous : $e);
+                throw new \LogicException('Impossible error', previous: $e);
             }
         }
 
@@ -113,7 +101,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
 
     public function toUrn(): string
     {
-        return self::URN_NS.$this->toString();
+        return self::URN_NS . $this->toString();
     }
 
     /**
@@ -145,7 +133,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             0x50 => new Version5($bytes), // 0101 0000
             0x60 => new Version6($bytes), // 0110 0000
             0x70 => new Version7($bytes), // 0111 0000
-            default => new Any($bytes)
+            default => new Any($bytes),
         };
     }
 
@@ -197,7 +185,7 @@ class Any implements Uuid, \Stringable, \JsonSerializable
             '5' => new Version5(new ByteArray(0), $uuid),
             '6' => new Version6(new ByteArray(0), $uuid),
             '7' => new Version7(new ByteArray(0), $uuid),
-            default => new Any(new ByteArray(0), $uuid)
+            default => new Any(new ByteArray(0), $uuid),
         };
     }
 }

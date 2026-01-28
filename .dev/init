@@ -3,5 +3,6 @@
 set -e
 
 mkdir -p .dev/coverage
+mkdir -p .dev/mago
 
 composer install
