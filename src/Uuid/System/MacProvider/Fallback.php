@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid\System\MacProvider;
 
 use Castor\Bytes;
@@ -31,7 +19,7 @@ use Random\Randomizer;
 final readonly class Fallback implements MacProvider
 {
     public function __construct(
-        private Randomizer $random
+        private Randomizer $random,
     ) {}
 
     /**
@@ -40,7 +28,7 @@ final readonly class Fallback implements MacProvider
     public function getMacAddresses(): array
     {
         $b = ByteArray::fromRaw($this->random->getBytes(6));
-        $b[0] = $b[0] & 0xFE | 0x01;
+        $b[0] = ($b[0] & 0xFE) | 0x01;
 
         return [$b];
     }

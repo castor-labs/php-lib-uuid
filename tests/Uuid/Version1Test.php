@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid;
 
 use Castor\Uuid\System\Time\Gregorian;
@@ -29,7 +17,7 @@ class Version1Test extends TestCase
         $state = new System\State\Fixed(
             Gregorian::fromTimestamp('139127190012012330'),
             ByteArray::fromHex('0001'),
-            ByteArray::fromHex('00b0d063c226')
+            ByteArray::fromHex('00b0d063c226'),
         );
 
         $v1 = Version1::generate($state);
@@ -48,7 +36,7 @@ class Version1Test extends TestCase
         $state = new System\State\Fixed(
             new Gregorian(ByteArray::fromHex('01ee4782395c14c4')),
             ByteArray::fromHex('17ae'),
-            ByteArray::fromHex('0242ac1b0004')
+            ByteArray::fromHex('0242ac1b0004'),
         );
 
         $v1 = Version1::generate($state);
@@ -94,7 +82,7 @@ class Version1Test extends TestCase
         $this->assertSame(
             'caba92f9403e49b428d6d7eec655bfbf',
             $hash,
-            'Does not match hash of serialized data: '.$serialized
+            'Does not match hash of serialized data: ' . $serialized,
         );
         $this->assertTrue($v1->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"5102999c-4771-11ee-be56-0242ac120002"}', $json);

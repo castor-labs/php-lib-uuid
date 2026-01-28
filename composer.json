@@ -46,36 +46,31 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^10.5",
-    "friendsofphp/php-cs-fixer": "^3.68",
-    "vimeo/psalm": "^5.26",
+    "carthage-software/mago": "^1.2",
     "ergebnis/phpunit-slow-test-detector": "^2.10",
     "ramsey/uuid": "^4.7",
     "phpbench/phpbench": "^1.3"
   },
   "scripts": {
-    "pr": [
-      "@fmt",
-      "@psalm",
-      "@test"
-    ],
-    "ci": [
-      "@fmt:check",
-      "@psalm:gh",
-      "@test"
-    ],
-    "fmt": "php-cs-fixer fix --diff --ansi",
-    "fmt:check": "php-cs-fixer fix --dry-run --diff --show-progress=none --ansi",
-    "test": [
-      "phpunit --colors"
-    ],
+    "pr": ["@mago:fmt", "@mago:lint", "@mago:analyse", "@test"],
+    "ci": ["@mago:fmt:check", "@mago:lint", "@mago:analyse", "@test"],
+    "mago": ["@mago:fmt", "@mago:lint", "@mago:analyse"],
+    "mago:fmt": "mago fmt",
+    "mago:fmt:check": "mago fmt --dry-run",
+    "mago:analyse": "mago analyze --sort --verify-baseline",
+    "mago:analyse:fix": "mago analyze --sort --generate-baseline --backup-baseline",
+    "mago:lint": "mago lint --sort --verify-baseline",
+    "mago:lint:fix": "mago lint --sort --generate-baseline --backup-baseline",
+    "test": "phpunit --colors",
     "test:unit": "phpunit --colors --exclude-group=integration --exclude-group=e2e",
     "test:e2e": "phpunit --colors --group=e2e",
     "test:integration": "phpunit --colors --group=integration",
     "bench": "phpbench run --report=default --output=html tests/Benchmark",
-    "profile": "phpbench xdebug:profile tests/Benchmark --progress=none",
-    "psalm": "psalm --no-cache --threads=5",
-    "psalm:gh": "psalm --no-cache --threads=5 --long-progress --output-format=github",
-    "psalm:fix": "psalm --update-baseline",
-    "psalm:allow": "psalm --set-baseline=psalm-baseline.xml"
+    "profile": "phpbench xdebug:profile tests/Benchmark --progress=none"
+  },
+  "config": {
+    "allow-plugins": {
+      "carthage-software/mago": true
+    }
   }
 }

@@ -1,0 +1,169 @@
+variant = "loose"
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "docblock-type-mismatch"
+message = "Docblock return type `mixed` is incompatible with native return type `string`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `castor\uuid\any::__serialize`: expected `array{0: array<int(0), int(255)>, 1: string}`, but found `list{list<int<0, 255>>, string}`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `castor\uuid\bytearray::create`: expected `array<int, int<0, 255>>`, but provided type `array<array-key, int<0, 255>>` is less specific.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/Fallback.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "possibly-false-argument"
+message = "Argument #1 of function `trim` is possibly `false`, but parameter type `string` does not accept it."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "reference-to-undefined-variable"
+message = "Reference created from a previously undefined variable `$matches`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `castor\uuid\system\time\gregorian::gettimestamp`: expected `numeric-string`, but found `string`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `castor\uuid\system\time\unix::gettimestamp`: expected `numeric-string`, but found `string`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version1.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 4
+
+[[issues]]
+file = "src/Uuid/Version3.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 2
+
+[[issues]]
+file = "src/Uuid/Version4.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 2
+
+[[issues]]
+file = "src/Uuid/Version5.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 2
+
+[[issues]]
+file = "src/Uuid/Version6.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 15
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "invalid-array-access-assignment-value"
+message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+count = 2
+
+[[issues]]
+file = "tests/Uuid/AnyTest.php"
+code = "invalid-type-cast"
+message = 'Cannot cast object of type `Castor\Uuid` to `string` because it does not implement `Stringable`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/AnyTest.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/AnyTest.php"
+code = "possibly-invalid-argument"
+message = '''Possible argument type mismatch for argument #1 of `phpunit\framework\assert::assertinstanceof`: expected `class-string<'ExpectedType.phpunit\framework\assert::assertinstanceof() extends object>`, but possibly received `string`.'''
+count = 1
+
+[[issues]]
+file = "tests/Uuid/FunctionsTest.php"
+code = "possibly-invalid-argument"
+message = '''Possible argument type mismatch for argument #1 of `phpunit\framework\assert::assertinstanceof`: expected `class-string<'ExpectedType.phpunit\framework\assert::assertinstanceof() extends object>`, but possibly received `string`.'''
+count = 1
+
+[[issues]]
+file = "tests/Uuid/System/Time/GregorianTest.php"
+code = "redundant-cast"
+message = "Redundant cast to `(string)`: the expression already has this type."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version1Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version1Test.php"
+code = "redundant-cast"
+message = "Redundant cast to `(string)`: the expression already has this type."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version3Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version4Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version5Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version6Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version6Test.php"
+code = "redundant-cast"
+message = "Redundant cast to `(string)`: the expression already has this type."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version7Test.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version7Test.php"
+code = "redundant-cast"
+message = "Redundant cast to `(string)`: the expression already has this type."
+count = 1

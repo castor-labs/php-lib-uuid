@@ -1,0 +1,229 @@
+variant = "loose"
+
+[[issues]]
+file = "include/functions.php"
+code = "function-name"
+message = "Function name `fromBytes` should be in snake case."
+count = 1
+
+[[issues]]
+file = "include/functions.php"
+code = "function-name"
+message = "Function name `isValid` should be in snake case."
+count = 1
+
+[[issues]]
+file = "include/functions.php"
+code = "halstead"
+message = "Function has a high halstead difficulty"
+count = 2
+
+[[issues]]
+file = "include/functions.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "include/functions.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "identity-comparison"
+message = "Use identity comparison `===` instead of equality comparison `==`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/Fallback.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "cyclomatic-complexity"
+message = "Class has high complexity."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "halstead"
+message = "Method has a high halstead difficulty"
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "prefer-arrow-function"
+message = "This closure can be simplified to a more concise arrow function."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "prefer-early-continue"
+message = "Consider using early continue pattern to reduce nesting."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "tagged-todo"
+message = "TODO should be tagged with (@username) or (#issue)."
+count = 2
+
+[[issues]]
+file = "src/Uuid/System/State.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/State/Standard.php"
+code = "no-else-clause"
+message = "Avoid `else` clauses."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version1.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version1.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version1.php"
+code = "use-compound-assignment"
+message = "Use a compound assignment for clarity and performance."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version3.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version3.php"
+code = "no-error-control-operator"
+message = "Unsafe use of error control operator `@`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version3.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version4.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version4.php"
+code = "use-compound-assignment"
+message = "Use a compound assignment for clarity and performance."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version5.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version5.php"
+code = "no-error-control-operator"
+message = "Unsafe use of error control operator `@`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version5.php"
+code = "no-redundant-use"
+message = "Unused import: `Bytes`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version6.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version6.php"
+code = "use-compound-assignment"
+message = "Use a compound assignment for clarity and performance."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "use-compound-assignment"
+message = "Use a compound assignment for clarity and performance."
+count = 2
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "too-many-methods"
+message = "Class has too many methods."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version1Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version3Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version4Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version5Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version6Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1
+
+[[issues]]
+file = "tests/Uuid/Version7Test.php"
+code = "no-boolean-flag-parameter"
+message = "Avoid boolean flag parameters."
+count = 1

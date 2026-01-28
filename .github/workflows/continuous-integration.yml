@@ -34,9 +34,11 @@ jobs:
       - name: "Install Dependencies"
         run: "composer install --ansi --no-interaction --no-progress"
       - name: "Check code style"
-        run: composer fmt:check
-      - name: "Check Types"
-        run: composer psalm:gh
+        run: composer mago:fmt:check
+      - name: "Lint"
+        run: composer mago:lint
+      - name: "Analyse"
+        run: composer mago:analyse
 
   test:
     name: Test

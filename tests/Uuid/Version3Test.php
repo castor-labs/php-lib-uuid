@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid;
 
 use PHPUnit\Framework\Attributes\Test;
@@ -57,7 +45,7 @@ class Version3Test extends TestCase
         $this->assertSame(
             'e7c111909fae531b94cd9a64ab8c6355',
             $hash,
-            'Does not match hash of serialized data: '.$serialized
+            'Does not match hash of serialized data: ' . $serialized,
         );
         $this->assertTrue($v3->equals(\unserialize($serialized)));
         $this->assertSame('{"uuid":"a0f6aad0-cdf5-3ddc-a2ac-0bddb3249309"}', $json);

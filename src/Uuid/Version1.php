@@ -2,18 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * @project Castor UUID
- * @link https://github.com/castor-labs/php-lib-uuid
- * @package castor/uuid
- * @author Matias Navarro-Carter mnavarrocarter@gmail.com
- * @license MIT
- * @copyright 2024 CastorLabs Ltd
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Castor\Uuid;
 
 use Castor\Bytes;
@@ -66,24 +54,13 @@ final class Version1 extends Any implements TimeBased
         $seq = $state->getClockSequence();
 
         $bytes = new ByteArray(self::LEN);
-        $bytes->allocate(
-            $ts[4],
-            $ts[5],
-            $ts[6],
-            $ts[7],
-            $ts[2],
-            $ts[3],
-            $ts[0],
-            $ts[1],
-            ...$seq,
-            ...$node
-        );
+        $bytes->allocate($ts[4], $ts[5], $ts[6], $ts[7], $ts[2], $ts[3], $ts[0], $ts[1], ...$seq, ...$node);
 
         // We set the 7th octet to 0001 XXXX (version 1)
-        $bytes[self::VEB] = $bytes[self::VEB] & 0x0F | 0x10; // AND 0000 1111 OR 0001 0000
+        $bytes[self::VEB] = ($bytes[self::VEB] & 0x0F) | 0x10; // AND 0000 1111 OR 0001 0000
 
         // Set buts 6-7 to 10
-        $bytes[self::VAB] = $bytes[self::VAB] & 0x3F | 0x80;
+        $bytes[self::VAB] = ($bytes[self::VAB] & 0x3F) | 0x80;
 
         return new self($bytes);
     }
