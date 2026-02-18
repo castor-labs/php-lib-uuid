@@ -247,16 +247,16 @@
         },
         {
             "name": "carthage-software/mago",
-            "version": "1.5.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/carthage-software/mago.git",
-                "reference": "0ce3f5d230f8ae330617b04299700347d3ca6806"
+                "reference": "b50e6aa3e4e6abe144101720deddbf456cb7e0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/carthage-software/mago/zipball/0ce3f5d230f8ae330617b04299700347d3ca6806",
-                "reference": "0ce3f5d230f8ae330617b04299700347d3ca6806",
+                "url": "https://api.github.com/repos/carthage-software/mago/zipball/b50e6aa3e4e6abe144101720deddbf456cb7e0a1",
+                "reference": "b50e6aa3e4e6abe144101720deddbf456cb7e0a1",
                 "shasum": ""
             },
             "require": {
@@ -274,6 +274,9 @@
                 "class": "Mago\\MagoPlugin"
             },
             "autoload": {
+                "files": [
+                    "composer/functions.php"
+                ],
                 "psr-4": {
                     "Mago\\": "composer/"
                 }
@@ -294,7 +297,7 @@
             ],
             "support": {
                 "issues": "https://github.com/carthage-software/mago/issues",
-                "source": "https://github.com/carthage-software/mago/tree/1.5.0"
+                "source": "https://github.com/carthage-software/mago/tree/1.9.1"
             },
             "funding": [
                 {
@@ -302,7 +305,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-04T21:37:39+00:00"
+            "time": "2026-02-18T03:12:50+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -460,26 +463,26 @@
         },
         {
             "name": "ergebnis/phpunit-slow-test-detector",
-            "version": "2.20.0",
+            "version": "2.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/phpunit-slow-test-detector.git",
-                "reference": "36225d36071cb0e7aae3e05a8baa82ace28e1094"
+                "reference": "f12c69affdd4295badc4465065663059b1a26f4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/phpunit-slow-test-detector/zipball/36225d36071cb0e7aae3e05a8baa82ace28e1094",
-                "reference": "36225d36071cb0e7aae3e05a8baa82ace28e1094",
+                "url": "https://api.github.com/repos/ergebnis/phpunit-slow-test-detector/zipball/f12c69affdd4295badc4465065663059b1a26f4a",
+                "reference": "f12c69affdd4295badc4465065663059b1a26f4a",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "phpunit/phpunit": "^6.5.0 || ^7.5.0 || ^8.5.19 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0"
+                "phpunit/phpunit": "^6.5.0 || ^7.5.0 || ^8.5.19 || ^9.0.0 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.47.0",
-                "ergebnis/license": "^2.6.0",
-                "ergebnis/php-cs-fixer-config": "^6.52.0",
+                "ergebnis/composer-normalize": "^2.49.0",
+                "ergebnis/license": "^2.7.0",
+                "ergebnis/php-cs-fixer-config": "^6.59.0",
                 "fakerphp/faker": "~1.20.0",
                 "phpstan/extension-installer": "^1.4.3",
                 "phpstan/phpstan": "^1.12.11",
@@ -529,7 +532,7 @@
                 "security": "https://github.com/ergebnis/phpunit-slow-test-detector/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/phpunit-slow-test-detector"
             },
-            "time": "2025-08-19T07:48:39+00:00"
+            "time": "2026-02-13T10:00:05+00:00"
         },
         {
             "name": "myclabs/deep-copy",
