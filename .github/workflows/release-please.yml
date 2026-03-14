@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Manage Release
     steps:
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         name: "Call Mr Piper"
         id: generate-token
         with:
