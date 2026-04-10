@@ -32,7 +32,7 @@ jobs:
         with:
           cmd: jq -c .keywords composer.json
       - name: Update Details
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.ORG_GITHUB_TOKEN }}
           script: |
