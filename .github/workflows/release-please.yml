@@ -26,7 +26,7 @@ jobs:
           app-id: 938088
           private-key: ${{ secrets.MR_PIPER_APP_PRIVATE_KEY }}
 
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         name: "Run Release Tasks"
         id: release
         with:
