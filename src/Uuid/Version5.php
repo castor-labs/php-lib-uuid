@@ -21,6 +21,7 @@ final class Version5 extends Any
     /**
      * @throws ParsingError
      */
+    #[\Override]
     public static function parse(string $uuid, bool $lazy = true): self
     {
         $v5 = parent::parse($uuid, $lazy);
@@ -31,6 +32,7 @@ final class Version5 extends Any
         return $v5;
     }
 
+    #[\Override]
     public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);

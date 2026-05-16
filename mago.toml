@@ -6,7 +6,7 @@ php-version = "8.3.0"
 workspace = "."
 paths = ["src", "tests", "include"]
 includes = ["vendor"]
-excludes = [".dev", ".github"]
+excludes = [".dev", ".github", "vendor"]
 
 [formatter]
 print-width = 120

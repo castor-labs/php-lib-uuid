@@ -22,6 +22,7 @@ final class Version6 extends Any implements TimeBased
      *
      * @throws ParsingError
      */
+    #[\Override]
     public static function parse(string $uuid, bool $lazy = true): self
     {
         $v6 = parent::parse($uuid, $lazy);
@@ -35,6 +36,7 @@ final class Version6 extends Any implements TimeBased
     /**
      * Creates a UUID Version 6 from the raw bytes.
      */
+    #[\Override]
     public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
@@ -52,7 +54,7 @@ final class Version6 extends Any implements TimeBased
      */
     public static function generate(?State $state = null): self
     {
-        $state = $state ?? Standard::global();
+        $state ??= Standard::global();
         $time = $state->getTime()->bytes;
         $seq = $state->getClockSequence();
         $node = $state->getNode();

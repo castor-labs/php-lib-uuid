@@ -9,19 +9,163 @@ count = 1
 [[issues]]
 file = "src/Uuid/Any.php"
 code = "invalid-return-statement"
-message = 'Invalid return type for function `castor\uuid\any::__serialize`: expected `array{0: array<int(0), int(255)>, 1: string}`, but found `list{list<int<0, 255>>, string}`.'
+message = 'Invalid return type for function `Castor\Uuid\Any::__serialize`: expected `array{0: array<int(0), int(255)>, 1: string}`, but found `list{list<int<0, 255>>, string}`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\Any::lazy`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\ByteArray::fromHex`: expected `string`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 3
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "no-valid-catch-type-found"
+message = "None of the types specified in the `catch` declaration are valid catchable exceptions."
+count = 2
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "non-existent-catch-type"
+message = 'Attempting to catch an undefined class or interface: `Castor\Encoding\Failure`.'
+count = 2
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "non-existent-function"
+message = 'Function `Castor\RegExp\matches` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "non-existent-function"
+message = 'Function `Castor\Str\replace` could not be found.'
+count = 2
+
+[[issues]]
+file = "src/Uuid/Any.php"
+code = "non-existent-function"
+message = 'Function `Castor\Str\toLower` could not be found.'
 count = 1
 
 [[issues]]
 file = "src/Uuid/ByteArray.php"
-code = "less-specific-argument"
-message = 'Argument type mismatch for argument #1 of `castor\uuid\bytearray::create`: expected `array<int, int<0, 255>>`, but provided type `array<array-key, int<0, 255>>` is less specific.'
+code = "invalid-array-index"
+message = 'Invalid index type `array-key` used for array access on `$this(Castor\Uuid\ByteArray)`.'
 count = 1
 
 [[issues]]
-file = "src/Uuid/System/MacProvider/Fallback.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+file = "src/Uuid/ByteArray.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\ByteArray::create`: expected `array<int, int<0, 255>>`, but found `mixed`.'
+count = 2
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\ByteArray::fromRaw`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Castor\Uuid\ByteArray::toHex`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Castor\Uuid\ByteArray::toRaw`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "non-existent-function"
+message = 'Function `Castor\Arr\slice` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "non-existent-function"
+message = 'Function `Castor\Bytes\pack` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "non-existent-function"
+message = 'Function `Castor\Bytes\unpack` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "non-existent-function"
+message = 'Function `Castor\Encoding\Hex\decode` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/ByteArray.php"
+code = "non-existent-function"
+message = 'Function `Castor\Encoding\Hex\encode` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "less-specific-nested-return-statement"
+message = '''Returned type `list<mixed>` is less specific than the declared return type `array<array-key, Castor\Uuid\ByteArray>` for function `Castor\Uuid\System\MacProvider\FromOs::getFromSysFile` due to nested 'mixed'.'''
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "no-valid-catch-type-found"
+message = "None of the types specified in the `catch` declaration are valid catchable exceptions."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "non-existent-catch-type"
+message = 'Attempting to catch an undefined class or interface: `Castor\Encoding\Failure`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "non-existent-function"
+message = 'Function `Castor\Arr\filter` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "non-existent-function"
+message = 'Function `Castor\Arr\map` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/MacProvider/FromOs.php"
+code = "non-existent-function"
+message = 'Function `Castor\Arr\walk` could not be found.'
 count = 1
 
 [[issues]]
@@ -37,133 +181,349 @@ message = "Reference created from a previously undefined variable `$matches`."
 count = 1
 
 [[issues]]
+file = "src/Uuid/System/State/Standard.php"
+code = "no-value"
+message = 'Argument #1 passed to method `Castor\Uuid\System\State\Standard::__construct` has type `never`, meaning it cannot produce a value.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/State/Standard.php"
+code = "non-existent-class"
+message = 'Class `Brick\DateTime\Clock\SystemClock` not found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/State/Standard.php"
+code = "non-existent-class-like"
+message = 'Cannot find class, interface, enum, or type alias `Brick\DateTime\Clock`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Brick\DateTime\Clock)`).'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Brick\DateTime\Instant)`).'
+count = 2
+
+[[issues]]
 file = "src/Uuid/System/Time/Gregorian.php"
 code = "invalid-return-statement"
-message = 'Invalid return type for function `castor\uuid\system\time\gregorian::gettimestamp`: expected `numeric-string`, but found `string`.'
+message = 'Invalid return type for function `Castor\Uuid\System\Time\Gregorian::getTimestamp`: expected `numeric-string`, but found `string`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\System\Time\Gregorian::fromInstant`: expected `unknown-ref(Brick\DateTime\Instant)`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Castor\Uuid\System\Time\Gregorian::getInstant`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "no-valid-catch-type-found"
+message = "None of the types specified in the `catch` declaration are valid catchable exceptions."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "non-existent-catch-type"
+message = 'Attempting to catch an undefined class or interface: `Castor\Encoding\Failure`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "non-existent-class-like"
+message = 'Cannot find class, interface, enum, or type alias `Brick\DateTime\Clock`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "non-existent-class-like"
+message = 'Cannot find class, interface, enum, or type alias `Brick\DateTime\Instant`.'
+count = 2
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "non-existent-method"
+message = 'Method `of` does not exist on type `Brick\DateTime\Instant`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `bcdiv`: expected `numeric-string`, but possibly received `string`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Gregorian.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `bcmul`: expected `numeric-string`, but possibly received `string`."
 count = 1
 
 [[issues]]
 file = "src/Uuid/System/Time/Unix.php"
-code = "invalid-return-statement"
-message = 'Invalid return type for function `castor\uuid\system\time\unix::gettimestamp`: expected `numeric-string`, but found `string`.'
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Brick\DateTime\Clock)`).'
 count = 1
 
 [[issues]]
-file = "src/Uuid/Version1.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
-count = 4
-
-[[issues]]
-file = "src/Uuid/Version3.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+file = "src/Uuid/System/Time/Unix.php"
+code = "invalid-method-access"
+message = 'Attempting to access a method on a non-object type (`unknown-ref(Brick\DateTime\Instant)`).'
 count = 2
 
 [[issues]]
-file = "src/Uuid/Version4.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
+file = "src/Uuid/System/Time/Unix.php"
+code = "invalid-return-statement"
+message = 'Invalid return type for function `Castor\Uuid\System\Time\Unix::getTimestamp`: expected `numeric-string`, but found `string`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\System\Time\Unix::fromInstant`: expected `unknown-ref(Brick\DateTime\Instant)`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "mixed-return-statement"
+message = 'Could not infer a precise return type for function `Castor\Uuid\System\Time\Unix::getInstant`. Saw type `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "no-valid-catch-type-found"
+message = "None of the types specified in the `catch` declaration are valid catchable exceptions."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "non-existent-catch-type"
+message = 'Attempting to catch an undefined class or interface: `Castor\Encoding\Failure`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "non-existent-class-like"
+message = 'Cannot find class, interface, enum, or type alias `Brick\DateTime\Clock`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "non-existent-class-like"
+message = 'Cannot find class, interface, enum, or type alias `Brick\DateTime\Instant`.'
 count = 2
 
 [[issues]]
-file = "src/Uuid/Version5.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
-count = 2
+file = "src/Uuid/System/Time/Unix.php"
+code = "non-existent-method"
+message = 'Method `of` does not exist on type `Brick\DateTime\Instant`.'
+count = 1
 
 [[issues]]
-file = "src/Uuid/Version6.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
-count = 15
+file = "src/Uuid/System/Time/Unix.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `bcdiv`: expected `numeric-string`, but possibly received `string`."
+count = 1
+
+[[issues]]
+file = "src/Uuid/System/Time/Unix.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #1 of `bcmul`: expected `numeric-string`, but possibly received `string`."
+count = 1
 
 [[issues]]
 file = "src/Uuid/Version7.php"
-code = "invalid-array-access-assignment-value"
-message = "Invalid value type for `ArrayAccess` assignment: expected `int<0, 255>`, got `int`."
-count = 2
-
-[[issues]]
-file = "tests/Uuid/AnyTest.php"
-code = "invalid-type-cast"
-message = 'Cannot cast object of type `Castor\Uuid` to `string` because it does not implement `Stringable`.'
-count = 1
-
-[[issues]]
-file = "tests/Uuid/AnyTest.php"
 code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `Castor\Uuid::equals`: expected `Castor\Uuid`, but found `mixed`.'
+message = "Cannot unpack argument of type `mixed` because it is not guaranteed to be iterable."
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\ByteArray::allocate`: expected `int<0, 255>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Castor\Uuid\System\Time\Unix::fromInstant`: expected `unknown-ref(Brick\DateTime\Instant)`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "non-existent-function"
+message = 'Function `Castor\Bytes\unpack` could not be found.'
+count = 1
+
+[[issues]]
+file = "src/Uuid/Version7.php"
+code = "non-existent-method"
+message = 'Method `now` does not exist on type `Brick\DateTime\Instant`.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "mixed-method-access"
+message = "Attempting to access a method on a non-object type (`mixed`)."
+count = 12
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PhpBench\Attributes\Iterations` not found or could not be autoloaded.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PhpBench\Attributes\Revs` not found or could not be autoloaded.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PhpBench\Attributes\Subject` not found or could not be autoloaded.'
+count = 32
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PhpBench\Attributes\Warmup` not found or could not be autoloaded.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `fromBytes` does not exist on type `Ramsey\Uuid\Uuid`.'
+count = 4
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `fromString` does not exist on type `Ramsey\Uuid\Uuid`.'
+count = 4
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `uuid1` does not exist on type `Ramsey\Uuid\Uuid`.'
+count = 5
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `uuid4` does not exist on type `Ramsey\Uuid\Uuid`.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `uuid6` does not exist on type `Ramsey\Uuid\Uuid`.'
+count = 1
+
+[[issues]]
+file = "tests/Benchmark/CastorVsRamseyBench.php"
+code = "non-existent-method"
+message = 'Method `uuid7` does not exist on type `Ramsey\Uuid\Uuid`.'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/AnyTest.php"
-code = "possibly-invalid-argument"
-message = '''Possible argument type mismatch for argument #1 of `phpunit\framework\assert::assertinstanceof`: expected `class-string<'ExpectedType.phpunit\framework\assert::assertinstanceof() extends object>`, but possibly received `string`.'''
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\AnyTest` cannot extend unknown type `TestCase`'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/ByteArrayTest.php"
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\ByteArrayTest` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/FunctionsTest.php"
-code = "possibly-invalid-argument"
-message = '''Possible argument type mismatch for argument #1 of `phpunit\framework\assert::assertinstanceof`: expected `class-string<'ExpectedType.phpunit\framework\assert::assertinstanceof() extends object>`, but possibly received `string`.'''
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\FunctionsTest` cannot extend unknown type `TestCase`'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/System/MacProvider/FallbackTest.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PHPUnit\Framework\Attributes\CoversClass` not found or could not be autoloaded.'
+count = 2
+
+[[issues]]
+file = "tests/Uuid/System/MacProvider/FallbackTest.php"
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\System\MacProvider\FallbackTest` cannot extend unknown type `TestCase`'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/System/MacProvider/FromOsTest.php"
+code = "non-existent-attribute-class"
+message = 'Attribute class `PHPUnit\Framework\Attributes\CoversClass` not found or could not be autoloaded.'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/System/MacProvider/FromOsTest.php"
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\System\MacProvider\FromOsTest` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/System/Time/GregorianTest.php"
-code = "redundant-cast"
-message = "Redundant cast to `(string)`: the expression already has this type."
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\System\Time\GregorianTest` cannot extend unknown type `TestCase`'
+count = 1
+
+[[issues]]
+file = "tests/Uuid/System/Time/UnixTest.php"
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\System\Time\UnixTest` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version1Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
-count = 1
-
-[[issues]]
-file = "tests/Uuid/Version1Test.php"
-code = "redundant-cast"
-message = "Redundant cast to `(string)`: the expression already has this type."
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version1Test` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version3Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version3Test` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version4Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version4Test` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version5Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version5Test` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version6Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
-count = 1
-
-[[issues]]
-file = "tests/Uuid/Version6Test.php"
-code = "redundant-cast"
-message = "Redundant cast to `(string)`: the expression already has this type."
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version6Test` cannot extend unknown type `TestCase`'
 count = 1
 
 [[issues]]
 file = "tests/Uuid/Version7Test.php"
-code = "mixed-argument"
-message = 'Invalid argument type for argument #1 of `castor\uuid\any::equals`: expected `Castor\Uuid`, but found `mixed`.'
-count = 1
-
-[[issues]]
-file = "tests/Uuid/Version7Test.php"
-code = "redundant-cast"
-message = "Redundant cast to `(string)`: the expression already has this type."
+code = "non-existent-class-like"
+message = 'Class `Castor\Uuid\Version7Test` cannot extend unknown type `TestCase`'
 count = 1
