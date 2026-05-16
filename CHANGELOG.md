@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/castor-labs/php-lib-uuid/compare/3.0.0...3.1.0) (2026-05-16)
+
+
+### Features
+
+* Toolchain upgrade ([#80](https://github.com/castor-labs/php-lib-uuid/issues/80)) ([1c2f312](https://github.com/castor-labs/php-lib-uuid/commit/1c2f31209efa469572ac180d0d3894b928cb7391))
+
 ## [3.0.0](https://github.com/castor-labs/php-lib-uuid/compare/2.0.0...3.0.0) (2025-01-03)
 
 
