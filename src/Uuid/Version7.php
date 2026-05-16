@@ -27,6 +27,7 @@ final class Version7 extends Any implements TimeBased
      *
      * @throws ParsingError
      */
+    #[\Override]
     public static function parse(string $uuid, bool $lazy = true): self
     {
         $v7 = parent::parse($uuid, $lazy);
@@ -40,6 +41,7 @@ final class Version7 extends Any implements TimeBased
     /**
      * Creates a UUID Version 7 from the raw bytes.
      */
+    #[\Override]
     public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
@@ -55,8 +57,8 @@ final class Version7 extends Any implements TimeBased
      */
     public static function generate(?Unix $timestamp = null, ?Randomizer $randomizer = null): self
     {
-        $timestamp = $timestamp ?? Unix::fromInstant(Instant::now());
-        $randomizer = $randomizer ?? Random::global();
+        $timestamp ??= Unix::fromInstant(Instant::now());
+        $randomizer ??= Random::global();
 
         $bytes = new ByteArray(16);
         $bytes->allocate(...$timestamp->bytes, ...Bytes\unpack($randomizer->getBytes(10)));

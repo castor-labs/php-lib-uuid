@@ -93,9 +93,11 @@ final class FromOs implements MacProvider
             });
 
             // Remove invalid entries.
-            $macs = Arr\filter($macs, static function (string $address) {
-                return '00:00:00:00:00:00' !== $address && \preg_match(self::SYSFS_PATTERN, $address);
-            });
+            $macs = Arr\filter(
+                $macs,
+                static fn(string $address) => '00:00:00:00:00:00' !== $address
+                && \preg_match(self::SYSFS_PATTERN, $address),
+            );
         }
 
         // Map any macs we have
@@ -126,28 +128,12 @@ final class FromOs implements MacProvider
 
         \ob_start();
 
-        switch (\strtoupper(\substr(PHP_OS, 0, 3))) {
-            case 'WIN':
-                \passthru('ipconfig /all 2>&1');
-
-                break;
-
-            case 'DAR':
-                \passthru('ifconfig 2>&1');
-
-                break;
-
-            case 'FRE':
-                \passthru('netstat -i -f link 2>&1');
-
-                break;
-
-            case 'LIN':
-            default:
-                \passthru('netstat -ie 2>&1');
-
-                break;
-        }
+        match (\strtoupper(\substr(PHP_OS, 0, 3))) {
+            'WIN' => \passthru('ipconfig /all 2>&1'),
+            'DAR' => \passthru('ifconfig 2>&1'),
+            'FRE' => \passthru('netstat -i -f link 2>&1'),
+            default => \passthru('netstat -ie 2>&1'),
+        };
 
         $ifconfig = (string) \ob_get_clean();
 

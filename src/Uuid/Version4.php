@@ -20,6 +20,7 @@ final class Version4 extends Any
     /**
      * @throws ParsingError
      */
+    #[\Override]
     public static function parse(string $uuid, bool $lazy = true): self
     {
         $v4 = parent::parse($uuid, $lazy);
@@ -30,6 +31,7 @@ final class Version4 extends Any
         return $v4;
     }
 
+    #[\Override]
     public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
@@ -42,7 +44,7 @@ final class Version4 extends Any
 
     public static function generate(?Randomizer $randomizer = null): self
     {
-        $randomizer = $randomizer ?? Random::global();
+        $randomizer ??= Random::global();
 
         $bytes = ByteArray::fromRaw($randomizer->getBytes(self::LEN));
 

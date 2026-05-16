@@ -22,29 +22,10 @@
     "platformAutomerge": true,
     "rangeStrategy": "in-range-only",
     "rebaseWhen": "conflicted",
-    "customManagers": [
-        {
-            "customType": "regex",
-            "fileMatch": [
-                "^Dockerfile"
-            ],
-            "matchStrings": [
-                "^ARG COMPOSER_VERSION=\\s*[\"']?(?<currentValue>.+?)[\"']?\\s$"
-            ],
-            "depNameTemplate": "composer/composer",
-            "datasourceTemplate": "github-releases"
-        }
-    ],
     "packageRules": [
         {
             "matchPackagePatterns": ["*"],
             "enabled": false
-        },
-        {
-            "matchManagers": ["docker-compose", "dockerfile"],
-            "enabled": true,
-            "groupName": "docker",
-            "rangeStrategy": "bump"
         },
         {
             "matchManagers": ["composer"],
@@ -72,21 +53,6 @@
             "groupName": "GitHub Actions dependencies",
             "groupSlug": "github-actions",
             "rangeStrategy": "bump"
-        },
-        {
-            "matchDatasources": ["github-releases"],
-            "matchDepNames": ["composer/composer"],
-            "enabled": true,
-            "rangeStrategy": "bump"
-        },
-        {
-            "matchDatasources": ["docker"],
-            "matchDepNames": [
-                "alpine",
-                "php"
-            ],
-            "matchUpdateTypes": ["major", "minor"],
-            "enabled": false
         }
     ]
 }

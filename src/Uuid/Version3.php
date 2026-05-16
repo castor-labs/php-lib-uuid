@@ -23,6 +23,7 @@ final class Version3 extends Any
      *
      * @throws ParsingError
      */
+    #[\Override]
     public static function parse(string $uuid, bool $lazy = true): self
     {
         $v3 = parent::parse($uuid, $lazy);
@@ -36,6 +37,7 @@ final class Version3 extends Any
     /**
      * Creates a UUID Version 3 from the raw bytes.
      */
+    #[\Override]
     public static function fromBytes(ByteArray|string $bytes): self
     {
         $uuid = parent::fromBytes($bytes);
