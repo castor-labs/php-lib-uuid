@@ -306,17 +306,17 @@
         },
         {
             "name": "castor-labs/docs",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:castor-labs/php-lib-docs.git",
-                "reference": "a3fd9a6d2dee43fd2d3d08016e58aa719ffd99fa"
+                "reference": "63683b3d4f200a6aa48967a685f2d77fa9b0ecf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://castor-labs.github.io/php-packages/archive/castor-labs/docs/castor-labs-docs-a3fd9a6d2dee43fd2d3d08016e58aa719ffd99fa-zip-76e023.zip",
-                "reference": "a3fd9a6d2dee43fd2d3d08016e58aa719ffd99fa",
-                "shasum": "085a5fadde68f31c3a7ae49801020796b8d1ba1d"
+                "url": "https://castor-labs.github.io/php-packages/archive/castor-labs/docs/castor-labs-docs-63683b3d4f200a6aa48967a685f2d77fa9b0ecf8-zip-e2d765.zip",
+                "reference": "63683b3d4f200a6aa48967a685f2d77fa9b0ecf8",
+                "shasum": "5e35b9da011ac3508313354d6548214d9729278d"
             },
             "require": {
                 "php": ">=8.3"
@@ -424,18 +424,17 @@
             "homepage": "https://castor-labs.github.io/php-lib-docs/",
             "keywords": [
                 "castor",
-                "dev",
                 "docs-generator",
                 "documentation",
+                "github-pages",
                 "php",
-                "php83",
-                "stdlib"
+                "static-site"
             ],
             "support": {
-                "source": "https://github.com/castor-labs/php-lib-docs/tree/0.1.0",
+                "source": "https://github.com/castor-labs/php-lib-docs/tree/0.1.1",
                 "issues": "https://github.com/castor-labs/php-lib-docs/issues"
             },
-            "time": "2026-05-21T23:49:13+00:00"
+            "time": "2026-05-22T22:36:02+00:00"
         },
         {
             "name": "doctrine/annotations",
