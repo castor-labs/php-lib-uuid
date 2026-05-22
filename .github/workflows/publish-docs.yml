@@ -30,7 +30,7 @@ jobs:
           tools: composer:v2
       - run: composer install --ansi --no-interaction --no-progress
       - run: composer docs:build
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: .dev/docs-dist
 
@@ -42,4 +42,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
